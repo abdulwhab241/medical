@@ -14,18 +14,18 @@
                 {{ csrf_field() }}
                 @csrf
                 <div class="modal-body">
-                    <label for="exampleInputPassword1">الاسم</label>
+                    <label for="exampleInputPassword1">أسم الموظف</label>
                     <input type="text" value="{{$laboratorie_employee->name}}" name="name" class="form-control"><br>
 
-                    <label for="exampleInputPassword1">البريد الالكتروني</label>
-                    <input type="email" value="{{$laboratorie_employee->email}}" name="email" class="form-control"><br>
+                    <label for="exampleInputPassword1">رقم الهاتف</label>
+                    <input type="text" value="{{$laboratorie_employee->phone}}" name="Phone" class="form-control"><br>
 
-                    <label for="exampleInputPassword1">كلمة المرور</label>
-                    <input type="password" name="password" class="form-control" autocomplete="new-password">
+                    <label for="exampleInputPassword1">العنوان</label>
+                    <textarea name="Address" id="" cols="2" rows="2"> {{$laboratorie_employee->address}}</textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Dashboard/sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{trans('Dashboard/sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    <button type="submit" class="btn btn-primary">تعديل البيانات</button>
                 </div>
             </form>
         </div>

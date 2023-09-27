@@ -18,6 +18,7 @@ class LaboratorySeeder extends Seeder
             'name' => 'مخبري',
             'status' => '1',
             'phone' => '123',
+            'date' => '2023-09-27',
             'address' => 'مخبري',
             'password' => Hash::make('123'),
         ]);

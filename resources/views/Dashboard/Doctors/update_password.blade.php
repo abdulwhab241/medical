@@ -14,20 +14,20 @@
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="password">{{ trans('doctors.new_password') }}</label>
+                        <label for="password">كلمة المرور الجديدة</label>
                         <input type="password" class="form-control" id="password" name="password" >
                     </div>
 
                     <div class="form-group">
-                        <label for="password_confirmation">{{ trans('doctors.confirm_password') }}</label>
+                        <label for="password_confirmation">تأكيد كلمة المرور</label>
                         <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
                     </div>
 
                     <input type="hidden" name="id" value="{{ $doctor->id }}">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Dashboard/sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{trans('Dashboard/sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    <button type="submit" class="btn btn-primary">تعديل كلمة المرور</button>
                 </div>
             </form>
         </div>

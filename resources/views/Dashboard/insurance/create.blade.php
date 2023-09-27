@@ -1,10 +1,10 @@
 @extends('Dashboard.layouts.master')
 @section('css')
     <!--Internal   Notify -->
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('/My/dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 @endsection
 @section('title')
-    {{trans('insurance.Add_Insurance')}}
+    إضافة شركة تأمين جديدة
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
@@ -28,7 +28,7 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <label>{{trans('insurance.Company_code')}}</label>
+                            <label>كود الشركة</label>
                             <input type="text" name="insurance_code"  value="{{old('insurance_code')}}" class="form-control @error('insurance_code') is-invalid @enderror">
                             @error('insurance_code')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="col">
-                            <label>{{trans('insurance.Company_name')}}</label>
+                            <label>أسم الشركة</label>
                             <input type="text" name="name"  value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -47,7 +47,7 @@
 
                     <br>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col">
                             <label>{{trans('insurance.discount_percentage')}} %</label>
                             <input type="number" name="discount_percentage" class="form-control @error ('discount_percentage') is-invalid @enderror">
@@ -66,11 +66,11 @@
 
                     </div>
 
-                    <br>
+                    <br> --}}
 
                     <div class="row">
                         <div class="col">
-                            <label>{{trans('insurance.notes')}}</label>
+                            <label>الملاجظات</label>
                             <textarea rows="5" cols="10" class="form-control" name="notes"></textarea>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-success">{{trans('insurance.save')}}</button>
+                            <button class="btn btn-success">حفظ البيانات</button>
                         </div>
                     </div>
 
@@ -91,6 +91,6 @@
 <!-- row closed -->
 @endsection
 @section('js')
-    <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My//plugins/notify/js/notifit-custom.js')}}"></script>
 @endsection

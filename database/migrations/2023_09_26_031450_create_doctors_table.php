@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->boolean('status')->default(1);
             $table->longText('address');
+            $table->date('date');
             $table->rememberToken();
             $table->timestamps();
         });

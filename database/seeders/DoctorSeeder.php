@@ -18,6 +18,7 @@ class DoctorSeeder extends Seeder
             'name' => 'احمد الحداد',
             'status' => '1',
             'section_id' => '1',
+            'date' => '2023-09-27',
             'phone' => '123',
             'address' => 'احمد الحداد',
             'password' => Hash::make('123'),

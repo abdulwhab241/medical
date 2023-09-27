@@ -29,4 +29,9 @@ class Laboratory extends Model
     {
         return $this->belongsTo(Patient::class,'patient_id');
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

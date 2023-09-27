@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('receiver_name');
             $table->boolean('read')->default(0)->nullable();
             $table->text('body')->nullable();
-            $table->json('image')->nullable();
+            // $table->json('image')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });

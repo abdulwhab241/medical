@@ -2,18 +2,18 @@
 @section('css')
 
     <!--Internal   Notify -->
-    <link href="{{ URL::asset('Admin/assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet"/>
+    <link href="{{ URL::asset('/My/Admin/assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet"/>
 @endsection
 @section('title')
-    {{trans('insurance.edit_Insurance')}}
+    تعديل شركة التأمين
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">{{trans('main-sidebar_trans.Services')}}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{trans('insurance.Insurance')}}</span>
+                <h4 class="content-title mb-0 my-auto">الخدمات</h4><span
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ شركات التامين</span>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                         <div class="row">
 
                             <div class="col">
-                                <label>{{trans('insurance.Company_code')}}</label>
+                                <label>كود الشركة</label>
                                 <input type="text" name="insurance_code" value="{{$insurances->insurance_code}}"
                                        class="form-control @error('insurance_code') is-invalid @enderror">
                                 @error('insurance_code')
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col">
-                                <label>{{trans('insurance.Company_name')}}</label>
+                                <label>أسم الشركة</label>
                                 <input type="text" name="name" value="{{$insurances->name}}"
                                        class="form-control @error('name') is-invalid @enderror">
                                 @error('name')
@@ -57,7 +57,7 @@
 
                         <br>
 
-                        <div class="row">
+                        {{-- <div class="row">
 
                             <div class="col">
                                 <label>{{trans('insurance.discount_percentage')}} %</label>
@@ -78,11 +78,11 @@
                             </div>
                         </div>
 
-                        <br>
+                        <br> --}}
 
                         <div class="row">
                             <div class="col">
-                                <label>{{trans('insurance.notes')}}</label>
+                                <label>الملاحظات</label>
                                 <textarea rows="5" cols="10" class="form-control"
                                           name="notes">{{$insurances->notes}}</textarea>
                             </div>
@@ -102,7 +102,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <button class="btn btn-success">{{trans('insurance.save')}}</button>
+                                <button class="btn btn-success">تعديل البيانات</button>
                             </div>
                         </div>
                     </form>
@@ -114,6 +114,6 @@
 @endsection
 @section('js')
     <!--Internal  Notify js -->
-    <script src="{{URL::asset('Admin/assets/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('Admin/assets/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/Admin/assets/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My/Admin/assets/plugins/notify/js/notifit-custom.js')}}"></script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Image;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Insurance;
@@ -34,5 +35,10 @@ class Ray extends Model
     public function Doctor()
     {
         return $this->belongsTo(Doctor::class,'doctor_id');
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
