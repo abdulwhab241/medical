@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8">
     @include('WebSite.layouts.style')
@@ -20,7 +20,7 @@
 
                 <!--Info-->
                 <div class="logo-outer">
-                    <div class="logo"><a href="index.html"><img src="images/logo-3.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="index.html"><img src="/My/images/logo-3.png" alt="" title=""></a></div>
                 </div>
 
                 <!--Nav Box-->
@@ -35,7 +35,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index.html" class="img-responsive"><img src="images/logo-small.png" alt="" title=""></a>
+                    <a href="index.html" class="img-responsive"><img src="/My/images/logo-small.png" alt="" title=""></a>
                 </div>
 
                 <!--Right Col-->
@@ -60,7 +60,7 @@
 
             <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
             <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="images/nav-logo.png" alt="" title=""></a></div>
+                <div class="nav-logo"><a href="index.html"><img src="/My/images/nav-logo.png" alt="" title=""></a></div>
 
                 <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
             </nav>
@@ -125,7 +125,7 @@
                 <div class="sidebar-info-contents">
                     <div class="content-inner">
                         <div class="logo">
-                            <a href="index.html"><img src="images/logo-3.png" alt=""/></a>
+                            <a href="index.html"><img src="/My/images/logo-3.png" alt=""/></a>
                         </div>
                         <div class="content-box">
                             <h2>About Us</h2>

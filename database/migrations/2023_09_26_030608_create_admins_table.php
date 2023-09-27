@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->json('image')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable();
+            $table->longText('address')->nullable();
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->decimal('price','11','2');
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);
+            $table->integer('year');
+            $table->string('create_by')->nullable();
             $table->timestamps();
         });
     }

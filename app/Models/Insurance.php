@@ -9,5 +9,5 @@ class Insurance extends Model
 {
     use HasFactory;
 
-    public $fillable= ['name','notes','insurance_code','discount_percentage','Company_rate','status'];
+    public $fillable= ['name','insurance_code','status'];
 }

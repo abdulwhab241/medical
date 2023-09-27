@@ -5,7 +5,7 @@
 @section('css')
 
 
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('/My/dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 
 @section('page-header')
     <!-- breadcrumb -->
@@ -84,8 +84,8 @@
 @section('js')
 
     <!--Internal  Notify js -->
-    <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My/plugins/notify/js/notifit-custom.js')}}"></script>
 
 @endsection
 

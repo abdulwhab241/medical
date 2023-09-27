@@ -12,7 +12,7 @@
                         <div class="footer-column col-lg-7 col-md-6 col-sm-12">
                             <div class="footer-widget logo-widget">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logo-3.png" alt=""/></a>
+                                    <a href="index.html"><img src="/My/images/logo-3.png" alt=""/></a>
                                 </div>
                                 <ul class="social-icons">
                                     <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -61,7 +61,7 @@
                                 <div class="news-widget-block">
                                     <div class="widget-inner">
                                         <div class="image">
-                                            <img src="images/resource/news-image-1.jpg" alt=""/>
+                                            <img src="/My/images/resource/news-image-1.jpg" alt=""/>
                                         </div>
                                         <h3><a href="blog-detail.html">الطب التكاملي وعلاج السرطان</a>
                                         </h3>
@@ -73,7 +73,7 @@
                                 <div class="news-widget-block">
                                     <div class="widget-inner">
                                         <div class="image">
-                                            <img src="images/resource/news-image-2.jpg" alt=""/>
+                                            <img src="/My/images/resource/news-image-2.jpg" alt=""/>
                                         </div>
                                         <h3><a href="blog-detail.html">الحصول على رعاية صحية أفضل لمريض واحد</a></h3>
                                         <div class="post-date">11 يوليو 2022</div>

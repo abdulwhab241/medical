@@ -105,7 +105,7 @@
 
                 <li><a href="contact.html">تواصل معانا</a></li>
 
-                <li class="dropdown"><a href="#">{{ LaravelLocalization::getCurrentLocaleNative() }}</a>
+                {{-- <li class="dropdown"><a href="#">{{ LaravelLocalization::getCurrentLocaleNative() }}</a>
                     <ul>
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li>
@@ -115,7 +115,7 @@
                             </li>
                         @endforeach
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
 

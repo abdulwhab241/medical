@@ -4,17 +4,17 @@
 @stop
 @section('css')
     <!-- Internal Data table css -->
-    <link href="{{URL::asset('Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <!--Internal   Notify -->
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('/My/dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 
-    <link href="{{URL::asset('dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <!--Internal  Datetimepicker-slider css -->
-    <link href="{{URL::asset('dashboard/plugins/amazeui-datetimepicker/css/amazeui.datetimepicker.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('dashboard/plugins/pickerjs/picker.min.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/dashboard/plugins/amazeui-datetimepicker/css/amazeui.datetimepicker.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/dashboard/plugins/pickerjs/picker.min.css')}}" rel="stylesheet">
     <!-- Internal Spectrum-colorpicker css -->
-    <link href="{{URL::asset('dashboard/plugins/spectrum-colorpicker/spectrum.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('/My/dashboard/plugins/spectrum-colorpicker/spectrum.css')}}" rel="stylesheet">
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -45,9 +45,9 @@
                                                 <th>اسم المريض</th>
                                                 <th>سعر الخدمة</th>
                                                 <th>قيمة الخصم</th>
-                                                <th>نسبة الضريبة</th>
-                                                <th>قيمة الضريبة</th>
-                                                <th>الاجمالي مع الضريبة</th>
+                                                {{-- <th>نسبة الضريبة</th>
+                                                <th>قيمة الضريبة</th> --}}
+                                                <th>الاجمالي </th>
                                                 <th>حالة الفاتورة</th>
                                             </tr>
                                             </thead>
@@ -58,11 +58,11 @@
                                                    <td>{{ $invoice->invoice_date }}</td>
                                                    <td>{{ $invoice->Service->name ?? $invoice->Group->name }}</td>
                                                    <td><a href="{{route('patient_details',$invoice->patient_id)}}">{{ $invoice->Patient->name }}</a></td>
-                                                   <td>{{ number_format($invoice->price, 2) }}</td>
-                                                   <td>{{ number_format($invoice->discount_value, 2) }}</td>
-                                                   <td>{{ $invoice->tax_rate }}%</td>
-                                                   <td>{{ number_format($invoice->tax_value, 2) }}</td>
-                                                   <td>{{ number_format($invoice->total_with_tax, 2) }}</td>
+                                                   <td>{{ number_format($invoice->price) }}</td>
+                                                   <td>{{ number_format($invoice->discount_value) }} %</td>
+                                                   {{-- <td>{{ $invoice->tax_rate }}%</td>
+                                                   <td>{{ number_format($invoice->tax_value) }}</td> --}}
+                                                   <td>{{ number_format($invoice->total) }}</td>
                                                    <td>
                                                       @if($invoice->invoice_status == 1)
                                                            <span class="badge badge-danger">تحت الاجراء</span>
@@ -95,27 +95,27 @@
 
 
     <!--Internal  Notify js -->
-    <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My/plugins/notify/js/notifit-custom.js')}}"></script>
 
 
     <!--Internal  Datepicker js -->
-    <script src="{{URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
     <!--Internal  jquery.maskedinput js -->
-    <script src="{{URL::asset('dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js')}}"></script>
     <!--Internal  spectrum-colorpicker js -->
-    <script src="{{URL::asset('dashboard/plugins/spectrum-colorpicker/spectrum.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/spectrum-colorpicker/spectrum.js')}}"></script>
     <!-- Internal Select2.min js -->
-    <script src="{{URL::asset('dashboard/plugins/select2/js/select2.min.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/select2/js/select2.min.js')}}"></script>
     <!--Internal Ion.rangeSlider.min js -->
-    <script src="{{URL::asset('dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js')}}"></script>
     <!--Internal  jquery-simple-datetimepicker js -->
-    <script src="{{URL::asset('dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
     <!-- Ionicons js -->
-    <script src="{{URL::asset('dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js')}}"></script>
     <!--Internal  pickerjs js -->
-    <script src="{{URL::asset('dashboard/plugins/pickerjs/picker.min.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/pickerjs/picker.min.js')}}"></script>
     <!-- Internal form-elements js -->
-    <script src="{{URL::asset('dashboard/js/form-elements.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/js/form-elements.js')}}"></script>
 
 @endsection

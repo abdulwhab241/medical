@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('insurance_code');
-            $table->string('discount_percentage');
-            $table->string('Company_rate');
+            // $table->string('discount_percentage');
+            // $table->string('company_rate');
             $table->longText('notes')->nullable();
             $table->boolean('status');
+            $table->integer('year');
+            $table->string('create_by')->nullable();
             $table->timestamps();
         });
     }
