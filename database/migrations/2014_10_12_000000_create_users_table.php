@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->json('image')->nullable();
             $table->string('password');
+            $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');
             $table->string('phone');
             $table->longText('address');
-            $table->boolean('status')->default(1);
+            $table->string('disc');
+            $table->date('date');
             $table->rememberToken();
             $table->timestamps();
         });

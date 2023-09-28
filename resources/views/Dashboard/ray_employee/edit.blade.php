@@ -15,17 +15,17 @@
                 @csrf
                 <div class="modal-body">
                     <label for="exampleInputPassword1">الاسم</label>
-                    <input type="text" value="{{$ray_employee->name}}" name="name" class="form-control"><br>
+                    <input type="text" value="{{ $ray_employee->name }}" name="name" class="form-control"><br>
 
-                    <label for="exampleInputPassword1">البريد الالكتروني</label>
-                    <input type="email" value="{{$ray_employee->email}}" name="email" class="form-control"><br>
+                    <label for="exampleInputPassword1">رقم الهاتف</label>
+                    <input type="text" value="{{ $ray_employee->phone }}" name="Phone" class="form-control"><br>
 
-                    <label for="exampleInputPassword1">كلمة المرور</label>
-                    <input type="password" name="password" class="form-control" autocomplete="new-password">
+                    <label for="exampleInputPassword1">العنوان</label>
+                    <textarea rows="5" cols="10" class="form-control" name="Address">{{ $ray_employee->address }}</textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Dashboard/sections_trans.Close')}}</button>
-                    <button type="submit" class="btn btn-primary">{{trans('Dashboard/sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    <button type="submit" class="btn btn-primary">تعديل البيانات</button>
                 </div>
             </form>
         </div>

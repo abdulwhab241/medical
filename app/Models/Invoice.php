@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Service;
@@ -26,7 +27,7 @@ class Invoice extends Model
 
     public function Doctor()
     {
-        return $this->belongsTo(Doctor::class,'doctor_id');
+        return $this->belongsTo(User::class,'user_doctor_id');
     }
 
     public function Section()

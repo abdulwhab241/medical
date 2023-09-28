@@ -14,7 +14,6 @@ class SectionSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('sections')->delete();
         $Sections = [
             ['name' => 'قسم القلب'],
             ['name' => 'قسم الباطنية'],

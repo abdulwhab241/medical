@@ -1,6 +1,6 @@
 @extends('Dashboard.layouts.master')
 @section('title')
-   معاينة الطباعة
+    معاينة الطباعة
 @stop
 @section('css')
     <style>
@@ -16,7 +16,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">سند قبض</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ طباعه سند</span>
+                <h4 class="content-title mb-0 my-auto">سند قبض</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ طباعه
+                    سند</span>
             </div>
         </div>
     </div>
@@ -41,32 +42,34 @@
                         <div class="row mg-t-20">
                             <div class="col-md">
                                 <label class="tx-gray-600">معلومات السند</label>
-                                <p class="invoice-info-row"><span>تاريخ الاصدار</span> <span>{{$receipt->date}}</span>
+                                <p class="invoice-info-row"><span>تاريخ الاصدار</span> <span>{{ $receipt->date }}</span>
                                 </p>
                                 <p class="invoice-info-row "><span>اسم المريض</span>
-                                    <span>{{$receipt->patients->name}}</span></p>
+                                    <span>{{ $receipt->patients->name }}</span>
+                                </p>
                             </div>
                         </div>
                         <div class="table-responsive mg-t-40">
                             <table class="table table-invoice border text-md-nowrap mb-0">
                                 <thead>
-                                <tr>
-                                    <th class="wd-20p">#</th>
-                                    <th class="wd-40p">ملاحظات</th>
-                                    <th class="tx-center">المبلغ</th>
-                                </tr>
+                                    <tr>
+                                        <th class="wd-20p">#</th>
+                                        <th class="wd-40p">ملاحظات</th>
+                                        <th class="tx-center">المبلغ</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="tx-12">{{ $receipt->description}}</td>
-                                    <td class="tx-center">{{ number_format($receipt->amount,2)}}</td>
-                                </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="tx-12">{{ $receipt->description }}</td>
+                                        <td class="tx-center">{{ number_format($receipt->amount) }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <hr class="mg-b-40">
-                        <a href="#" class="btn btn-danger float-left mt-3 mr-2" id="print_Button" onclick="printDiv()">
+                        <a href="#" class="btn btn-danger float-left mt-3 mr-2" id="print_Button"
+                            onclick="printDiv()">
                             <i class="mdi mdi-printer ml-1"></i>طباعه
                         </a>
                     </div>
@@ -82,7 +85,7 @@
 @endsection
 @section('js')
     <!--Internal  Chart.bundle js -->
-    <script src="{{URL::asset('Admin/assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{ URL::asset('/My/Admin/assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
 
     <script type="text/javascript">

@@ -6,14 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Section extends Model
+class Salary extends Model
 {
     use HasFactory;
 
-    protected $fillable =['name'];
+    protected $guarded=[];
 
-    public function doctors()
+    public function Doctor()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class,'user_employee_id');
     }
 }

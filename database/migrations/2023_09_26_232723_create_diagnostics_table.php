@@ -19,8 +19,8 @@ return new class extends Migration
             $table->longText('medicine');
             $table->foreignId('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignId('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
-            // $table->integer('year');
+            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('year');
             $table->string('create_by')->nullable();
             $table->timestamps();
         });

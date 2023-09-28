@@ -19,9 +19,10 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('phone')->unique();
             $table->string('gender');
-            $table->rememberToken();
+            $table->string('blood_group');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

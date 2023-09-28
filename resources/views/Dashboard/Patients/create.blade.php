@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 @section('css')
     <!--Internal   Notify -->
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('/My/dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 @endsection
 @section('title')
    اضافة مريض جديد
@@ -32,10 +32,10 @@
                             <input type="text" name="name"  value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror " required>
                         </div>
 
-                        <div class="col">
+                        {{-- <div class="col">
                             <label>البريد الالكتروني</label>
                             <input type="email" name="email"  value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" required>
-                        </div>
+                        </div> --}}
 
 
                         <div class="col">
@@ -56,9 +56,9 @@
                         <div class="col">
                             <label>الجنس</label>
                             <select class="form-control" name="Gender" required>
-                                <option value="" selected>-- اختار من القائمة --</option>
-                                <option value="1">ذكر</option>
-                                <option value="2">انثي</option>
+                                <option value="1" selected>-- اختار من القائمة --</option>
+                                <option value="ذكر">ذكر</option>
+                                <option value="انثي">انثي</option>
                             </select>
                         </div>
 
@@ -105,12 +105,12 @@
 @section('js')
 
     <!--Internal  Datepicker js -->
-    <script src="{{ URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <script src="{{ URL::asset('/My/dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <script>
         var date = $('.fc-datepicker').datepicker({
             dateFormat: 'yy-mm-dd'
         }).val();
     </script>
-    <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My/plugins/notify/js/notifit-custom.js')}}"></script>
 @endsection

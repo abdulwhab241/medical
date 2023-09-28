@@ -10,8 +10,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Pages</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ Empty</span>
+                <h4 class="content-title mb-0 my-auto">معلومات المريض</h4><span
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ المرضى</span>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                                                         <th>#</th>
                                                         <th>اسم المريض</th>
                                                         <th>رقم الهاتف</th>
-                                                        <th>البريد الالكتورني</th>
+                                                        {{-- <th>البريد الالكتورني</th> --}}
                                                         <th>تاريخ الميلاد</th>
                                                         <th>النوع</th>
                                                         <th>فصيلة الدم</th>
@@ -70,11 +70,11 @@
                                                     <tr>
                                                         <td>1</td>
                                                         <td>{{$Patient->name}}</td>
-                                                        <td>{{$Patient->Phone}}</td>
-                                                        <td>{{$Patient->email}}</td>
-                                                        <td>{{$Patient->Date_Birth}}</td>
-                                                        <td>{{$Patient->Gender == 1 ? '`ذكر' :  'انثي'}}</td>
-                                                        <td>{{$Patient->Blood_Group}}</td>
+                                                        <td>{{$Patient->phone}}</td>
+                                                        {{-- <td>{{$Patient->email}}</td> --}}
+                                                        <td>{{$Patient->birth_date}}</td>
+                                                        <td>{{$Patient->gender == ذكر ? '`ذكر' :  'انثي'}}</td>
+                                                        <td>{{$Patient->blood_group}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -96,7 +96,7 @@
                                                         <th>#</th>
                                                         <th>اسم الخدمه</th>
                                                         <th>تاريخ الفاتوره</th>
-                                                        <th>الاجمالي مع الضريبه</th>
+                                                        <th>الاجمالي </th>
                                                         <th>نوع الفاتوره</th>
                                                     </tr>
                                                     </thead>
@@ -106,7 +106,7 @@
                                                             <td>{{$loop->iteration}}</td>
                                                             <td>{{$invoice->Service->name ?? $invoice->Group->name}}</td>
                                                             <td>{{$invoice->invoice_date}}</td>
-                                                            <td>{{$invoice->total_with_tax}}</td>
+                                                            <td>{{number_format($invoice->total)}} ريال </td>
                                                             <td>{{$invoice->type == 1 ? 'نقدي' : 'اجل'}}</td>
                                                         </tr>
                                                         <br>

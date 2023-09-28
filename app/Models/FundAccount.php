@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Salary;
+use App\Models\Company;
+use App\Models\Expense;
 use App\Models\Patient;
 use App\Models\PaymentAccount;
 use App\Models\ReceiptAccount;
@@ -22,6 +26,26 @@ class FundAccount extends Model
     public function Receipt()
     {
         return $this->belongsTo(ReceiptAccount::class,'receipt_id');
+    }
+
+    public function Salary()
+    {
+        return $this->belongsTo(Salary::class,'salary_id');
+    }
+
+    public function Expense()
+    {
+        return $this->belongsTo(Expense::class,'expense_id');
+    }
+
+    public function Company()
+    {
+        return $this->belongsTo(Company::class,'company_id');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function Payment()

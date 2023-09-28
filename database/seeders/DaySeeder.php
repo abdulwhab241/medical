@@ -15,7 +15,6 @@ class DaySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('days')->delete();
         $Days = [
             ['name' => 'السبت'],
             ['name' => 'الاحد'],

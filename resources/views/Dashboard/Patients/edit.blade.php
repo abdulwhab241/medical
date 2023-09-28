@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 @section('css')
     <!--Internal   Notify -->
-    <link href="{{URL::asset('dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('/My/dashboard/plugins/notify/css/notifIt.css')}}" rel="stylesheet"/>
 @endsection
 @section('title')
    تعديل بيانات مريض
@@ -34,15 +34,15 @@
                             <input type="hidden" name="id" value="{{$Patient->id}}">
                         </div>
 
-                        <div class="col">
+                        {{-- <div class="col">
                             <label>البريد الالكتروني</label>
                             <input type="email" name="email"  value="{{$Patient->email}}" class="form-control @error('email') is-invalid @enderror" required>
-                        </div>
+                        </div> --}}
 
 
                         <div class="col">
                             <label>تاريخ الميلاد</label>
-                            <input class="form-control fc-datepicker" value="{{$Patient->Date_Birth}}" name="Date_Birth" type="text" required>
+                            <input class="form-control fc-datepicker" value="{{$Patient->birth_date}}" name="Date_Birth" type="text" required>
                         </div>
 
                     </div>
@@ -51,28 +51,28 @@
                     <div class="row">
                         <div class="col-3">
                             <label>رقم الهاتف</label>
-                            <input type="number" name="Phone"  value="{{$Patient->Phone}}" class="form-control @error('Phone') is-invalid @enderror" required>
+                            <input type="number" name="Phone"  value="{{$Patient->phone}}" class="form-control @error('Phone') is-invalid @enderror" required>
                         </div>
 
                         <div class="col">
                             <label>الجنس</label>
                             <select class="form-control" name="Gender" required>
-                                <option value="1" {{$Patient->Gender == 1 ? 'selected':''}}>ذكر</option>
-                                <option value="2" {{$Patient->Gender == 2 ? 'selected':''}}>انثي</option>
+                                <option value="ذكر" {{$Patient->gender == ذكر ? 'selected':''}}>ذكر</option>
+                                <option value="انثي" {{$Patient->gender == انثي ? 'selected':''}}>انثي</option>
                             </select>
                         </div>
 
                         <div class="col">
                             <label>فصلية الدم</label>
                             <select class="form-control" name="Blood_Group" required>
-                                <option value="O-"{{$Patient->Blood_Group == "O-" ? 'selected':''}} >O-</option>
-                                <option value="O+" {{$Patient->Blood_Group == "O+" ? 'selected':''}}>O+</option>
-                                <option value="A+" {{$Patient->Blood_Group == "A+" ? 'selected':''}}>A+</option>
-                                <option value="A-" {{$Patient->Blood_Group == "A-" ? 'selected':''}}>A-</option>
-                                <option value="B+" {{$Patient->Blood_Group == "B+" ? 'selected':''}}>B+</option>
-                                <option value="B-" {{$Patient->Blood_Group == "B-" ? 'selected':''}}>B-</option>
-                                <option value="AB+"{{$Patient->Blood_Group == "AB+" ? 'selected':''}}>AB+</option>
-                                <option value="AB-"{{$Patient->Blood_Group == "AB-" ? 'selected':''}}>AB-</option>
+                                <option value="O-"{{$Patient->blood_group == "O-" ? 'selected':''}} >O-</option>
+                                <option value="O+" {{$Patient->blood_group == "O+" ? 'selected':''}}>O+</option>
+                                <option value="A+" {{$Patient->blood_group == "A+" ? 'selected':''}}>A+</option>
+                                <option value="A-" {{$Patient->blood_group == "A-" ? 'selected':''}}>A-</option>
+                                <option value="B+" {{$Patient->blood_group == "B+" ? 'selected':''}}>B+</option>
+                                <option value="B-" {{$Patient->blood_group == "B-" ? 'selected':''}}>B-</option>
+                                <option value="AB+"{{$Patient->blood_group == "AB+" ? 'selected':''}}>AB+</option>
+                                <option value="AB-"{{$Patient->blood_group == "AB-" ? 'selected':''}}>AB-</option>
                             </select>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col">
                             <label>العنوان</label>
-                            <textarea rows="5" cols="10" class="form-control" name="Address">{{$Patient->Address}}</textarea>
+                            <textarea rows="5" cols="10" class="form-control" name="Address">{{$Patient->address}}</textarea>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-success">حفظ البيانات</button>
+                            <button class="btn btn-success">تعديل البيانات</button>
                         </div>
                     </div>
 
@@ -102,12 +102,12 @@
 @section('js')
 
     <!--Internal  Datepicker js -->
-    <script src="{{ URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <script src="{{ URL::asset('/My/dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <script>
         var date = $('.fc-datepicker').datepicker({
             dateFormat: 'yy-mm-dd'
         }).val();
     </script>
-    <script src="{{URL::asset('dashboard/plugins/notify/js/notifIt.js')}}"></script>
-    <script src="{{URL::asset('/plugins/notify/js/notifit-custom.js')}}"></script>
+    <script src="{{URL::asset('/My/dashboard/plugins/notify/js/notifIt.js')}}"></script>
+    <script src="{{URL::asset('/My/plugins/notify/js/notifit-custom.js')}}"></script>
 @endsection

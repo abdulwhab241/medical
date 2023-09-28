@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('laboratory_employees', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->json('image')->nullable();
-            $table->string('password');
-            $table->string('phone');
-            $table->longText('address');
+            $table->foreignId('insurance_id')->references('id')->on('insurances')->onDelete('cascade');
+            $table->longText('disc');
+            $table->decimal('price',50,2);
             $table->date('date');
-            $table->boolean('status')->default(1);
-            $table->rememberToken();
+            $table->integer('year');
+            $table->string('create_by')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('laboratory_employees');
+        Schema::dropIfExists('companies');
     }
 };

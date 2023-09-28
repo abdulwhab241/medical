@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Image;
 use App\Models\Doctor;
 use App\Models\Patient;
@@ -23,7 +24,7 @@ class Ray extends Model
 
     public function employee()
     {
-        return $this->belongsTo(RayEmployee::class,'employee_id')
+        return $this->belongsTo(User::class,'user_ray_id')
             ->withDefault(['name'=>'noEmployee']);
     }
 
@@ -34,7 +35,7 @@ class Ray extends Model
 
     public function Doctor()
     {
-        return $this->belongsTo(Doctor::class,'doctor_id');
+        return $this->belongsTo(User::class,'user_doctor_id');
     }
 
     public function images()

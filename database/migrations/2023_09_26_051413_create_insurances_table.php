@@ -19,6 +19,7 @@ return new class extends Migration
             // $table->string('company_rate');
             $table->longText('notes')->nullable();
             $table->boolean('status');
+            $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->timestamps();

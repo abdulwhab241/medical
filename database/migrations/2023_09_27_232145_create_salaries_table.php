@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('receipt_accounts', function (Blueprint $table) {
+        Schema::create('salaries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_employee_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('the_job');
+            $table->string('section')->nullable();
+            $table->decimal('the_salary',50,2);
+            $table->decimal('suits',50,2)->default(0); //بدلات
+            $table->decimal('discounts',50,2)->default(0); // خصومات
+            $table->decimal('total',50,2);
             $table->date('date');
-            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
-            $table->decimal('amount',50,2)->nullable();
-            $table->string('description');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->timestamps();
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('receipt_accounts');
+        Schema::dropIfExists('salaries');
     }
 };

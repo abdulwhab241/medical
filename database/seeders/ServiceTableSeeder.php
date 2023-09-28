@@ -11,7 +11,7 @@ class ServiceTableSeeder extends Seeder
     public function run()
     {
         $SingleService = new Service();
-        $SingleService->name = 'معاينة';
+        $SingleService->name = 'استشارات طبية';
         $SingleService->price = 3000;
         $SingleService->status = 1;
         $SingleService->year = 2023;

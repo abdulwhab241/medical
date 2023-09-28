@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\LaboratoryEmployee;
@@ -16,12 +17,12 @@ class Laboratory extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class,'doctor_id');
+        return $this->belongsTo(User::class,'user_doctor_id');
     }
 
     public function employee()
     {
-        return $this->belongsTo(LaboratoryEmployee::class,'employee_id')
+        return $this->belongsTo(User::class,'user_laboratory_id')
             ->withDefault(['name'=>'noEmployee']);
     }
 
