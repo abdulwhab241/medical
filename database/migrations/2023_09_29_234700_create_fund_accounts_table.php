@@ -34,11 +34,12 @@ return new class extends Migration
                         ///  شركات التأمين (مدين)
             $table->foreignId('company_id')->nullable()->references('id')->on('companies')->onDelete('cascade'); /// مدين
             
-                        ///  سندات القبض (دائن)
+                        ///  فواتير التأمين (دائن)
             $table->foreignId('insurance_id')->nullable()->references('id')->on('insurance_invoices')->onDelete('cascade'); /// مدين
             
             $table->decimal('Debit',50,2)->default(0); /// مدين
             $table->decimal('credit',50,2)->default(0); /// دائن
+            $table->longText('disc')->nullable();
             
             $table->date('date');
             $table->integer('year');

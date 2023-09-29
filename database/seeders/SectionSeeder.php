@@ -14,13 +14,26 @@ class SectionSeeder extends Seeder
      */
     public function run(): void
     {
-        $Sections = [
-            ['name' => 'قسم القلب'],
-            ['name' => 'قسم الباطنية'],
+        // $Sections = [
+        //     ['name' => 'قسم القلب'],
+        //     ['name' => 'قسم الباطنية'],
+        //     ['description' => 'قسم القلب'],
+        //     ['description' => 'قسم الباطنية'],
 
-        ];
-        foreach ($Sections as $Section) {
-            Section::create($Section);
-        }
+
+        // ];
+        // foreach ($Sections as $Section) {
+        //     Section::create($Section);
+        // }
+
+        DB::table('sections')->insert([
+            'name' => 'قسم القلب',
+            'description' => 'قسم القلب',
+        ]);
+
+        DB::table('sections')->insert([
+            'name' => 'قسم الباطنية',
+            'description' => 'قسم الباطنية',
+        ]);
     }
 }
