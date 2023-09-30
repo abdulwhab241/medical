@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="main-header-right">
-            <ul class="nav">
+            {{-- <ul class="nav">
                 <li class="">
                     <div class="dropdown  nav-itemd-none d-md-flex">
                         <a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown"
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
             <div class="nav nav-item  navbar-nav-right ml-auto">
                 <div class="nav-link" id="bs-example-navbar-collapse-1">
                     <form class="navbar-form" role="search">
@@ -190,9 +190,9 @@
                                 <span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All
                                     Read</span>
                             </div>
-                            <p data-count="{{ App\Models\Notification::CountNotification(auth()->user()->id)->count() }}"
+                            {{-- <p data-count="{{ App\Models\Notification::CountNotification(auth()->user()->id)->count() }}"
                                 class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 notif-count">
-                                {{ App\Models\Notification::CountNotification(auth()->user()->id)->count() }}</p>
+                                {{ App\Models\Notification::CountNotification(auth()->user()->id)->count() }}</p> --}}
                         </div>
                         <div class="main-notification-list Notification-scroll">
 
@@ -211,7 +211,7 @@
                                 </a>
                             </div>
 
-                            @foreach (App\Models\Notification::where('user_id', auth()->user()->id)->where('reader_status', 0)->get() as $notification)
+                            {{-- @foreach (App\Models\Notification::where('user_id', auth()->user()->id)->where('reader_status', 0)->get() as $notification)
                                 <a class="d-flex p-3 border-bottom" href="#">
                                     <div class="notifyimg bg-pink">
                                         <i class="la la-file-alt text-white"></i>
@@ -224,7 +224,7 @@
                                         <i class="las la-angle-left text-left text-muted"></i>
                                     </div>
                                 </a>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="dropdown-footer">
                             <a href="">VIEW ALL</a>
@@ -251,26 +251,29 @@
                                 <div class="main-img-user"><img alt=""
                                         src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class=""></div>
                                 <div class="mr-3 my-auto">
-                                    <h6>{{ auth()->user()->name }}</h6><span>{{ auth()->user()->email }}</span>
+                                    <h6>{{ auth()->user()->name }}</h6><span>{{ auth()->user()->phone }}</span>
                                 </div>
                             </div>
                         </div>
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>الملف الشخصي</a>
                         <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a>
-                        @if (auth('web')->check())
-                            <form method="POST" action="{{ route('logout.user') }}">
-                            @elseif(auth('admin')->check())
+                        {{-- @if (auth('web')->check()) --}}
+                            <form method="POST" action="{{ route('logout.Admin','web') }}">
+                    @csrf
+
+                            {{-- @elseif(auth('admin')->check())
                                 <form method="POST" action="{{ route('logout.admin') }}">
                                 @elseif(auth('doctor')->check())
                                     <form method="POST" action="{{ route('logout.doctor') }}">
                                     @elseif(auth('ray_employee')->check())
                                         <form method="POST" action="{{ route('logout.ray_employee') }}">
                                         @elseif(auth('laboratorie_employee')->check())
-                                            <form method="POST" action="{{ route('logout.laboratorie_employee') }}">
-                                            @else
+                                            <form method="POST" action="{{ route('logout.laboratorie_employee') }}"> --}}
+                                            {{-- @else
                                                 <form method="POST" action="{{ route('logout.patient') }}">
-                        @endif
                         @csrf
+                        
+                                                    @endif --}}
                         <a class="dropdown-item" href="#"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();"><i

@@ -38,6 +38,7 @@ class UserTableSeeder extends Seeder
             'name' => 'احمد الحداد',
             'disc' => 'دكتور',
             'section_id' => '1',
+            'status' => '1',
             'date' => '2023-09-27',
             'phone' => '123',
             'address' => 'احمد الحداد',

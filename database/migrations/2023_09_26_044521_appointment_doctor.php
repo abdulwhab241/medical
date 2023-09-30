@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('appointment_doctor', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('day_id')->references('id')->on('days')->onDelete('cascade');
+            $table->foreignId('day_id')->nullable()->references('id')->on('days')->onDelete('cascade');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->timestamps();

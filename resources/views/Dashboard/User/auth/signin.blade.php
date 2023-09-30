@@ -61,8 +61,27 @@
                                                 </select>
                                             </div>
 
+                                            <!-- form admin -->
+                                            <div class="panel" id="admin">
+                                                <h2>دخول ادمن</h2>
+                                                <form method="POST" action="{{ route('login.Admin') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>الاسم</label> <input class="form-control"
+                                                            placeholder="ادخل الاسم" type="text" name="name"
+                                                            :value="old('name')" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>كلمة المرور</label> <input class="form-control"
+                                                            placeholder="ادخل كلمة المرور" type="password"name="password"
+                                                            required autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">دخول</button>
 
-                                            {{-- form patient --}}
+                                                </form>
+
+                                            </div>
+                                            {{-- <!-- form patient -->
                                             <div class="panel" id="patient">
                                                 <h2>دخول مريض</h2>
                                                 <form method="POST" action="{{ route('login.patient') }}">
@@ -78,22 +97,12 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
+
                                             </div>
 
-                                            {{-- form admin --}}
+                                            <!-- form admin -->
                                             <div class="panel" id="admin">
                                                 <h2>دخول ادمن</h2>
                                                 <form method="POST" action="{{ route('login.admin') }}">
@@ -109,22 +118,12 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
+
                                             </div>
 
-                                            {{-- form Doctor --}}
+                                            <!-- form Doctor -->
                                             <div class="panel" id="doctor">
                                                 <h2>دخول دكتور</h2>
                                                 <form method="POST" action="{{ route('login.doctor') }}">
@@ -140,22 +139,12 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
+
                                             </div>
 
-                                            {{-- form RayEmployee --}}
+                                            <!-- form RayEmployee -->
                                             <div class="panel" id="ray_employee">
                                                 <h2>دخول موظف اشعة</h2>
                                                 <form method="POST" action="{{ route('login.ray_employee') }}">
@@ -171,22 +160,12 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
+
                                             </div>
 
-                                            {{-- form laboratorie_employee --}}
+                                            <!-- form laboratorie_employee -->
                                             <div class="panel" id="laboratorie_employee">
                                                 <h2>دخول موظف مختبر</h2>
                                                 <form method="POST" action="{{ route('login.laboratorie_employee') }}">
@@ -202,22 +181,12 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
+
                                             </div>
 
-                                            {{-- form user --}}
+                                            <!-- form user -->
                                             <div class="panel" id="user">
                                                 <h2>دخول محاسب</h2>
                                                 <form method="POST" action="{{ route('login.user') }}">
@@ -233,20 +202,10 @@
                                                             required autocomplete="current-password">
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
-                                                    {{-- <div class="row row-xs">
-                                                        <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
-                                                        </div>
-                                                        <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
-                                                        </div>
-                                                    </div> --}}
+
                                                 </form>
-                                                {{-- <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
-                                                </div> --}}
-                                            </div>
+
+                                            </div> --}}
 
                                         </div>
                                     </div>

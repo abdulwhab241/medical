@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use App\Models\Section;
+use App\Models\Appointment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -44,6 +45,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Section::class,'section_id')
             ->withDefault(['name'=>'noEmployee']);
+    }
+
+    public function doctor_appointments()
+    {
+        return $this->belongsToMany(Appointment::class,'user_doctor_id');
     }
 
     // public function section()

@@ -44,13 +44,13 @@ return [
             'throw' => false,
         ],
 
-        'Users' => [
-            'driver' => 'local',
-            'root' => storage_path('public/Users/'),
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
+        // 'Users' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('public/Users/'),
+        //     'url' => env('APP_URL').'/public',
+        //     'visibility' => 'public',
+        //     'throw' => false,
+        // ],
 
         'upload_image' => [
             'driver' => 'local',

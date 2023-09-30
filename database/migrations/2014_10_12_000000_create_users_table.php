@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('image')->nullable();
+            // $table->json('image')->nullable();
             $table->string('password');
             $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');
             $table->string('phone');
             $table->longText('address');
             $table->string('disc');
             $table->date('date');
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
