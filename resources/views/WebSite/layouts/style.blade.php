@@ -1,4 +1,4 @@
-<title>برنامج المستشفيات</title>
+<title>مركز رواد القلب</title>
 <!-- Stylesheets -->
 <link href="{{asset('/My/WebSite/css/bootstrap.css')}}" rel="stylesheet">
 <link href="{{asset('/My/WebSite/css/style.css')}}" rel="stylesheet">

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');
             $table->string('phone');
             $table->longText('address');
-            $table->string('disc');
+            $table->string('job')->nullable();
             $table->date('date');
             $table->boolean('status')->default(1);
             $table->rememberToken();

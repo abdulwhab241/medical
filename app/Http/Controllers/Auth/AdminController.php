@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+
 use App\Http\Requests\Auth\AdminLoginRequest;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+    
     public function store(AdminLoginRequest $request)
     {
         if($request->authenticate()){
@@ -22,7 +29,7 @@ class AdminController extends Controller
     }
 
 
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 

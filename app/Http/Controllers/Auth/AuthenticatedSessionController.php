@@ -15,11 +15,14 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    // public function create(): View
+    // {
+    //     return view('welcome');
+    // }
+    public function show()
     {
         return view('welcome');
     }
-
     /**
      * Handle an incoming authentication request.
      */

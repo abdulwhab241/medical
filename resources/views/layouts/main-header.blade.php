@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="main-header-left ">
             <div class="responsive-logo">
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('/My/Dashboard/img/brand/logo.png') }}"
-                        class="logo-1" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('/My/Dashboard/img/brand/logo.png') }}" class="logo-1" alt="logo"></a>
                 <a href="{{ url('/' . ($page = 'index')) }}"><img
                         src="{{ URL::asset('/My/Dashboard/img/brand/logo-white.png') }}" class="dark-logo-1"
                         alt="logo"></a>
@@ -258,10 +258,16 @@
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>الملف الشخصي</a>
                         <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a>
                         {{-- @if (auth('web')->check()) --}}
-                            <form method="POST" action="{{ route('logout.Admin','web') }}">
-                    @csrf
+                        <form method="POST" action="{{ route('logout', 'web') }}">
+                            @csrf
+                            <a class="dropdown-item" href="#"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل الخروج</a>
+                        </form>
 
-                            {{-- @elseif(auth('admin')->check())
+
+                        {{-- @elseif(auth('admin')->check())
                                 <form method="POST" action="{{ route('logout.admin') }}">
                                 @elseif(auth('doctor')->check())
                                     <form method="POST" action="{{ route('logout.doctor') }}">
@@ -269,20 +275,19 @@
                                         <form method="POST" action="{{ route('logout.ray_employee') }}">
                                         @elseif(auth('laboratorie_employee')->check())
                                             <form method="POST" action="{{ route('logout.laboratorie_employee') }}"> --}}
-                                            {{-- @else
+                        {{-- @else
                                                 <form method="POST" action="{{ route('logout.patient') }}">
                         @csrf
                         
                                                     @endif --}}
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();"><i
-                                class="bx bx-log-out"></i>تسجيل الخروج</a>
-                        </form>
+
+                        {{-- <button class="dropdown-item">
+                                <i class="bx bx-log-out"></i>تسجيل الخروج
+                            </button> --}}
 
                     </div>
                 </div>
-                <div class="dropdown main-header-message right-toggle">
+                {{-- <div class="dropdown main-header-message right-toggle">
                     <a class="nav-link pr-0" data-toggle="sidebar-left" data-target=".sidebar-left">
                         <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -292,7 +297,7 @@
                             <line x1="3" y1="18" x2="21" y2="18"></line>
                         </svg>
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

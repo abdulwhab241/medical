@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'محاسب',
-            'disc' => 'محاسب',
+            'job' => 'محاسب',
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'محاسب',
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'admin',
-            'disc' => 'admin',
+            'job' => 'admin',
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'admin',
@@ -36,7 +36,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'احمد الحداد',
-            'disc' => 'دكتور',
+            'job' => 'دكتور',
             'section_id' => '1',
             'status' => '1',
             'date' => '2023-09-27',
@@ -47,7 +47,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'مخبري',
-            'disc' => 'المختبر',
+            'job' => 'المختبر',
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'مخبري',
@@ -56,7 +56,7 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'اشعة',
-            'disc' => 'الأشعة',
+            'job' => 'الأشعة',
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'اشعة',

@@ -14,18 +14,34 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            if (Request::is(app()->getLocale() . '/dashboard/patient')) {
-                return route('login');
+            if (Request::is(app()->getLocale() . '/patient/dashboard')) {
+                return route('selection');
+            }
+
+            elseif(Request::is(app()->getLocale() . '/admin/dashboard')) {
+                return route('selection');
+            }
+
+            elseif(Request::is(app()->getLocale() . '/ray/dashboard')) {
+                return route('selection');
+            }
+
+            elseif(Request::is(app()->getLocale() . '/laboratory/dashboard')) {
+                return route('selection');
+            }
+
+            elseif(Request::is(app()->getLocale() . '/doctor/dashboard')) {
+                return route('selection');
             }
 
             else {
-                return route('login');
+                return route('selection');
             }
         }
 
     }
     // protected function redirectTo(Request $request): ?string
     // {
-    //     return $request->expectsJson() ? null : route('login');
+    //     return $request->expectsJson() ? null : route('selection');
     // }
 }

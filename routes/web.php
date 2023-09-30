@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,19 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+    Route::get('/login', [HomeController::class, 'index'])->name('selection');
+
 //################################ dashboard User ##########################################
-    Route::get('/dashboard/user', function () {
-        return view('Dashboard.User.dashboard');
-    })->middleware(['auth'])->name('dashboard.user');
+    Route::get('/admin/dashboard', function () {
+        return view('Dashboard.Admin.dashboard');
+    })->middleware(['auth'])->name('dashboard.admin');
 //################################ end dashboard User #####################################
 
 
-//################################ dashboard admin ########################################
-    Route::get('/dashboard/admin', function () {
-        return view('Dashboard.Admin.dashboard');
-    })->middleware(['auth:admin'])->name('dashboard.admin');
+// //################################ dashboard admin ########################################
+//     Route::get('/dashboard/admin', function () {
+//         return view('Dashboard.Admin.dashboard');
+//     })->middleware(['auth:admin'])->name('dashboard.admin');
 
-//################################ end dashboard admin #####################################
+// //################################ end dashboard admin #####################################
 
 
 // Route::get('/dashboard', function () {

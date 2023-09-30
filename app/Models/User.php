@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'phone',
-        'disc',
+        'job',
         'address',
         'password',
     ];
@@ -37,9 +37,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'image' => 'array',
-    ];
+    // protected $casts = [
+    //     'image' => 'array',
+    // ];
 
     public function section()
     {

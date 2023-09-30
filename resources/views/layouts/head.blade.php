@@ -1,4 +1,5 @@
 <!-- Title -->
+    {{-- <title>مركز رواد القلب</title> --}}
 <title>@yield('title')</title>
 
 @yield('css')
@@ -12,7 +13,7 @@
 
 
 
-@if(App::getLocale() =='ar')
+{{-- @if(App::getLocale() =='ar') --}}
     <!-- Favicon -->
     <link rel="icon" href="{{URL::asset('/My/Dashboard/img/brand/favicon.png')}}" type="image/x-icon"/>
     <!-- Icons css -->
@@ -30,7 +31,7 @@
     <!---Skinmodes css-->
     <link href="{{URL::asset('/My/Dashboard/css-rtl/skin-modes.css')}}" rel="stylesheet">
 
-@else
+{{-- @else
 
     <!-- Favicon -->
     <link rel="icon" href="{{URL::asset('/My/Dashboard/img/brand/favicon.png')}}" type="image/x-icon"/>
@@ -50,4 +51,4 @@
     <!---Skinmodes css-->
     <link href="{{URL::asset('/My/Dashboard/css/skin-modes.css')}}" rel="stylesheet" />
 
-@endif
+@endif --}}
