@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use App\Models\Section;
+use App\Models\Image;
 use App\Models\Appointment;
 use App\Models\AppointmentDoctor;
 use Laravel\Sanctum\HasApiTokens;
@@ -49,10 +50,20 @@ class User extends Authenticatable
             ->withDefault(['name'=>'noEmployee']);
     }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
     public function doctor_appointments()
     {
-        return $this->belongsToMany(AppointmentDoctor::class,'user_doctor_id');
+        return $this->belongsToMany(AppointmentDoctor::class,'user_id');
     }
+
+    // public function doctor_appointments()
+    // {
+    //     return $this->hasMany(AppointmentDoctor::class, 'user_id');
+    // }
 
     // public function section()
     // {

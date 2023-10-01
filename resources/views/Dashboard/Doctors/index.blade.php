@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master')
+@extends('layouts.master')
 @section('title')
     الاطباء
 @stop
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="table key-buttons text-md-nowrap">
+                        <table id="example" class="table key-buttons text-md-nowrap" style="text-align:center;">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -74,12 +74,13 @@
                                         <td>{{ $doctor->section->name }}</td>
                                         <td>{{ $doctor->phone }}</td>
                                         <td>
-                                            @foreach ($doctor->doctor_appointments as $appointment)
-                                                {{ $appointment->name }}
-                                            @endforeach
+                                            {{-- @foreach ($doctor->doctor_appointments as $appointment) --}}
+                                                {{ $doctor->doctor_appointments->day }}
+                                            {{-- @endforeach --}}
                                         </td>
                                         <td>
-                                            <div class="dot-label bg-{{ $doctor->status == 1 ? 'success' : 'danger' }} ml-1">
+                                            <div
+                                                class="dot-label bg-{{ $doctor->status == 1 ? 'success' : 'danger' }} ml-1">
                                             </div>
                                             {{ $doctor->status == 1 ? 'متوفر' : 'غير متوفر' }}
                                         </td>
@@ -90,7 +91,7 @@
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown"
-                                                    type="button">{{ trans('doctors.Processes') }}<i
+                                                    type="button">العمليات<i
                                                         class="fas fa-caret-down mr-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a class="dropdown-item"
@@ -133,8 +134,8 @@
 @endsection
 @section('js')
     <!--Internal  Notify js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/notify/js/notifIt.js') }}"></script>
-    <script src="{{ URL::asset('/My/plugins/notify/js/notifit-custom.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 
     <script>
         $(function() {

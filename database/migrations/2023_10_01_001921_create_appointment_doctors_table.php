@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointment_doctors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('day_id')->nullable()->references('id')->on('days')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreignId('day_id')->nullable()->references('id')->on('days')->onDelete('cascade');
             $table->foreignId('section_id')->nullable()->references('id')->on('sections')->onDelete('cascade');
             $table->integer('year');
+            $table->longText('day');
             $table->string('create_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

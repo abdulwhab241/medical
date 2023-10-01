@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 
@@ -43,6 +44,14 @@ Route::get('/', function () {
             Route::resource('Sections', SectionController::class);
 
         //############################# end sections route ######################################
+
+        //############################# Doctors route ##########################################
+
+            Route::resource('Doctors', DoctorController::class);
+            Route::post('update_password', [DoctorController::class, 'update_password'])->name('update_password');
+            Route::post('update_status', [DoctorController::class, 'update_status'])->name('update_status');
+
+        //############################# end Doctors route ######################################
 
 
     });

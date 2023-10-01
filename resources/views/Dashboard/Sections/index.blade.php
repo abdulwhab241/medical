@@ -35,12 +35,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example2" style="text-ali">
+                        <table class="table text-md-nowrap" id="example1" style="text-align:center;">
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">#</th>
                                     <th class="wd-15p border-bottom-0">أسم القسم</th>
                                     <th class="wd-15p border-bottom-0">الوصف</th>
+                                    <th class="wd-15p border-bottom-0">أطباء القسم</th>
                                     <th class="wd-20p border-bottom-0">العمليات</th>
                                 </tr>
                             </thead>
@@ -48,9 +49,11 @@
                                 @foreach ($sections as $section)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><a href="{{ route('Sections.show', $section->id) }}">{{ $section->name }}</a>
-                                        </td>
+                                        <td>{{ $section->name }}</td>
                                         <td>{{ \Str::limit($section->description, 50) }}</td>
+                                        <td>
+                                            <a href="{{ route('Sections.show', $section->id) }}">عرض </a>
+                                        </td>
                                         <td>
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                 data-toggle="modal" href="#edit{{ $section->id }}"><i

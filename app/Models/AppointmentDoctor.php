@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Day;
+// use App\Models\Day;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,11 +16,11 @@ class AppointmentDoctor extends Model
     
     public function Doctor()
     {
-        return $this->belongsTo(User::class,'user_doctor_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 
-    public function Day()
-    {
-        return $this->belongsTo(Day::class,'day_id');
-    }
+    // public function Day()
+    // {
+    //     return $this->belongsTo(Day::class,'day_id');
+    // }
 }

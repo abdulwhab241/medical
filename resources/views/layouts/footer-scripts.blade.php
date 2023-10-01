@@ -33,6 +33,12 @@
 <script src="{{URL::asset('/My/Dashboard/plugins/side-menu/sidemenu.js')}}"></script>
 
 
+<script>
+    $(document).ready(function() {
+        $('#example1').DataTable();
+    } );
+</script>
+
 <!-- Internal Data tables -->
 <script src="{{URL::asset('/My/Dashboard/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('/My/Dashboard/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>

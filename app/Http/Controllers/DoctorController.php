@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Day;
 use App\Models\User;
 use App\Models\Section;
 use App\Models\Appointment;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Models\AppointmentDoctor;
 use Illuminate\Support\Facades\Hash;
@@ -12,58 +14,73 @@ use App\Http\Requests\StoreDoctorsRequest;
 
 class DoctorController extends Controller
 {
+    use UploadTrait;
+    
     public function index()
     {
-        $doctors = User::with('doctor_appointments')->get();
-        $AppointmentDoctors = AppointmentDoctor::distinct()->get(['day_id']);
+        $name = 'دكتور' ;
+        $doctors = User::where('job',$name)->get();
+        $AppointmentDoctors = AppointmentDoctor::all();
         return view('Dashboard.Doctors.index',compact('doctors','AppointmentDoctors'));
     }
 
     public function create()
     {
         $sections = Section::all();
-        $appointments = Appointment::all();
-        return view('Dashboard.Doctors.add',compact('sections','appointments'));
+        $Days = Day::all();
+        return view('Dashboard.Doctors.add',compact('sections','Days'));
     }
 
-    public function store(StoreDoctorsRequest $request){
-
-        // DB::beginTransaction();
+    public function store(Request $request){
+        // return $request;
 
         try {
 
             $doctors = new User();
             $doctors->name = strip_tags($request->name);
-            $doctors->password = Hash::make(strip_tags($request->password));
+            $doctors->password = Hash::make(strip_tags($request->phone));
             $doctors->section_id = strip_tags($request->section_id);
             $doctors->phone = strip_tags($request->phone);
-            $doctors->disc = 'دكتور';
+            $doctors->job = 'دكتور';
             $doctors->address = strip_tags($request->address);
             $doctors->status = 1;
+            $doctors->date = date('Y-m-d');
+            $doctors->create_by = auth()->user()->name;
             $doctors->save();
-
+            // $doctors->doctor_appointments()->attach($request->day_id);
 
             $AppointmentDoctor = new AppointmentDoctor();
-            $AppointmentDoctor->user_doctor_id = $doctors->id;
-            $AppointmentDoctor->day_id = strip_tags($request->day_id);
-            $AppointmentDoctor->year = date('Y');
+            $AppointmentDoctor->user_id = $doctors->id;
+            $AppointmentDoctor->day = implode(' و ', $request->day_id);
+            $AppointmentDoctor->section_id = strip_tags($request->section_id);
+            $AppointmentDoctor->year =date('Y');
             $AppointmentDoctor->create_by = auth()->user()->name;
             $AppointmentDoctor->save();
-            // insert pivot tABLE
-            // $doctors->doctorappointments()->attach($request->appointments);
+
+            // foreach ($request->day_id as $Doc){
+            //     $ids = explode(',',$Doc);
+    
+            //     AppointmentDoctor::updateOrCreate([
+            //         'day' => $$Doc,
+            //         'user_id' => $doctors->id,
+            //         'section_id' => ,
+            //         'year' =>  ,
+            //         'create_by' => ,
+            //     ]);
+            // }
+            // return $ids;
+           
+
 
 
             //Upload img
-            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
+            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\User');
 
-            // DB::commit();
             toastr()->success('تم إضافة الطبيب بنجاح');
-            session()->flash('add');
             return redirect()->route('Doctors.create');
 
         }
         catch (\Exception $e) {
-            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
@@ -71,7 +88,6 @@ class DoctorController extends Controller
 
     public function update($request)
     {
-        // DB::beginTransaction();
 
         try {
 
@@ -84,17 +100,38 @@ class DoctorController extends Controller
             $doctor->disc = 'دكتور';
             $doctor->address = strip_tags($request->address);
             $doctor->status = 1;
+            $doctor->date = date('Y-m-d');
+            $doctor->create_by = auth()->user()->name;
             $doctor->save();
 
             $AppointmentDoctor = new AppointmentDoctor();
-            $AppointmentDoctor->user_doctor_id = strip_tags($request->id);
-            $AppointmentDoctor->day_id = strip_tags($request->day_id);
+            $AppointmentDoctor->user_id = strip_tags($request->id);
+            $AppointmentDoctor->section_id = strip_tags($request->section_id);
+            $AppointmentDoctor->day = strip_tags($request->day_id);
             $AppointmentDoctor->year = date('Y');
             $AppointmentDoctor->create_by = auth()->user()->name;
             $AppointmentDoctor->save();
+            
 
             // update pivot tABLE
             // $doctor->doctorappointments()->sync($request->appointments);
+
+            // insert img
+            // if($request->hasfile('photos'))
+            // {
+            //     foreach($request->file('photos') as $file)
+            //     {
+            //         $name = $file->getClientOriginalName();
+            //         $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(),'upload_attachments');
+
+            //         // insert in image_table
+            //         $images= new Image();
+            //         $images->filename=$name;
+            //         $images->imageable_id= $students->id;
+            //         $images->imageable_type = 'App\Models\Student';
+            //         $images->save();
+            //     }
+            // }
 
             // update photo
             if ($request->has('photo')){
@@ -109,7 +146,7 @@ class DoctorController extends Controller
 
             // DB::commit();
         toastr()->success('تم تعديل الطبيب بنجاح');
-            session()->flash('edit');
+            // session()->flash('edit');
             return redirect()->back();
 
         }
@@ -129,7 +166,7 @@ class DoctorController extends Controller
         }
             User::destroy(strip_tags($request->id));
             toastr()->error('تم حذف الطبيب بنجاح');
-            session()->flash('delete');
+            // session()->flash('delete');
             return redirect()->route('Doctors.index');
         }
 
@@ -148,7 +185,7 @@ class DoctorController extends Controller
             }
 
             User::destroy($delete_select_id);
-            session()->flash('delete');
+            // session()->flash('delete');
             return redirect()->route('Doctors.index');
         }
 
@@ -171,7 +208,7 @@ class DoctorController extends Controller
                 'password'=>Hash::make(strip_tags($request->password))
             ]);
 
-            session()->flash('edit');
+            // session()->flash('edit');
             return redirect()->back();
         }
 
@@ -188,7 +225,7 @@ class DoctorController extends Controller
                 'status'=> strip_tags($request->status)
             ]);
 
-            session()->flash('edit');
+            // session()->flash('edit');
             return redirect()->back();
         }
 

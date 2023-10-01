@@ -40,7 +40,7 @@
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('Doctors.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="pd-30 pd-sm-40 bg-gray-200">
 
                             <div class="row row-xs align-items-center mg-b-20">
@@ -79,7 +79,18 @@
                                         رقم الهاتف</label>
                                 </div>
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <input class="form-control" name="phone" type="tel">
+                                    <input class="form-control" name="phone" type="number">
+                                </div>
+                            </div>
+
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-1">
+                                    <label for="exampleInputEmail1">
+                                        العنوان</label>
+                                </div>
+                                <div class="col-md-11 mg-t-5 mg-md-t-0">
+                                <textarea class="form-control" name="address" rows="2"></textarea>
+
                                 </div>
                             </div>
 
@@ -92,7 +103,7 @@
 
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
                                     <select name="section_id" class="form-control SlectBox">
-                                        <option value="" selected disabled>------</option>
+                                        <option value="" selected disabled>---إختر من القائمة---</option>
                                         @foreach($sections as $section)
                                             <option value="{{$section->id}}">{{$section->name}}</option>
                                         @endforeach
@@ -108,10 +119,12 @@
                                 </div>
 
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <select multiple="multiple" class="testselect2" name="appointments[]">
-                                        <option selected name="appointments[]" value="" selected disabled>-- حدد المواعيد --</option>
-                                        @foreach($appointments as $appointment)
-                                            <option value="{{$appointment->id}}">{{$appointment->name}}</option>
+                                    {{-- <textarea class="form-control" name="day_id" rows="2"></textarea> --}}
+
+                                    <select multiple="multiple" class="testselect2" name="day_id[]">
+                                        <option  value="1" selected disabled>-- حدد المواعيد --</option>
+                                        @foreach($Days as $Day)
+                                            <option value="{{$Day->name}}">{{$Day->name}}</option>
                                         @endforeach
                                     </select>
 
