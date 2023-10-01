@@ -1,6 +1,6 @@
 <!-- Title -->
-    {{-- <title>مركز رواد القلب</title> --}}
-<title>@yield('title')</title>
+    <title>مركز رواد القلب</title>
+{{-- <title>@yield('title')</title> --}}
 
 @yield('css')
 @livewireStyles

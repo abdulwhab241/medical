@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_employee_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('the_job');
             $table->string('section')->nullable();
+            $table->longText('disc');
             $table->decimal('the_salary',50,2);
             $table->decimal('suits',50,2)->default(0); //بدلات
             $table->decimal('discounts',50,2)->default(0); // خصومات
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

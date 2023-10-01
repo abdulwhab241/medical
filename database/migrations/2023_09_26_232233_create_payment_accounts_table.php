@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

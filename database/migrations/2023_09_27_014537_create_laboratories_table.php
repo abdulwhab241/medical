@@ -22,6 +22,7 @@ return new class extends Migration
             $table->tinyInteger('case')->default(0);
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

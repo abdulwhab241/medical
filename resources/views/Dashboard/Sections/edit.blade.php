@@ -17,6 +17,9 @@
                     <label for="exampleInputPassword1">اسم القسم</label>
                     <input type="hidden" name="id" value="{{ $section->id }}">
                     <input type="text" name="name" value="{{ $section->name }}" class="form-control">
+
+                    <label for="description">وصف القسم</label>
+                    <textarea class="form-control" name="Disc" rows="2">{{ $section->description }}</textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>

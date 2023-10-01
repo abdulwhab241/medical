@@ -22,7 +22,6 @@ class DoctorController extends Controller
     public function create()
     {
         $sections = Section::all();
-        $sections = Section::all();
         $appointments = Appointment::all();
         return view('Dashboard.Doctors.add',compact('sections','appointments'));
     }
@@ -58,6 +57,7 @@ class DoctorController extends Controller
             $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
 
             // DB::commit();
+            toastr()->success('تم إضافة الطبيب بنجاح');
             session()->flash('add');
             return redirect()->route('Doctors.create');
 
@@ -108,6 +108,7 @@ class DoctorController extends Controller
             }
 
             // DB::commit();
+        toastr()->success('تم تعديل الطبيب بنجاح');
             session()->flash('edit');
             return redirect()->back();
 
@@ -120,35 +121,36 @@ class DoctorController extends Controller
 
     public function destroy($request)
     {
-      if($request->page_id==1){
+        if($request->page_id==1){
 
-       if($request->filename){
+        if($request->filename){
 
-         $this->Delete_attachment('upload_image','doctors/'.$request->filename,$request->id,$request->filename);
-       }
-          User::destroy(strip_tags($request->id));
-          session()->flash('delete');
-          return redirect()->route('Doctors.index');
-      }
+            $this->Delete_attachment('upload_image','doctors/'.$request->filename,$request->id,$request->filename);
+        }
+            User::destroy(strip_tags($request->id));
+            toastr()->error('تم حذف الطبيب بنجاح');
+            session()->flash('delete');
+            return redirect()->route('Doctors.index');
+        }
 
 
       //---------------------------------------------------------------
 
-      else{
+        else{
 
-          // delete selector doctor
-          $delete_select_id = explode(",", $request->delete_select_id);
-          foreach ($delete_select_id as $ids_doctors){
-              $doctor = User::findOrFail($ids_doctors);
-              if($doctor->image){
-                  $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
-              }
-          }
+            // delete selector doctor
+            $delete_select_id = explode(",", $request->delete_select_id);
+            foreach ($delete_select_id as $ids_doctors){
+                $doctor = User::findOrFail($ids_doctors);
+                if($doctor->image){
+                    $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
+                }
+            }
 
-          User::destroy($delete_select_id);
-          session()->flash('delete');
-          return redirect()->route('Doctors.index');
-      }
+            User::destroy($delete_select_id);
+            session()->flash('delete');
+            return redirect()->route('Doctors.index');
+        }
 
     }
 

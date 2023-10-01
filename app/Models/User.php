@@ -5,14 +5,16 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use App\Models\Section;
 use App\Models\Appointment;
+use App\Models\AppointmentDoctor;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -49,7 +51,7 @@ class User extends Authenticatable
 
     public function doctor_appointments()
     {
-        return $this->belongsToMany(Appointment::class,'user_doctor_id');
+        return $this->belongsToMany(AppointmentDoctor::class,'user_doctor_id');
     }
 
     // public function section()

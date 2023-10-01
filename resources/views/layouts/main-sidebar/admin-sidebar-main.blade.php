@@ -26,7 +26,7 @@
         {{-- <li class="side-item side-item-category">General</li> --}}
 
         <li class="slide">
-            <a class="side-menu__item" href="#"><svg
+            <a class="side-menu__item" href="{{ route('Sections.index') }}"><svg
                 xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path d="M19 5H5v14h14V5zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" opacity=".3" />

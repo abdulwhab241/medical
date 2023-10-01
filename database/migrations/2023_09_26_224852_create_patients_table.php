@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('blood_group');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

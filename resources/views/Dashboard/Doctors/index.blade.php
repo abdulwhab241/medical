@@ -74,7 +74,7 @@
                                         <td>{{ $doctor->section->name }}</td>
                                         <td>{{ $doctor->phone }}</td>
                                         <td>
-                                            @foreach ($doctor->doctorappointments as $appointment)
+                                            @foreach ($doctor->doctor_appointments as $appointment)
                                                 {{ $appointment->name }}
                                             @endforeach
                                         </td>

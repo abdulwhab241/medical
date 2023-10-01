@@ -3,17 +3,15 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Image;
-use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Insurance;
-use App\Models\RayEmployee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ray extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded=[];
 
@@ -38,8 +36,8 @@ class Ray extends Model
         return $this->belongsTo(User::class,'user_doctor_id');
     }
 
-    public function images()
-    {
-        return $this->morphMany(Image::class, 'imageable');
-    }
+    // public function images()
+    // {
+    //     return $this->morphMany(Image::class, 'imageable');
+    // }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

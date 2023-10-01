@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('job')->nullable();
             $table->date('date');
             $table->boolean('status')->default(1);
+            $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

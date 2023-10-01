@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Doctor;
 use App\Models\Invoice;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Diagnostic extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded=[];
     

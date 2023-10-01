@@ -28,12 +28,12 @@ class SectionSeeder extends Seeder
 
         DB::table('sections')->insert([
             'name' => 'قسم القلب',
-            'description' => 'قسم القلب',
+            // 'description' => 'قسم القلب',
         ]);
 
         DB::table('sections')->insert([
             'name' => 'قسم الباطنية',
-            'description' => 'قسم الباطنية',
+            // 'description' => 'قسم الباطنية',
         ]);
     }
 }

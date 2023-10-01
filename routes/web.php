@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,17 @@ Route::get('/', function () {
 //     })->middleware(['auth:admin'])->name('dashboard.admin');
 
 // //################################ end dashboard admin #####################################
+
+    Route::middleware(['auth'])->group(function () {
+
+        //############################# sections route ##########################################
+
+            Route::resource('Sections', SectionController::class);
+
+        //############################# end sections route ######################################
+
+
+    });
 
 
 // Route::get('/dashboard', function () {

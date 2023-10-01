@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('status');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

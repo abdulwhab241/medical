@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master')
+@extends('layouts.master')
 @section('title')
     الاقسام
 @stop
@@ -6,7 +6,7 @@
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!--Internal   Notify -->
-    <link href="{{ URL::asset('/My/dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -35,13 +35,12 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example2">
+                        <table class="table text-md-nowrap" id="example2" style="text-ali">
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">#</th>
                                     <th class="wd-15p border-bottom-0">أسم القسم</th>
                                     <th class="wd-15p border-bottom-0">الوصف</th>
-                                    {{-- <th class="wd-20p border-bottom-0">{{trans('sections_trans.created_at')}}</th> --}}
                                     <th class="wd-20p border-bottom-0">العمليات</th>
                                 </tr>
                             </thead>
@@ -52,7 +51,6 @@
                                         <td><a href="{{ route('Sections.show', $section->id) }}">{{ $section->name }}</a>
                                         </td>
                                         <td>{{ \Str::limit($section->description, 50) }}</td>
-                                        {{-- <td>{{ $section->created_at->diffForHumans() }}</td> --}}
                                         <td>
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                 data-toggle="modal" href="#edit{{ $section->id }}"><i
@@ -88,7 +86,7 @@
 
 
     <!--Internal  Notify js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/notify/js/notifIt.js') }}"></script>
-    <script src="{{ URL::asset('/My/plugins/notify/js/notifit-custom.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 
 @endsection
