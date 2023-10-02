@@ -1,6 +1,6 @@
-@extends('Dashboard.layouts.master')
+@extends('layouts.master')
 @section('css')
-    <link href="{{ URL::asset('/My/dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -28,17 +28,18 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example1">
+                        <table class="table text-md-nowrap" id="example1" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>اسم المريض</th>
-                                    {{-- <th >البريد الالكتروني</th> --}}
-                                    <th>تاريخ الميلاد</th>
+                                    <th>عمر المريض</th>
                                     <th>رقم الهاتف</th>
                                     <th>الجنس</th>
-                                    <th>فصلية الدم</th>
                                     <th>العنوان</th>
+                                    <th>تاريخ الإضافة</th>
+                                    <th>عرض معلومات المريض</th>
+                                    <th>تم إضافتة بواسطة</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -46,23 +47,34 @@
                                 @foreach ($Patients as $Patient)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td><a href="{{ route('Patients.show', $Patient->id) }}">{{ $Patient->name }}</a>
-                                        </td>
-                                        {{-- <td>{{$Patient->email}}</td> --}}
-                                        <td>{{ $Patient->birth_date }}</td>
+                                        <td>{{ $Patient->name }}</td>
+                                        <td>{{ $Patient->age }} سنة </td>
                                         <td>{{ $Patient->phone }}</td>
-                                        <td>{{ $Patient->gender == ذكر ? 'ذكر' : 'انثي' }}</td>
-                                        <td>{{ $Patient->blood_group }}</td>
+                                        <td>{{ $Patient->gender->name }}</td>
                                         <td>{{ $Patient->address }}</td>
+                                        <td>{{ $Patient->date }}</td>
+                                        <td style="font-weight: bolder;">
+                                            <a href="{{ route('Patients.show', $Patient->id) }}">عرض </a>
+                                        </td>
+                                        <td>{{ $Patient->create_by }}</td>
                                         <td>
-                                            <a href="{{ route('Patients.edit', $Patient->id) }}"
-                                                class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" data-toggle="modal"
-                                                data-target="#Deleted{{ $Patient->id }}"><i
-                                                    class="fas fa-trash"></i></button>
-                                            <a href="{{ route('Patients.show', $Patient->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                            <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown"
+                                                    type="button">العمليات<i class="fas fa-caret-down mr-1"></i></button>
 
+                                                <div class="dropdown-menu tx-13 text-center">
+                                                    <a href="{{ route('Patients.edit', $Patient->id) }}"
+                                                        class=" dropdown-item">تعديل
+                                                    </a>
+                                                    <button class=" dropdown-item" data-toggle="modal"
+                                                        data-target="#Deleted{{ $Patient->id }}">حذف
+                                                    </button>
+                                                    <a href="{{ route('Patients.show', $Patient->id) }}"
+                                                        class="dropdown-item">عرض بيانات المريض
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     @include('Dashboard.Patients.Deleted')
@@ -83,6 +95,6 @@
 @endsection
 @section('js')
     <!--Internal  Notify js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/notify/js/notifIt.js') }}"></script>
-    <script src="{{ URL::asset('/My/plugins/notify/js/notifit-custom.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 @endsection

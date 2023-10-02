@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    {{ trans('doctors.delete_doctor') }}</h5>
+                    حذف طبيب</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,7 +14,9 @@
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
-                    <h5>هل انت متاكد من عملية الحذف ؟ الدكتور {{ $doctor->name }}</h5>
+                    <h5>هل انت متاكد من عملية حذف الدكتور ؟
+                        <label style="color: red;"> {{ $doctor->name }}</label>
+                    </h5>
                     <input type="hidden" value="1" name="page_id">
                     @if ($doctor->image)
                         <input type="hidden" name="filename" value="{{ $doctor->image->filename }}">
@@ -23,7 +25,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                    <button type="submit" class="btn btn-danger">حذف</button>
+                    <button type="submit" class="btn btn-danger">حذف الطبيب</button>
                 </div>
             </form>
         </div>

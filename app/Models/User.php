@@ -26,6 +26,7 @@ class User extends Authenticatable
         'name',
         'phone',
         'job',
+        'day',
         'address',
         'password',
     ];
@@ -55,15 +56,6 @@ class User extends Authenticatable
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function doctor_appointments()
-    {
-        return $this->belongsToMany(AppointmentDoctor::class,'user_id');
-    }
-
-    // public function doctor_appointments()
-    // {
-    //     return $this->hasMany(AppointmentDoctor::class, 'user_id');
-    // }
 
     // public function section()
     // {

@@ -44,17 +44,10 @@ return [
             'throw' => false,
         ],
 
-        // 'Users' => [
-        //     'driver' => 'local',
-        //     'root' => storage_path('public/Users/'),
-        //     'url' => env('APP_URL').'/public',
-        //     'visibility' => 'public',
-        //     'throw' => false,
-        // ],
 
         'upload_image' => [
             'driver' => 'local',
-            'root' => public_path('public/My/Dashboard/img'),
+            'root' => public_path('My/Dashboard/img'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,

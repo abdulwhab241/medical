@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">حذف بيانات مريض</h5>
+                <h5 class="modal-title" id="exampleModalLabel">حذف بيانات المريض</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -16,14 +16,15 @@
                     <input type="hidden" name="id" value="{{ $Patient->id }}">
                     <div class="row">
                         <div class="col">
-                            <p class="h5 text-danger"> هل انت متاكد من حذف بيانات المريض ؟ </p>
-                            <input type="text" class="form-control" readonly value="{{ $Patient->name }}">
+                            <h5 > هل انت متاكد من حذف بيانات المريض ؟
+                                <label style="color: red;"> {{ $Patient->name }}</label>
+                            </h5>
                         </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                        <button type="submit" class="btn btn-danger">حذف</button>
+                        <button type="submit" class="btn btn-danger">حذف المريض</button>
                     </div>
                 </form>
             </div>

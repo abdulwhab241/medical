@@ -5,7 +5,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    {{ trans('doctors.update_password') }} {{$doctor->name}}</h5>
+                    تغيير كلمة المرور الخاصة بالدكتور <label style="color: blue;">{{ $doctor->name }} </label>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,12 +16,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="password">كلمة المرور الجديدة</label>
-                        <input type="password" class="form-control" id="password" name="password" >
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
 
                     <div class="form-group">
                         <label for="password_confirmation">تأكيد كلمة المرور</label>
-                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                        <input type="password" class="form-control" name="password_confirmation"
+                            id="password_confirmation">
                     </div>
 
                     <input type="hidden" name="id" value="{{ $doctor->id }}">

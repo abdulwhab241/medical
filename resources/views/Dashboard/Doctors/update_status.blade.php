@@ -5,7 +5,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    تغير حالة الطبيب</h5>
+                    تغير حالة الطبيب     <label style="color: blue;">{{ $doctor->name }} </label>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,9 +18,9 @@
                     <div class="form-group">
                         <label for="status">الحالة</label>
                         <select class="form-control" id="status" name="status" required>
-                            <option value="" selected disabled>--إختر من القائمة--</option>
-                            <option value="1">مفعل</option>
-                            <option value="0">غير مفعل</option>
+                            <option value="dsd" selected disabled>--إختر من القائمة--</option>
+                            <option value="1">متوفر</option>
+                            <option value="0">غير متوفر</option>
                         </select>
                     </div>
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('address');
             $table->string('job')->nullable();
             $table->date('date');
+            $table->longText('day')->nullable();
             $table->boolean('status')->default(1);
             $table->string('create_by')->nullable();
             $table->softDeletes();

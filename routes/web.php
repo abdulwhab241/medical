@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SectionController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\SectionController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,12 @@ Route::get('/', function () {
             Route::post('update_status', [DoctorController::class, 'update_status'])->name('update_status');
 
         //############################# end Doctors route ######################################
+
+        //############################# Patients route ##########################################
+
+            Route::resource('Patients', PatientController::class); 
+
+        //############################# end Patients route ######################################
 
 
     });

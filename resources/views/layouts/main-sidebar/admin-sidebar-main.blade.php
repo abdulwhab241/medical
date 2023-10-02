@@ -47,7 +47,7 @@
         </li>
 
         <li class="slide">
-            <a class="side-menu__item" href="#"><svg
+            <a class="side-menu__item" href="{{ route('Patients.index') }}"><svg
                 xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3" />

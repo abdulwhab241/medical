@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    {{ $section->name }} / اطباء القسم
+    {{ $section->name }} / اطباء
 @stop
 
 @section('page-header')
@@ -28,33 +28,37 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped mg-b-0 text-md-nowrap table-hover">
+                        <table class="table table-striped mg-b-0 text-md-nowrap table-hover" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>صورة الطبيب</th>
                                     <th>أسم الطبيب</th>
-                                    {{-- <th>صورة الطبيب</th> --}}
-                                    {{-- <th>{{trans('doctors.email')}}</th> --}}
                                     <th>القسم</th>
                                     <th>رقم هاتف الطبيب</th>
                                     <th>ايام دوام الطبيب</th>
                                     <th>الحاله</th>
-                                    {{-- <th>تاريخ الإضافة</th> --}}
-                                    <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($doctors as $doctor)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>
+                                            @if ($doctor->image)
+                                                <img src="{{ asset('/My/Dashboard/img/doctors/' . $doctor->image->filename) }}"
+                                                    height="50px" width="50px" alt="{{ $doctor->name }}">
+                                            @else
+                                                <img src="{{ asset('/My/Dashboard/img/doctor_default.png') }}"
+                                                    height="50px" width="50px" alt="">
+                                            @endif
+                                        </td>
                                         <td>{{ $doctor->name }}</td>
-                                        {{-- <td>{{ $doctor->email }}</td> --}}
                                         <td>{{ $doctor->section->name }}</td>
                                         <td>{{ $doctor->phone }}</td>
                                         <td>
-                                            @foreach ($AppointmentDoctors as $appointment)
-                                                {{ $appointment->name }}
-                                            @endforeach
+                                            {{ $doctor->day }}
+
                                         </td>
                                         <td>
                                             <div
@@ -63,17 +67,17 @@
                                             {{ $doctor->status == 1 ? 'متوفر' : 'غير متوفر' }}
                                         </td>
 
-                                        <td>
+                                        {{-- <td>
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown"
                                                     type="button">العمليات<i
                                                         class="fas fa-caret-down mr-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
-                                                    {{-- <a class="dropdown-item"
+                                                    <a class="dropdown-item"
                                                         href="{{ route('Doctors.edit', $doctor->id) }}"><i
                                                             style="color: #0ba360"
-                                                            class="text-success ti-user"></i>&nbsp;&nbsp;تعديل البيانات</a> --}}
+                                                            class="text-success ti-user"></i>&nbsp;&nbsp;تعديل البيانات</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#update_password{{ $doctor->id }}"><i
                                                             class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
@@ -87,7 +91,7 @@
 
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     {{-- @include('Dashboard.Doctors.delete')
                                     @include('Dashboard.Doctors.delete_select')

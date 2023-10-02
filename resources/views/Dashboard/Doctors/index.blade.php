@@ -3,7 +3,7 @@
     الاطباء
 @stop
 @section('css')
-    <link href="{{ URL::asset('/My/dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 
 
@@ -31,7 +31,6 @@
 
                     <a href="{{ route('Doctors.create') }}" class="btn btn-primary" role="button" aria-pressed="true">إضافة
                         طبيب</a>
-                    <button type="button" class="btn btn-danger" id="btn_delete_all">حذف مجموعة اطباء</button>
 
                 </div>
                 <div class="card-body">
@@ -40,15 +39,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th><input name="select_all" id="example-select-all" type="checkbox" /></th>
                                     <th>أسم الطبيب</th>
                                     <th>صورة الطبيب</th>
-                                    {{-- <th>{{trans('doctors.email')}}</th> --}}
                                     <th>القسم</th>
                                     <th>رقم هاتف الطبيب</th>
                                     <th>ايام دوام الطبيب</th>
                                     <th>الحاله</th>
                                     <th>تاريخ الإضافة</th>
+                                    <th>تم إضافة الطبيب بواسطة</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -56,27 +54,21 @@
                                 @foreach ($doctors as $doctor)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            <input type="checkbox" name="delete_select" value="{{ $doctor->id }}"
-                                                class="delete_select">
-                                        </td>
+
                                         <td>{{ $doctor->name }}</td>
                                         <td>
                                             @if ($doctor->image)
-                                                <img src="{{ Url::asset('/My/Dashboard/img/doctors/' . $doctor->image->filename) }}"
-                                                    height="50px" width="50px" alt="">
+                                                <img src="{{ asset('/My/Dashboard/img/doctors/' . $doctor->image->filename) }}"
+                                                    height="50px" width="50px" alt="{{ $doctor->name }}">
                                             @else
                                                 <img src="{{ Url::asset('/My/Dashboard/img/doctor_default.png') }}"
                                                     height="50px" width="50px" alt="">
                                             @endif
                                         </td>
-                                        {{-- <td>{{ $doctor->email }}</td> --}}
                                         <td>{{ $doctor->section->name }}</td>
                                         <td>{{ $doctor->phone }}</td>
                                         <td>
-                                            {{-- @foreach ($doctor->doctor_appointments as $appointment) --}}
-                                                {{ $doctor->doctor_appointments->day }}
-                                            {{-- @endforeach --}}
+                                            {{ $doctor->day }}
                                         </td>
                                         <td>
                                             <div
@@ -86,13 +78,13 @@
                                         </td>
 
                                         <td>{{ $doctor->date }}</td>
+                                        <td>{{ $doctor->create_by }}</td>
                                         <td>
 
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown"
-                                                    type="button">العمليات<i
-                                                        class="fas fa-caret-down mr-1"></i></button>
+                                                    type="button">العمليات<i class="fas fa-caret-down mr-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a class="dropdown-item"
                                                         href="{{ route('Doctors.edit', $doctor->id) }}"><i
@@ -107,14 +99,14 @@
                                                         الحالة</a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#delete{{ $doctor->id }}"><i
-                                                            class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
+                                                            class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف الطبيب</a>
                                                 </div>
                                             </div>
 
                                         </td>
                                     </tr>
                                     @include('Dashboard.Doctors.delete')
-                                    @include('Dashboard.Doctors.delete_select')
+                                    {{-- @include('Dashboard.Doctors.delete_select') --}}
                                     @include('Dashboard.Doctors.update_password')
                                     @include('Dashboard.Doctors.update_status')
                                 @endforeach

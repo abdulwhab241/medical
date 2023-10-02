@@ -53,25 +53,6 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="row row-xs align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label for="exampleInputEmail1">
-                                        {{trans('doctors.email')}}</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <input class="form-control" name="email" type="email">
-                                </div>
-                            </div>
-
-                            <div class="row row-xs align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label for="exampleInputEmail1">
-                                        {{ trans('doctors.password') }}</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <input class="form-control" name="password" type="password">
-                                </div>
-                            </div> --}}
 
                             <div class="row row-xs align-items-center mg-b-20">
                                 <div class="col-md-1">
@@ -119,7 +100,6 @@
                                 </div>
 
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    {{-- <textarea class="form-control" name="day_id" rows="2"></textarea> --}}
 
                                     <select multiple="multiple" class="testselect2" name="day_id[]">
                                         <option  value="1" selected disabled>-- حدد المواعيد --</option>

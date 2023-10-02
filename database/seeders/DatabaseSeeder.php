@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(DaySeeder::class);
+        $this->call(GenderSeeder::class);
         $this->call(SectionSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(PatientTableSeeder::class);

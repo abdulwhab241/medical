@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->longText('address');
             $table->string('password');
-            $table->date('birth_date');
+            $table->integer('age');
             $table->string('phone')->unique();
-            $table->string('gender');
-            $table->string('blood_group');
+            $table->foreignId('gender_id')->references('id')->on('genders')->onDelete('cascade');
+            $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();

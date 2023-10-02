@@ -42,6 +42,7 @@
                                     <th class="wd-15p border-bottom-0">أسم القسم</th>
                                     <th class="wd-15p border-bottom-0">الوصف</th>
                                     <th class="wd-15p border-bottom-0">أطباء القسم</th>
+                                    <th class="wd-15p border-bottom-0">تم إضافة القسم بواسطة</th>
                                     <th class="wd-20p border-bottom-0">العمليات</th>
                                 </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                         <td>
                                             <a href="{{ route('Sections.show', $section->id) }}">عرض </a>
                                         </td>
+                                        <td>{{ $section->create_by }}</td>
                                         <td>
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                                 data-toggle="modal" href="#edit{{ $section->id }}"><i
