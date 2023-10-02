@@ -4,7 +4,7 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('title')
-    إضافة شركة تأمين جديدة
+    إضافة تفاصيل لشركة التأمين 
 @endsection
 @section('page-header')
     <!-- breadcrumb -->

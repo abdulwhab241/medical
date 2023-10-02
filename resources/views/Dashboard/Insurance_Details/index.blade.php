@@ -4,7 +4,7 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('title')
-    شركات التامين
+    تفاصيل شركات التامين
 @endsection
 @section('page-header')
     <!-- breadcrumb -->

@@ -66,8 +66,8 @@
                 </svg><span class="side-menu__label">الإجراءات</span><i class="angle fe fe-chevron-down"></i></a>
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('Service.index') }}">عرض الإجراءات</a></li>
-
-                <li><a class="slide-item" href="#">شركات التأمين</a></li>
+                <li><a class="slide-item" href="{{ route('insurance.index') }}">شركات التأمين</a></li>
+                <li><a class="slide-item" href="#">تفاصيل شركات التأمين</a></li>
 
             </ul>
         </li>
