@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\ServiceController;
 
 
 
@@ -60,6 +61,12 @@ Route::get('/', function () {
             Route::resource('Patients', PatientController::class); 
 
         //############################# end Patients route ######################################
+
+        //############################# Services route ##########################################
+
+            Route::resource('Service', ServiceController::class);
+
+        //############################# end Services route ######################################
 
 
     });

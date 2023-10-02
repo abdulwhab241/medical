@@ -21,6 +21,7 @@ class JobSeeder extends Seeder
             ['name' => 'دكتور'],
             ['name' => 'مختبري'],
             ['name' => 'ممرض'],
+            ['name' => 'صيدلي'],
             ['name' => 'عامل النظافة'],
         ];
         foreach ($Jobs as $Job) {

@@ -32,18 +32,24 @@
                                             <li class="nav-item"><a href="#tab1" class="nav-link active"
                                                     data-toggle="tab">معلومات المريض</a></li>
                                             <li class="nav-item"><a href="#tab2" class="nav-link"
-                                                    data-toggle="tab">الفواتير</a>
+                                                    data-toggle="tab">الفواتير النقدية</a>
                                             </li>
-                                            <li class="nav-item"><a href="#tab3" class="nav-link"
+                                            <li class="nav-item"><a href="#tab3" class="nav-link" data-toggle="tab">فواتير
+                                                    التأمين</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#tab4" class="nav-link"
                                                     data-toggle="tab">المدفوعات</a>
                                             </li>
-                                            <li class="nav-item"><a href="#tab4" class="nav-link" data-toggle="tab">كشف
+                                            <li class="nav-item"><a href="#tab5" class="nav-link" data-toggle="tab">كشف
                                                     حساب</a></li>
-                                            <li class="nav-item"><a href="#tab5" class="nav-link"
+                                            <li class="nav-item"><a href="#tab6" class="nav-link"
                                                     data-toggle="tab">الاشعه</a>
                                             </li>
-                                            <li class="nav-item"><a href="#tab6" class="nav-link"
+                                            <li class="nav-item"><a href="#tab7" class="nav-link"
                                                     data-toggle="tab">المختبر</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#tab8" class="nav-link"
+                                                    data-toggle="tab">الصيدلية</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -64,9 +70,9 @@
                                                             <th>اسم المريض</th>
                                                             <th>رقم الهاتف</th>
                                                             {{-- <th>البريد الالكتورني</th> --}}
-                                                            <th>تاريخ الميلاد</th>
-                                                            <th>النوع</th>
-                                                            <th>فصيلة الدم</th>
+                                                            <th>عُمر المريض</th>
+                                                            <th>الجنس</th>
+                                                            <th>العنوان</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -75,9 +81,9 @@
                                                             <td>{{ $Patient->name }}</td>
                                                             <td>{{ $Patient->phone }}</td>
                                                             {{-- <td>{{$Patient->email}}</td> --}}
-                                                            <td>{{ $Patient->birth_date }}</td>
-                                                            <td>{{ $Patient->gender == ذكر ? '`ذكر' : 'انثي' }}</td>
-                                                            <td>{{ $Patient->blood_group }}</td>
+                                                            <td>{{ $Patient->age }}</td>
+                                                            <td>{{ $Patient->gender->name }}</td>
+                                                            <td>{{ $Patient->address }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

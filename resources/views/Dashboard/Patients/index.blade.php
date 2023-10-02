@@ -33,7 +33,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>اسم المريض</th>
-                                    <th>عمر المريض</th>
+                                    <th>عُمر المريض</th>
                                     <th>رقم الهاتف</th>
                                     <th>الجنس</th>
                                     <th>العنوان</th>
@@ -54,7 +54,8 @@
                                         <td>{{ $Patient->address }}</td>
                                         <td>{{ $Patient->date }}</td>
                                         <td style="font-weight: bolder;">
-                                            <a href="{{ route('Patients.show', $Patient->id) }}">عرض </a>
+                                            عرض
+                                            {{-- <a href="{{ route('Patients.show', $Patient->id) }}">عرض </a> --}}
                                         </td>
                                         <td>{{ $Patient->create_by }}</td>
                                         <td>
