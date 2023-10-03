@@ -10,6 +10,7 @@ use Livewire\Component;
 use App\Models\FundAccount;
 use App\Events\CreateInvoice;
 use App\Models\PatientAccount;
+use App\Models\ReceiptAccount;
 use Illuminate\Support\Facades\Redirect;
 
 class SingleInvoices extends Component
@@ -52,7 +53,7 @@ class SingleInvoices extends Component
             'invoice_date' => $single_invoice->invoice_date,
             'user_doctor_id' => $single_invoice->Doctor->name,
             'section_id' => $single_invoice->Section->name,
-            'Service_id' => $single_invoice->Service->name,
+            'service_id' => $single_invoice->Service->name,
             'type' => $single_invoice->type,
             'price' => $single_invoice->price,
             'discount_value' => $single_invoice->discount_value,
@@ -111,15 +112,18 @@ class SingleInvoices extends Component
                     $single_invoices->patient_id = $this->patient_id;
                     $single_invoices->user_doctor_id = $this->doctor_id;
                     $single_invoices->section_id = $this->section_id;
-                    $single_invoices->Service_id = $this->service_id;
+                    $single_invoices->service_id = $this->service_id;
                     $single_invoices->price = $this->price;
                     $single_invoices->discount_value = $this->discount_value;
-                    $single_invoices->tax_rate = $this->tax_rate;
+                    // $single_invoices->tax_rate = $this->tax_rate;
                     // قيمة الضريبة = السعر - الخصم * نسبة الضريبة /100
-                    $single_invoices->tax_value = ($this->price -$this->discount_value) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
+                    // $single_invoices->tax_value = ($this->price -$this->discount_value ) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
+                    // $single_invoices->tax_value = ($this->price  ) * ($this->discount_value / 100);
                     // الاجمالي شامل الضريبة  = السعر - الخصم + قيمة الضريبة
-                    $single_invoices->total = $single_invoices->price -  $single_invoices->discount_value + $single_invoices->tax_value;
+                    $single_invoices->total = $single_invoices->price *  $single_invoices->discount_value /100;
                     $single_invoices->type = $this->type;
+                    $single_invoices->year = date('Y');
+                    $single_invoices->create_by = auth()->user()->name;
                     $single_invoices->save();
 
                     $fund_accounts = FundAccount::where('invoice_id',$this->single_invoice_id)->first();
@@ -137,6 +141,11 @@ class SingleInvoices extends Component
                 // في حالة الاضافة
                 else{
 
+                    $sub_total = $this->Price * $this->discount_value;
+                    $total = $this->Price - $sub_total ;
+
+                    $Disc = Service::where('id',$this->Service_id)->pluck('name');
+
                     $single_invoices = new Invoice();
                     $single_invoices->invoice_type = 1;
                     $single_invoices->invoice_date = date('Y-m-d');
@@ -146,20 +155,34 @@ class SingleInvoices extends Component
                     $single_invoices->service_id = $this->Service_id;
                     $single_invoices->price = $this->price;
                     $single_invoices->discount_value = $this->discount_value;
-                    $single_invoices->tax_rate = $this->tax_rate;
-                    // قيمة الضريبة = السعر - الخصم * نسبة الضريبة /100
-                    $single_invoices->tax_value = ($this->price -$this->discount_value) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
-                    // الاجمالي شامل الضريبة  = السعر - الخصم + قيمة الضريبة
-                    $single_invoices->total = $single_invoices->price -  $single_invoices->discount_value + $single_invoices->tax_value;
+                    $single_invoices->total =  $total;
                     $single_invoices->type = $this->type;
                     $single_invoices->invoice_status = 1;
+                    $single_invoices->year = date('Y');
+                    $single_invoices->create_by = auth()->user()->name;
                     $single_invoices->save();
+
+                    $receipt_accounts = new ReceiptAccount();
+                    $receipt_accounts->patient_id = $this->patient_id;
+                    $receipt_accounts->user_doctor_id = $this->doctor_id;
+                    $receipt_accounts->service_id = $this->Service_id;
+                    $receipt_accounts->amount = $this->Price;
+                    $receipt_accounts->description = $Disc;
+                    $receipt_accounts->date = date('Y-m-d');
+                    $receipt_accounts->year = date('Y');
+                    $receipt_accounts->create_by = auth()->user()->name;
+                    $receipt_accounts->save();
+
 
                     $fund_accounts = new FundAccount();
                     $fund_accounts->date = date('Y-m-d');
-                    $fund_accounts->invoice_id = $single_invoices->id;
-                    $fund_accounts->Debit = $single_invoices->total_with_tax;
-                    $fund_accounts->credit = 0.00;
+                    $fund_accounts->receipt_id = $single_invoices->id;
+                    $fund_accounts->Debit = $total;
+                    // $fund_accounts->credit = 0.00;
+                    $fund_accounts->disc = $Disc;
+                    $fund_accounts->date = date('Y-m-d');
+                    $fund_accounts->year = date('Y');
+                    $fund_accounts->create_by = auth()->user()->name;
                     $fund_accounts->save();
                     $this->InvoiceSaved =true;
                     $this->show_table =true;
@@ -180,11 +203,10 @@ class SingleInvoices extends Component
                     event(new CreateInvoice($data));
 
                 }
-                // DB::commit();
+
             }
 
             catch (\Exception $e) {
-                // DB::rollback();
                 $this->catchError = $e->getMessage();
             }
 
@@ -280,7 +302,7 @@ class SingleInvoices extends Component
 
     public function delete($id){
 
-     $this->single_invoice_id = $id;
+        $this->single_invoice_id = $id;
 
     }
 

@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('patient_accounts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreignId('invoice_id')->nullable()->references('id')->on('invoices')->onDelete('cascade');
-            $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_accounts')->onDelete('cascade');
+            $table->foreignId('insurance_invoice_id')->nullable()->references('id')->on('insurance_invoices')->onDelete('cascade');
+            // $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_accounts')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable()->references('id')->on('payment_accounts')->onDelete('cascade');
-            $table->decimal('Debit',50,2)->nullable();
-            $table->decimal('credit',50,2)->nullable();
+            $table->decimal('Debit',50,2)->default(0);
+            $table->decimal('credit',50,2)->default(0);
+            $table->date('date');
             // $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

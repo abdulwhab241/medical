@@ -13,20 +13,20 @@ class InsuranceDetailController extends Controller
     public function index()
     {
         $InsuranceDetails = InsuranceDetails::where('year', date('Y'))->get();
-        return view('Dashboard.Insurance_Details.index', compact('InsuranceDetails'));
+        return view('Dashboard.Admin.Insurance_Details.index', compact('InsuranceDetails'));
     }
 
     public function create()
     {
         $Insurances = Insurance::where('year', date('Y'))->get();
-        return view('Dashboard.Insurance_Details.create', compact('Insurances'));
+        return view('Dashboard.Admin.Insurance_Details.create', compact('Insurances'));
     }
 
     public function edit($id)
     {
         $Insurances = Insurance::where('year', date('Y'))->get();
         $InsuranceDetails = InsuranceDetails::findOrFail($id);
-        return view('Dashboard.Insurance_Details.edit', compact('InsuranceDetails','Insurances'));
+        return view('Dashboard.Admin.Insurance_Details.edit', compact('InsuranceDetails','Insurances'));
     }
 
     public function store(InsuranceDetailRequest $request)

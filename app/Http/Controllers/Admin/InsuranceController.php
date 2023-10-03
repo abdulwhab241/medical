@@ -13,18 +13,18 @@ class InsuranceController extends Controller
     public function index()
     {
         $insurances = Insurance::where('year', date('Y'))->get();
-        return view('Dashboard.insurance.index', compact('insurances'));
+        return view('Dashboard.Admin.insurance.index', compact('insurances'));
     }
 
     public function create()
     {
-        return view('Dashboard.insurance.create');
+        return view('Dashboard.Admin.insurance.create');
     }
 
     public function edit($id)
     {
         $insurances = Insurance::findOrFail($id);
-        return view('Dashboard.insurance.edit', compact('insurances'));
+        return view('Dashboard.Admin.insurance.edit', compact('insurances'));
     }
 
     public function store(InsuranceRequest $request)

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -70,17 +71,31 @@ Route::get('/', function () {
 
         //############################# end Services route ######################################
 
-        //############################# Insurances route ##########################################
+        //############################# Insurances route ########################################
 
             Route::resource('insurance', InsuranceController::class);
 
-        //############################# end Insurances route ######################################
+        //############################# end Insurances route ###################################
 
-        //############################# InsuranceDetails route ##########################################
+        //############################# InsuranceDetails route #################################
 
             Route::resource('InsuranceDetails', InsuranceDetailController::class);
 
-        //############################# end InsuranceDetails route ######################################
+        //############################# end InsuranceDetails route #############################
+
+        //############################# Cash_Invoices route ##########################################
+
+            Route::resource('CashInvoices', InvoiceController::class);
+            Route::get('/Get_prices/{id}', [HomeController::class,'Get_Prices']);
+
+
+        //############################# end Cash_Invoices route ######################################
+
+        //############################# Receipt route ##########################################
+
+            Route::resource('Receipt', ReceiptController::class);
+
+        //############################# end Receipt route ######################################
 
 
     });

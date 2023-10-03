@@ -19,14 +19,23 @@ class DoctorController extends Controller
     {
         $name = 'دكتور' ;
         $doctors = User::where('job',$name)->get();
-        return view('Dashboard.Doctors.index',compact('doctors'));
+        return view('Dashboard.Admin.Doctors.index',compact('doctors'));
     }
 
     public function create()
     {
         $sections = Section::all();
         $Days = Day::all();
-        return view('Dashboard.Doctors.add',compact('sections','Days'));
+        return view('Dashboard.Admin.Doctors.add',compact('sections','Days'));
+    }
+
+    
+    public function edit($id)
+    {
+        $sections = Section::all();
+        $Days = Day::all();
+        $doctor = User::findOrFail($id);
+        return view('Dashboard.Admin.Doctors.edit',compact('sections','doctor','Days'));
     }
 
     public function store(DoctorRequest $request){
@@ -134,13 +143,6 @@ class DoctorController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        $sections = Section::all();
-        $Days = Day::all();
-        $doctor = User::findOrFail($id);
-        return view('Dashboard.Doctors.edit',compact('sections','doctor','Days'));
-    }
 
     public function update_password(Request $request)
     {

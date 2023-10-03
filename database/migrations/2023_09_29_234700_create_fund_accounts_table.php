@@ -44,6 +44,7 @@ return new class extends Migration
             $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

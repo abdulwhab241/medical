@@ -12,7 +12,14 @@ class SectionController extends Controller
     public function index()
     {
         $sections = Section::all();
-        return view('Dashboard.Sections.index',compact('sections'));
+        return view('Dashboard.Admin.Sections.index',compact('sections'));
+    }
+
+    public function show($id)
+    {
+        $doctors =Section::findOrFail($id)->doctors;
+        $section = Section::findOrFail($id);
+        return view('Dashboard.Admin.Sections.show_doctors',compact('doctors','section'));
     }
 
     public function store(Request $request)
@@ -60,10 +67,5 @@ class SectionController extends Controller
 
     }
 
-    public function show($id)
-    {
-        $doctors =Section::findOrFail($id)->doctors;
-        $section = Section::findOrFail($id);
-        return view('Dashboard.Sections.show_doctors',compact('doctors','section'));
-    }
+
 }

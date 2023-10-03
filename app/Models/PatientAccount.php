@@ -7,11 +7,12 @@ use App\Models\Patient;
 use App\Models\PaymentAccount;
 use App\Models\ReceiptAccount;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PatientAccount extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $guarded=[];
     

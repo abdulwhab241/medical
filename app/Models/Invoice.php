@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
@@ -31,8 +30,8 @@ class Invoice extends Model
         return $this->belongsTo(User::class,'user_doctor_id');
     }
 
-    public function Section()
-    {
-        return $this->belongsTo(Section::class,'section_id');
-    }
+    // public function Section()
+    // {
+    //     return $this->belongsTo(Section::class,'section_id');
+    // }
 }

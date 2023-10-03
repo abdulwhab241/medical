@@ -17,7 +17,7 @@ class PatientController extends Controller
     public function index()
     {
         $Patients = Patient::all();
-        return view('Dashboard.Patients.index',compact('Patients'));
+        return view('Dashboard.Admin.Patients.index',compact('Patients'));
     }
 
     public function Show($id)
@@ -27,20 +27,20 @@ class PatientController extends Controller
         $receipt_accounts = ReceiptAccount::where('patient_id', $id)->get();
         $Patient_accounts = PatientAccount::where('patient_id', $id)->get();
 
-        return view('Dashboard.Patients.show', compact('Patient', 'invoices', 'receipt_accounts', 'Patient_accounts'));
+        return view('Dashboard.Admin.Patients.show', compact('Patient', 'invoices', 'receipt_accounts', 'Patient_accounts'));
     }
 
     public function create()
     {
         $Genders = Gender::all();
-        return view('Dashboard.Patients.create',compact('Genders'));
+        return view('Dashboard.Admin.Patients.create',compact('Genders'));
     }
 
     public function edit($id)
     {
         $Patient = Patient::findOrFail($id);
         $Genders = Gender::all();
-        return view('Dashboard.Patients.edit',compact('Patient','Genders'));
+        return view('Dashboard.Admin.Patients.edit',compact('Patient','Genders'));
     }
 
     public function store(PatientRequest $request)

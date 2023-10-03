@@ -38,6 +38,31 @@
         $('#example1').DataTable();
     } );
 </script>
+    <!-- Get Prices for Classrooms -->
+    <script>
+        $(document).ready(function () {
+            $('select[name="Service_id"]').on('change', function () {
+                var Service_id = $(this).val();
+                if (Service_id) {
+                    $.ajax({
+                        url: "{{ URL::to('Get_prices') }}/" + Service_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $('select[name="price"]').empty();
+                            $('select[name="price"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                            $.each(data, function (key, value) {
+                                $('select[name="price"]').append('<option value="' + value + '">' + value + '</option>');
+                            });
+                        },
+                    });
+                }
+                else {
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+    </script>
 
 <!-- Internal Data tables -->
 <script src="{{URL::asset('/My/Dashboard/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
