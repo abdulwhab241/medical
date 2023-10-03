@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('insurance_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('insurance_id')->references('id')->on('insurances')->onDelete('cascade');
-            $table->string('name');
-            $table->string('insurance_code');
-            $table->string('discount_percentage');
-            $table->string('company_rate');
-            $table->longText('notes')->nullable();
-            $table->boolean('status');
+            $table->string('name');  // الأسم موظف او اولاد الموظف او الزوجة او الوالدين
+            $table->string('insurance_code');  //  كود التامين
+            $table->integer('discount_percentage')->default(0);  // نسبة تحمل المريض
+            $table->integer('company_rate');  // نسبة تحمل الشركة
+            $table->longText('notes')->nullable(); //
+            $table->boolean('status');  // حالة التأمين مفعل او موقف
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();

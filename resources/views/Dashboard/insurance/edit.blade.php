@@ -34,19 +34,19 @@
                         <div class="row">
 
                             <div class="col-md-6">
-                                <label>كود الشركة</label>
-                                <input type="text" name="insurance_code" value="{{ $insurances->insurance_code }}"
-                                    class="form-control @error('insurance_code') is-invalid @enderror">
-                                @error('insurance_code')
+                                <label>أسم الشركة</label>
+                                <input type="text" name="name" value="{{ $insurances->name }}"
+                                    class="form-control @error('name') is-invalid @enderror">
+                                @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label>أسم الشركة</label>
-                                <input type="text" name="name" value="{{ $insurances->name }}"
-                                    class="form-control @error('name') is-invalid @enderror">
-                                @error('name')
+                                <label>كود الشركة</label>
+                                <input type="text" name="insurance_code" value="{{ $insurances->insurance_code }}"
+                                    class="form-control @error('insurance_code') is-invalid @enderror">
+                                @error('insurance_code')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -65,8 +65,6 @@
                                     <option value="1">مفعلة</option>
                                     <option value="0">موقفة</option>
                                 </select>
-                                {{-- <input name="status" {{ $insurances->status == 1 ? 'checked' : '' }} value="1"
-                                    type="checkbox" class="form-check-input" id="exampleCheck1"> --}}
                             </div>
 
                             <div class="col-md-8">
@@ -81,11 +79,6 @@
                             <button class="btn btn-success btn-block">تعديل البيانات</button>
                         </div>
 
-                        {{-- <div class="row">
-                            <div class="col">
-                                <button class="btn btn-success">تعديل البيانات</button>
-                            </div>
-                        </div> --}}
                     </form>
                 </div>
             </div>

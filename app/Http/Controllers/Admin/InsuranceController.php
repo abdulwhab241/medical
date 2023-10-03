@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Insurance;
 use Illuminate\Http\Request;
+use App\Models\InsuranceDetails;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InsuranceRequest;
 
 class InsuranceController extends Controller
 {
     public function index()
     {
-        $insurances = Insurance::all();
+        $insurances = Insurance::where('year', date('Y'))->get();
         return view('Dashboard.insurance.index', compact('insurances'));
     }
 
@@ -21,14 +23,14 @@ class InsuranceController extends Controller
 
     public function edit($id)
     {
-        $insurances = insurance::findOrFail($id);
+        $insurances = Insurance::findOrFail($id);
         return view('Dashboard.insurance.edit', compact('insurances'));
     }
 
-    public function store(Request $request)
+    public function store(InsuranceRequest $request)
     {
         try {
-            $insurances = new insurance();
+            $insurances = new Insurance();
             $insurances->insurance_code = strip_tags($request->insurance_code);
             $insurances->name = strip_tags($request->name);
             $insurances->notes = strip_tags($request->notes);
@@ -49,7 +51,7 @@ class InsuranceController extends Controller
     public function update(Request $request)
     {
 
-        $insurances = insurance::findOrFail(strip_tags($request->id));
+        $insurances = Insurance::findOrFail(strip_tags($request->id));
         $insurances->insurance_code = strip_tags($request->insurance_code);
         $insurances->name = strip_tags($request->name);
         $insurances->notes = strip_tags($request->notes);
@@ -65,8 +67,21 @@ class InsuranceController extends Controller
     
     public function destroy(Request $request)
     {
-        insurance::destroy(strip_tags($request->id));
-        toastr()->error('تم حذف بيانات شركة التأمين بنجاح');
-        return redirect('insurance');
+
+        $MyDetails_id = InsuranceDetails::where('insurance_id',strip_tags($request->id))->pluck('insurance_id');
+
+        if($MyDetails_id->count() == 0){
+
+            $insurances = Insurance::findOrFail(strip_tags($request->id))->delete();
+            toastr()->error('تم حذف بيانات شركة التأمين بنجاح');
+            return redirect()->route('insurance.index');
+        }
+
+        else{
+
+            toastr()->info(' لايمكن حذف شركة التأمين بسبب وجود تفاصيل تابعة لـها احـذف التفاصيل التابعة لـها ثم احذف شركة التأمين');
+            return redirect()->route('insurance.index');
+        }
+
     }
 }

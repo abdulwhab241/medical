@@ -11,8 +11,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الإجراءات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ شركات
-                    التامين</span>
+                <h4 class="content-title mb-0 my-auto"> تفاصيل شركات التامين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإجراءات</span>
             </div>
         </div>
     </div>
@@ -26,7 +25,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('insurance.create') }}" class="btn btn-primary">إضافة شركة تأمين جديدة</a>
+                    <a href="{{ route('InsuranceDetails.create') }}" class="btn btn-primary">إضافة تفاصيل لشركة تأمين </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -34,36 +33,45 @@
                             <thead>
                                 <tr class="table-secondary">
                                     <th>#</th>
-                                    <th>أسم الشركة</th>
-                                    <th>كود الشركة</th>
-                                    <th>الحالة</th>
+                                    <th>أسم شركة التأمين</th>
+                                    <th>نوع المشترك</th>
+                                    <th>رقم المشترك</th>
+                                    <th>نسبة تحمل المريض</th>
+                                    <th>نسبة تحمل الشركة</th>
+                                    <th>حالة التأمين</th>
                                     <th>الملاحظات</th>
                                     <th>تم إنشائها بواسطة</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($insurances as $insurance)
+                                @foreach ($InsuranceDetails as $InsuranceDetail)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $insurance->name }}</td>
-                                        <td>{{ $insurance->insurance_code }}</td>
+                                        <td>{{ $InsuranceDetail->Insurance->name }}</td>
+                                        <td>{{ $InsuranceDetail->name }}</td>
+                                        <td dir="LTR">{{ $InsuranceDetail->insurance_code }}</td>
+                                        <td>{{ $InsuranceDetail->discount_percentage }} % </td>
+                                        <td>{{ $InsuranceDetail->company_rate }} % </td>
                                         <td>
                                             <div
-                                            class="dot-label bg-{{ $insurance->status == 1 ? 'success' : 'danger' }} ml-1">
-                                        </div>
-                                        {{ $insurance->status == 1 ? 'مفعلة' : 'موقفة' }}
-                                        <td>{{ $insurance->notes }}</td>
-                                        <td>{{ $insurance->create_by }}</td>
+                                                class="dot-label bg-{{ $InsuranceDetail->status == 1 ? 'success' : 'danger' }} ml-1">
+                                            </div>
+                                            {{ $InsuranceDetail->status == 1 ? 'مفعل' : 'موقف' }}
+                                        </td>
+                                        <td>{{ $InsuranceDetail->notes }}</td>
+                                        <td>{{ $InsuranceDetail->create_by }}</td>
                                         <td>
-                                            <a href="{{ route('insurance.edit', $insurance->id) }}"
-                                                class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" data-toggle="modal"
-                                                data-target="#Deleted{{ $insurance->id }}"><i class="fas fa-trash"></i>
+                                            <a href="{{ route('InsuranceDetails.edit', $InsuranceDetail->id) }}"
+                                                style="margin:3px;" class="btn btn-sm btn-success"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <button class="btn btn-sm btn-danger" data-toggle="modal" style="margin:3px;"
+                                                data-target="#Deleted{{ $InsuranceDetail->id }}"><i
+                                                    class="fas fa-trash"></i>
                                             </button>
 
                                         </td>
-                                        @include('Dashboard.insurance.Deleted')
+                                        @include('Dashboard.Insurance_Details.Deleted')
                                     </tr>
                                 @endforeach
                             </tbody>

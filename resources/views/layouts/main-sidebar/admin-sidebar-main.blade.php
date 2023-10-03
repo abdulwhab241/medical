@@ -67,7 +67,7 @@
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('Service.index') }}">عرض الإجراءات</a></li>
                 <li><a class="slide-item" href="{{ route('insurance.index') }}">شركات التأمين</a></li>
-                <li><a class="slide-item" href="#">تفاصيل شركات التأمين</a></li>
+                <li><a class="slide-item" href="{{ route('InsuranceDetails.index') }}">تفاصيل شركات التأمين</a></li>
 
             </ul>
         </li>

@@ -28,20 +28,21 @@
                     <form action="{{ route('insurance.store') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>كود الشركة</label>
-                                <input type="text" name="insurance_code" value="{{ old('insurance_code') }}"
-                                    class="form-control @error('insurance_code') is-invalid @enderror">
-                                @error('insurance_code')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
 
                             <div class="col-md-6">
                                 <label>أسم الشركة</label>
                                 <input type="text" name="name" value="{{ old('name') }}"
                                     class="form-control @error('name') is-invalid @enderror">
                                 @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>كود الشركة</label>
+                                <input type="text" name="insurance_code" value="{{ old('insurance_code') }}"
+                                    class="form-control @error('insurance_code') is-invalid @enderror">
+                                @error('insurance_code')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -54,7 +55,7 @@
                         <div class="row">
                             <div class="col">
                                 <label>الملاحظات</label>
-                                <textarea rows="2" cols="4" class="form-control" name="notes">{{ old('name') }}</textarea>
+                                <textarea rows="2" cols="4" class="form-control" name="notes">{{ old('notes') }}</textarea>
                             </div>
                         </div>
 

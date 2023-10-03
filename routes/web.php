@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\InsuranceController;
+use App\Http\Controllers\Admin\InsuranceDetailController;
 
 
 
@@ -69,11 +70,17 @@ Route::get('/', function () {
 
         //############################# end Services route ######################################
 
-        //############################# insurance route ##########################################
+        //############################# Insurances route ##########################################
 
             Route::resource('insurance', InsuranceController::class);
 
-        //############################# end insurance route ######################################
+        //############################# end Insurances route ######################################
+
+        //############################# InsuranceDetails route ##########################################
+
+            Route::resource('InsuranceDetails', InsuranceDetailController::class);
+
+        //############################# end InsuranceDetails route ######################################
 
 
     });

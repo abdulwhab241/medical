@@ -11,8 +11,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الإجراءات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ شركات
-                    التامين</span>
+                <h4 class="content-title mb-0 my-auto">شركات التامين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    الإجراءات</span>
             </div>
         </div>
     </div>
@@ -50,9 +50,9 @@
                                         <td>{{ $insurance->insurance_code }}</td>
                                         <td>
                                             <div
-                                            class="dot-label bg-{{ $insurance->status == 1 ? 'success' : 'danger' }} ml-1">
-                                        </div>
-                                        {{ $insurance->status == 1 ? 'مفعلة' : 'موقفة' }}
+                                                class="dot-label bg-{{ $insurance->status == 1 ? 'success' : 'danger' }} ml-1">
+                                            </div>
+                                            {{ $insurance->status == 1 ? 'مفعل' : 'موقف' }}
                                         <td>{{ $insurance->notes }}</td>
                                         <td>{{ $insurance->create_by }}</td>
                                         <td>
