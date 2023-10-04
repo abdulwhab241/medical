@@ -91,7 +91,7 @@
                 </svg><span class="side-menu__label">الفواتير</span><i class="angle fe fe-chevron-down"></i></a>
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('CashInvoices.index') }}"> الفواتير النقدية</a></li>
-                <li><a class="slide-item" href="#"> الفواتير الآجلة (تأمين)</a></li>
+                <li><a class="slide-item" href="{{ route('InsuranceInvoice.index') }}"> الفواتير الآجلة (تأمين)</a></li>
             </ul>
         </li>
         <li class="slide">

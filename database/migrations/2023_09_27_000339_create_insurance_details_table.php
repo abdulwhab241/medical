@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('insurance_id')->references('id')->on('insurances')->onDelete('cascade');
             $table->string('name');  // الأسم موظف او اولاد الموظف او الزوجة او الوالدين
-            $table->string('insurance_code');  //  كود التامين
+            $table->string('insurance_code');  //  رقم المشترك
             $table->integer('discount_percentage')->default(0);  // نسبة تحمل المريض
             $table->integer('company_rate');  // نسبة تحمل الشركة
             $table->longText('notes')->nullable(); //

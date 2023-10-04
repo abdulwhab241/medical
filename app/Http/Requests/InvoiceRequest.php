@@ -25,7 +25,7 @@ class InvoiceRequest extends FormRequest
             'Patient_id' => 'required|integer',
             'Doctor_id' => 'required|integer',
             'Service_id' => 'required|integer',
-            // 'Discount' => 'required',
+            'price' => 'required',
         ];
     }
 
@@ -43,6 +43,10 @@ class InvoiceRequest extends FormRequest
             'Service_id' => [
                 'required' => 'الإجراء مطلوب الرجى إختيار الإجراء الذي يريده المريض ',
                 'integer' => 'الإجراء مطلوب الرجى إختيار الإجراء الذي يريده المريض '
+            ],
+            'price' => [
+                'required' => 'السعر مطلوب الرجى إختيار السعر  '
+                // 'integer' => 'السعر مطلوب الرجى إختيار السعر  '
             ],
 
         ];

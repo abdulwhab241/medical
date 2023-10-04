@@ -16,7 +16,10 @@ return new class extends Migration
             $table->date('date');
             $table->dateTime('review_date')->nullable();
             $table->longText('diagnosis');
-            $table->longText('medicine');
+            $table->foreignId('medicine_id')->nullable()->references('id')->on('medicines')->onDelete('cascade');
+            $table->longText('dosage'); //  الجرعة
+            $table->string('use'); //  وقت الجرعة
+            $table->string('period'); //  الفترة
             $table->foreignId('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');

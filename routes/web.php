@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\InsuranceController;
 use App\Http\Controllers\Admin\InsuranceDetailController;
+use App\Http\Controllers\Admin\InsuranceInvoiceController;
 
 
 
@@ -83,14 +84,21 @@ Route::get('/', function () {
 
         //############################# end InsuranceDetails route #############################
 
-        //############################# Cash_Invoices route ##########################################
+        //############################# Cash_Invoices route ####################################
 
             Route::resource('CashInvoices', InvoiceController::class);
             Route::get('/Get_prices/{id}', [HomeController::class,'Get_Prices']);
 
+        //############################# end Cash_Invoices route ################################
 
-        //############################# end Cash_Invoices route ######################################
+        //############################# Insurance_Invoice route ##########################################
 
+            Route::resource('InsuranceInvoice', InsuranceInvoiceController::class);
+            Route::get('/Get_Discounts/{id}', [HomeController::class,'Get_Discounts']);
+
+        //############################# end Insurance_Invoice route ######################################
+
+                
         //############################# Receipt route ##########################################
 
             Route::resource('Receipt', ReceiptController::class);

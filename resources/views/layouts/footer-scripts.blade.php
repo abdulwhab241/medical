@@ -38,7 +38,8 @@
         $('#example1').DataTable();
     } );
 </script>
-    <!-- Get Prices for Classrooms -->
+
+    <!-- Get Prices for Services -->
     <script>
         $(document).ready(function () {
             $('select[name="Service_id"]').on('change', function () {
@@ -53,6 +54,32 @@
                             $('select[name="price"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                             $.each(data, function (key, value) {
                                 $('select[name="price"]').append('<option value="' + value + '">' + value + '</option>');
+                            });
+                        },
+                    });
+                }
+                else {
+                    console.log('AJAX load did not work');
+                }
+            });
+        });
+    </script>
+
+    <!-- Get Discount for Patients -->
+    <script>
+        $(document).ready(function () {
+            $('select[name="Company_id"]').on('change', function () {
+                var Company_id = $(this).val();
+                if (Company_id) {
+                    $.ajax({
+                        url: "{{ URL::to('Get_Discounts') }}/" + Company_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            $('select[name="Patient_discount"]').empty();
+                            $('select[name="Patient_discount"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                            $.each(data, function (key, value) {
+                                $('select[name="Patient_discount"]').append('<option value="' + value + '">' + value + '</option>');
                             });
                         },
                     });

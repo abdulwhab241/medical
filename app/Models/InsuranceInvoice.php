@@ -32,10 +32,6 @@ class InsuranceInvoice extends Model
         return $this->belongsTo(User::class,'user_doctor_id');
     }
 
-    public function Section()
-    {
-        return $this->belongsTo(Section::class,'section_id');
-    }
 
     public function Insurance()
     {

@@ -4,14 +4,14 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('title')
-    الفواتير النقدية
+    فواتير التأمين
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الفواتير النقدية</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                <h4 class="content-title mb-0 my-auto">فواتير التأمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
                     الفواتير</span>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('CashInvoices.create') }}" class="btn btn-primary">إضافة فاتورة جديدة</a>
+                    <a href="{{ route('InsuranceInvoice.create') }}" class="btn btn-primary">إضافة فاتورة جديدة</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,43 +35,47 @@
                                 <tr class="table-secondary">
                                     {{-- <th>#</th> --}}
                                     <th>رقم الفاتورة</th>
+                                    <th>شركة التأمين</th>
+                                    <th>رقم المشترك</th>
                                     <th>أسم المريض</th>
                                     <th>أسم الإجراء</th>
                                     <th>أسم الطبيب </th>
                                     <th>تاريخ الزيارة</th>
                                     <th>نوع التعامل</th>
                                     <th>المبلغ</th>
-                                    <th>التخفيض</th>
-                                    <th>الإجمالي</th>
+                                    <th>نسبة التحمل</th>
+                                    <th>مبلغ المريض</th>
                                     <th>المحاسب</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Invoices as $Invoice)
+                                @foreach ($Insurances as $Insurance)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        {{-- <td>{{ $Invoice->id }}</td> --}}
-                                        <td>{{ $Invoice->Patient->name }}</td>
-                                        <td>{{ $Invoice->Service->name }}</td>
-                                        <td>{{ $Invoice->Doctor->name }}</td>
-                                        <td>{{ $Invoice->created_at }}</td>
+                                        <td>{{ $Insurance->Insurance->name }}</td>
+                                        <td>{{ $Insurance->subscriber_number }}</td>
+                                        <td>{{ $Insurance->Patient->name }}</td>
+                                        <td>{{ $Insurance->Service->name }}</td>
+                                        <td>{{ $Insurance->Doctor->name }}</td>
+                                        <td>{{ $Insurance->created_at }}</td>
                                         <td>
-                                            {{ $Invoice->status == 1 ? 'نقدي' : 'اجل' }}
+                                            {{ $Insurance->status == 1 ? 'تأمين' : 'اجل' }}
                                         </td>
-                                        <td>{{ number_format($Invoice->price) }} </td>
-                                        <td>{{ $Invoice->discount_value }} </td>
-                                        <td>{{ number_format($Invoice->total) }} </td>
-                                        <td>{{ $Invoice->create_by }}</td>
+                                        <td>{{ number_format($Insurance->price) }} </td>
+                                        <td>{{ $Insurance->discount_percentage }} </td>
+                                        <td>{{ number_format($Insurance->total_patient) }} </td>
+                                        <td>{{ $Insurance->create_by }}</td>
                                         <td>
-                                            <a href="{{ route('CashInvoices.edit', $Invoice->id) }}" style="margin: 3px;"
-                                                class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('InsuranceInvoice.edit', $Insurance->id) }}"
+                                                style="margin: 3px;" class="btn btn-sm btn-success"><i
+                                                    class="fas fa-edit"></i></a>
                                             <button class="btn btn-sm btn-danger" data-toggle="modal" style="margin: 3px;"
-                                                data-target="#Deleted{{ $Invoice->id }}"><i class="fas fa-trash"></i>
+                                                data-target="#Deleted{{ $Insurance->id }}"><i class="fas fa-trash"></i>
                                             </button>
 
                                         </td>
-                                        @include('Dashboard.Admin.Cash_Invoice.Deleted')
+                                        @include('Dashboard.Admin.Insurance_Invoice.Deleted')
                                     </tr>
                                 @endforeach
                             </tbody>
