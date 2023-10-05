@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\InsuranceController;
@@ -94,7 +95,6 @@ Route::get('/', function () {
         //############################# Insurance_Invoice route ##########################################
 
             Route::resource('InsuranceInvoice', InsuranceInvoiceController::class);
-            Route::get('/Get_Discounts/{id}', [HomeController::class,'Get_Discounts']);
 
         //############################# end Insurance_Invoice route ######################################
 

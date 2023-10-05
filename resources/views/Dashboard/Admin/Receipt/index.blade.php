@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master')
+@extends('layouts.master')
 @section('title')
     سندات القبض
 @stop
@@ -6,25 +6,24 @@
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!--Internal   Notify -->
-    <link href="{{ URL::asset('/My/dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 
-    <link href="{{ URL::asset('/My/dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!--Internal  Datetimepicker-slider css -->
-    <link href="{{ URL::asset('/My/dashboard/plugins/amazeui-datetimepicker/css/amazeui.datetimepicker.css') }}"
+    <link href="{{ URL::asset('/My/Dashboard/plugins/amazeui-datetimepicker/css/amazeui.datetimepicker.css') }}"
         rel="stylesheet">
-    <link href="{{ URL::asset('/My/dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.css') }}"
+    <link href="{{ URL::asset('/My/Dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.css') }}"
         rel="stylesheet">
-    <link href="{{ URL::asset('/My/dashboard/plugins/pickerjs/picker.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/My/Dashboard/plugins/pickerjs/picker.min.css') }}" rel="stylesheet">
     <!-- Internal Spectrum-colorpicker css -->
-    <link href="{{ URL::asset('/My/dashboard/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/My/Dashboard/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الحسابات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ سندات
-                    القبض</span>
+                <h4 class="content-title mb-0 my-auto">سندات القبض</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الحسابات</span>
             </div>
         </div>
     </div>
@@ -37,46 +36,31 @@
     <div class="row row-sm">
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
-                        <a href="{{ route('Receipt.create') }}" class="btn btn-primary" role="button"
-                            aria-pressed="true">اضافة سند جديد</a>
-                    </div>
-                </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example1">
+                        <table class="table text-md-nowrap" id="example1" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>اسم المريض</th>
-                                    <th>المبلغ</th>
                                     <th>البيان</th>
-                                    <th>تاريخ الاضافة</th>
-                                    <th>العمليات</th>
+                                    <th>المبلغ</th>
+                                    <th>تاريخ السند</th>
+                                    <th>تمة العملية بواسطة المحاسب</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($receipts as $receipt)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $receipt->patients->name }}</td>
-                                        <td>{{ number_format($receipt->amount) }}</td>
-                                        <td>{{ \Str::limit($receipt->description, 50) }}</td>
+                                        <td>{{ $receipt->Patient->name }}</td>
+                                        <td>{{ $receipt->Service->name }}</td>
+                                        <td>{{ number_format($receipt->amount) }} ريال </td>
                                         <td>{{ $receipt->date }}</td>
-                                        <td>
-                                            <a href="{{ route('Receipt.edit', $receipt->id) }}"
-                                                class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                data-toggle="modal" href="#delete{{ $receipt->id }}"><i
-                                                    class="las la-trash"></i></a>
-                                            <a href="{{ route('Receipt.show', $receipt->id) }}"
-                                                class="btn btn-primary btn-sm" target="_blank" title="طباعه سند قبض"><i
-                                                    class="fas fa-print"></i></a>
+                                        <td>{{ $receipt->create_by }}</td>
 
-                                        </td>
                                     </tr>
-                                    @include('Dashboard.Receipt.delete')
                                 @endforeach
                             </tbody>
                         </table>
@@ -99,29 +83,29 @@
 
 
     <!--Internal  Notify js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/notify/js/notifIt.js') }}"></script>
-    <script src="{{ URL::asset('/My/plugins/notify/js/notifit-custom.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 
 
     <!--Internal  Datepicker js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <!--Internal  jquery.maskedinput js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
     <!--Internal  spectrum-colorpicker js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
     <!-- Internal Select2.min js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/select2/js/select2.min.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/select2/js/select2.min.js') }}"></script>
     <!--Internal Ion.rangeSlider.min js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
     <!--Internal  jquery-simple-datetimepicker js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}">
+    <script src="{{ URL::asset('/My/Dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}">
     </script>
     <!-- Ionicons js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}">
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}">
     </script>
     <!--Internal  pickerjs js -->
-    <script src="{{ URL::asset('/My/dashboard/plugins/pickerjs/picker.min.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/plugins/pickerjs/picker.min.js') }}"></script>
     <!-- Internal form-elements js -->
-    <script src="{{ URL::asset('/My/dashboard/js/form-elements.js') }}"></script>
+    <script src="{{ URL::asset('/My/Dashboard/js/form-elements.js') }}"></script>
 
 @endsection

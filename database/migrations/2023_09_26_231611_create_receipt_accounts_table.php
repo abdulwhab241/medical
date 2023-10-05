@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('receipt_accounts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
             $table->decimal('amount',50,2)->nullable();
-            $table->string('description');
+            $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();

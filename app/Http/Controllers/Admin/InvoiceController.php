@@ -57,6 +57,20 @@ class InvoiceController extends Controller
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
     }
+
+    public function show($id)
+    {
+        if(Auth::user()->job == 'admin')
+        {
+
+            $Invoice = Invoice::findOrFail($id);
+
+            return view('Dashboard.Admin.Cash_Invoice.print', compact('Invoice'));    
+        }
+
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
     
 
     public function store(InvoiceRequest $request)
@@ -94,13 +108,6 @@ class InvoiceController extends Controller
                 $receipt_accounts->user_doctor_id = strip_tags($request->Doctor_id);
                 $receipt_accounts->service_id = strip_tags($request->Service_id);
                 $receipt_accounts->amount = $All;
-
-                foreach($Disc as $D)
-                {
-                    $receipt_accounts->description = $D;
-                }
-
-                // $receipt_accounts->description = $Disc;
                 $receipt_accounts->year = date('Y');
                 $receipt_accounts->create_by  = auth()->user()->name;
                 $receipt_accounts->save();
@@ -179,12 +186,6 @@ class InvoiceController extends Controller
                 $receipt_accounts->service_id = strip_tags($request->Service_id);
                 $receipt_accounts->amount = $All;
 
-                foreach($Disc as $D)
-                {
-                    $receipt_accounts->description = $D;
-                }
-
-                // $receipt_accounts->description = $Disc;
                 $receipt_accounts->year = date('Y');
                 $receipt_accounts->create_by  = auth()->user()->name;
                 $receipt_accounts->save();

@@ -60,7 +60,7 @@
                             <div class="col-md-3">
                                 <label>نوع المشترك</label>
                                 <select name="Employee" class="form-control SlectBox">
-                                    <option value="0" selected>---إختر من القائمة---</option>
+                                    {{-- <option  selected>---إختر من القائمة---</option> --}}
                                     <option value="الموظف">الموظف</option>
                                     <option value="الزوجة">الزوجة</option>
                                     <option value="الابناء">الابناء</option>

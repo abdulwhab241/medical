@@ -66,6 +66,8 @@
                                         <td>
                                             <a href="{{ route('CashInvoices.edit', $Invoice->id) }}" style="margin: 3px;"
                                                 class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('CashInvoices.show', $Invoice->id) }}" style="margin: 3px;"
+                                                class="btn btn-sm btn-primary"><i class="fas fa-print"></i></a>
                                             <button class="btn btn-sm btn-danger" data-toggle="modal" style="margin: 3px;"
                                                 data-target="#Deleted{{ $Invoice->id }}"><i class="fas fa-trash"></i>
                                             </button>

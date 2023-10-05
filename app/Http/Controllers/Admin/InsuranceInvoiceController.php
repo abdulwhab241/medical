@@ -60,6 +60,19 @@ class InsuranceInvoiceController extends Controller
         return redirect()->back();
     }
 
+    public function show($id)
+    {
+        if(Auth::user()->job == 'admin')
+        {
+            $Invoice = InsuranceInvoice::findOrFail($id);
+
+            return view('Dashboard.Admin.Insurance_Invoice.print', compact('Invoice'));    
+        }
+
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
+
     public function store(InsuranceInvoiceRequest $request)
     {
         if(Auth::user()->job == 'admin')

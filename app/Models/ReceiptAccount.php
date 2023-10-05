@@ -16,10 +16,10 @@ class ReceiptAccount extends Model
     
     protected $guarded=[];
 
-    // public function Service()
-    // {
-    //     return $this->belongsTo(Service::class,'service_id');
-    // }
+    public function Service()
+    {
+        return $this->belongsTo(Service::class,'service_id');
+    }
 
     public function Patient()
     {

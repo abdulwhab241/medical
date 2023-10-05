@@ -27,7 +27,7 @@ class InsuranceInvoiceRequest extends FormRequest
             'Service_id' => 'required|integer',
             'Company_id' => 'required|integer',
             'price' => 'required',
-            'Employee' => 'required',
+            'Employee' => 'required|string',
             'Number' => 'required',
             // 'Patient_discount' => 'required|integer',
         ];

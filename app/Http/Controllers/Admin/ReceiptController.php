@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Patient;
-use App\Models\FundAccount;
-use Illuminate\Http\Request;
-use App\Models\PatientAccount;
+
 use App\Models\ReceiptAccount;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,16 +21,16 @@ class ReceiptController extends Controller
 
     }
 
-    public function show($id)
-    {
-        if(Auth::user()->job == 'admin')
-        {
-            $receipt = ReceiptAccount::findOrFail($id);
-            return view('Dashboard.Admin.Receipt.print',compact('receipt'));
-        }
-        toastr()->error('لا يمكنك الدخول ');
-        return redirect()->back();
-    }
+    // public function show($id)
+    // {
+    //     if(Auth::user()->job == 'admin')
+    //     {
+    //         $receipt = ReceiptAccount::findOrFail($id);
+    //         return view('Dashboard.Admin.Receipt.print',compact('receipt'));
+    //     }
+    //     toastr()->error('لا يمكنك الدخول ');
+    //     return redirect()->back();
+    // }
 
     // public function store(Request $request)
     // {

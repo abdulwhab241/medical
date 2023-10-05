@@ -19,9 +19,4 @@ class HomeController extends Controller
         return $list_price;
     }
 
-    public function Get_Discounts($id){
-
-        $list_price = InsuranceDetails::where("id", $id)->where('status', 1)->pluck("discount_percentage", "id");
-        return $list_price;
-    }
 }
