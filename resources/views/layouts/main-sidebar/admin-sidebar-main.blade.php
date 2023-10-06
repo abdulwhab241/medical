@@ -115,7 +115,6 @@
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('Receipt.index') }}">سندات القبض</a></li>
                 <li><a class="slide-item" href="{{ route('Payment.index') }}">سندات الصرف</a></li>
-                {{-- <li><a class="slide-item" href="#">إلغاء فاتورة التأمين</a></li> --}}
                 <li><a class="slide-item" href="{{ route('Salary.index') }}"> الرواتب</a></li>
                 <li><a class="slide-item" href="{{ route('Expense.index') }}">المصروفات</a></li>
             </ul>
@@ -127,10 +126,9 @@
                     <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3" />
                     <path
                         d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
-                </svg><span class="side-menu__label">الاشعة</span><i class="angle fe fe-chevron-down"></i></a>
+                </svg><span class="side-menu__label">قسم الاشعة</span><i class="angle fe fe-chevron-down"></i></a>
             <ul class="slide-menu">
-                <li><a class="slide-item" href="#">قائمة الموظفين</a></li>
-                <li><a class="slide-item" href="{{ url('/' . ($page = 'form-advanced')) }}">قائمة الكشوفات</a></li>
+                <li><a class="slide-item" href="{{ route('Ray_Employee.index') }}">قائمة الموظفين</a></li>
             </ul>
         </li>
         <li class="slide">
@@ -140,9 +138,9 @@
                     <path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z" opacity=".3" />
                     <path
                         d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 19H5v-9h3v9zm7 0h-5v-9h5v9zm5 0h-3v-9h3v9zm0-11H5V5h15v3z" />
-                </svg><span class="side-menu__label">المختبر</span><i class="angle fe fe-chevron-down"></i></a>
+                </svg><span class="side-menu__label"> قسم المختبر</span><i class="angle fe fe-chevron-down"></i></a>
             <ul class="slide-menu">
-                <li><a class="slide-item" href="#">قائمة الموظفين</a></li>
+                <li><a class="slide-item" href="{{ route('Laboratory_Employee.index') }}">قائمة الموظفين</a></li>
             </ul>
         </li>
 

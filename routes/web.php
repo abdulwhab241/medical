@@ -12,8 +12,10 @@ use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\InsuranceController;
+use App\Http\Controllers\Admin\RayEmployeeController;
 use App\Http\Controllers\Admin\InsuranceDetailController;
 use App\Http\Controllers\Admin\InsuranceInvoiceController;
+use App\Http\Controllers\Admin\LaboratoryEmployeeController;
 
 
 
@@ -127,6 +129,18 @@ Route::get('/', function () {
             Route::get('/Print_Expenses', [ExpenseController::class, 'print'])->name('Print_Expense');
 
       //############################# end Expense route ######################################
+
+    //############################# Ray_Employee route ##########################################
+
+        Route::resource('Ray_Employee', RayEmployeeController::class);
+
+    //############################# end Ray_Employee route ######################################
+
+    //############################# Laboratory_Employee route ##########################################
+
+        Route::resource('Laboratory_Employee', LaboratoryEmployeeController::class);
+
+    //############################# end Laboratory_Employee route ######################################
         
 
 
