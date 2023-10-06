@@ -94,8 +94,8 @@
 
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <select name="section_id" class="form-control SlectBox">
-                                    <option value="س" selected >---إختر من القائمة---</option>
                                     @foreach ($sections as $section)
+                                    <option value=""></option>
                                         <option value="{{ $section->id }}">{{ $section->name }}</option>
                                     @endforeach
                                 </select>

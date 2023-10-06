@@ -34,8 +34,8 @@
                             <div class="col-md-4">
                                 <label>أسم المريض</label>
                                 <select name="Patient_id" class="form-control select2">
-                                    <option value="" selected disabled>---إختر من القائمة---</option>
                                     @foreach ($Patients as $Patient)
+                                    <option value=""></option>
                                         <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
                                     @endforeach
                                 </select>
@@ -47,8 +47,8 @@
                             <div class="col-md-4">
                                 <label>أسم الطبيب</label>
                                 <select name="Doctor_id" class="form-control select2">
-                                    <option value="" selected disabled>---إختر من القائمة---</option>
                                     @foreach ($Doctors as $Doctor)
+                                    <option value=""></option>
                                         <option value="{{ $Doctor->id }}">{{ $Doctor->name }}</option>
                                     @endforeach
                                 </select>
@@ -60,8 +60,8 @@
                             <div class="col-md-4">
                                 <label>الإجراء</label>
                                 <select name="Service_id" class="form-control select2">
-                                    <option value="" selected disabled>---إختر من القائمة---</option>
                                     @foreach ($Services as $Service)
+                                    <option value=""></option>
                                         <option value="{{ $Service->id }}">{{ $Service->name }}</option>
                                     @endforeach
                                 </select>

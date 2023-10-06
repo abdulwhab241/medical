@@ -139,7 +139,6 @@
     <!--Internal  Chart.bundle js -->
     <script src="{{ URL::asset('/My/Dashboard/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
-
     <script type="text/javascript">
         function printDiv() {
             var printContents = document.getElementById('print').innerHTML;

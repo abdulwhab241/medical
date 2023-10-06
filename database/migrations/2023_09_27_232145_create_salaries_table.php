@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_employee_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('the_job');
-            $table->string('section')->nullable();
-            $table->longText('disc');
-            $table->decimal('the_salary',50,2);
+            $table->string('the_job'); // الوظيفة
+            // $table->string('section')->nullable(); // القسم للدكاترة
+            $table->longText('disc'); // وصف الراتب
+            $table->decimal('the_salary',50,2);  // الراتب
             $table->decimal('suits',50,2)->default(0); //بدلات
             $table->decimal('discounts',50,2)->default(0); // خصومات
-            $table->decimal('total',50,2);
+            $table->decimal('total',50,2); // مجموع الراتب بعد الخصومات
             $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();

@@ -115,8 +115,8 @@
             <ul class="slide-menu">
                 <li><a class="slide-item" href="{{ route('Receipt.index') }}">سندات القبض</a></li>
                 <li><a class="slide-item" href="{{ route('Payment.index') }}">سندات الصرف</a></li>
-                <li><a class="slide-item" href="#">إلغاء فاتورة التأمين</a></li>
-                <li><a class="slide-item" href="3"> الرواتب</a></li>
+                {{-- <li><a class="slide-item" href="#">إلغاء فاتورة التأمين</a></li> --}}
+                <li><a class="slide-item" href="{{ route('Salary.index') }}"> الرواتب</a></li>
                 <li><a class="slide-item" href="#">المصروفات</a></li>
             </ul>
         </li>

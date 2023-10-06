@@ -34,8 +34,8 @@
                             <div class="col-md-4">
                                 <label>أسم شركة التأمين</label>
                                 <select name="Insurance_id" class="form-control select2">
-                                    <option value="ي" selected disabled>---إختر من القائمة---</option>
                                     @foreach ($Insurances as $Insurance)
+                                    <option value=""></option>
                                         <option value="{{ $Insurance->id }}">{{ $Insurance->name }}</option>
                                     @endforeach
                                 </select>

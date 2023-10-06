@@ -13,7 +13,7 @@ class Salary extends Model
 
     protected $guarded=[];
 
-    public function Doctor()
+    public function User()
     {
         return $this->belongsTo(User::class,'user_employee_id');
     }

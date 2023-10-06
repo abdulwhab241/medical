@@ -6,15 +6,15 @@
 @endsection
 
 @section('title')
-    اضافة سند صرف جديد
+    تعديل سند الصرف
 @stop
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">اضافة سند صرف جديد</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    الحسابات</span>
+                <h4 class="content-title mb-0 my-auto">تعديل سند الصرف</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    الحسابات </span>
             </div>
         </div>
     </div>
@@ -28,37 +28,54 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('Payment.store') }}" method="post" autocomplete="off"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('Salary.update', 'test') }}" method="post" autocomplete="off">
+                        {{ method_field('patch') }}
                         {{ csrf_field() }}
+
                         <div class="pd-30 pd-sm-40 bg-gray-200">
 
                             <div class="row row-xs align-items-center mg-b-20">
                                 <div class="col-md-2">
-                                    <label>اسم المريض</label>
+                                    <label>اسم الموظف</label>
+                                    <input class="form-control" value="{{ $Salaries->id }}" name="id" type="hidden">
+                                    <input class="form-control" value="{{ $Salaries->user_employee_id }}" name="User_id"
+                                        type="hidden">
                                 </div>
                                 <div class="col-md-10 mg-t-5 mg-md-t-0">
-                                    <select name="Patient_id" class="form-control select2 ">
-                                        @foreach ($Patients as $Patient)
-                                        <option value=""></option>
-                                            <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('Patient_id')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    <input type="text" class="form-control text-center"
+                                        style="font-weight: bolder; color: black; font-size: 20px;"
+                                        value="{{ $Salaries->User->name }}" readonly>
+
                                 </div>
                             </div>
 
                             <div class="row row-xs align-items-center mg-b-20">
                                 <div class="col-md-2">
-                                    <label>المبلغ</label>
+                                    <label>الراتب</label>
                                 </div>
                                 <div class="col-md-10 mg-t-5 mg-md-t-0">
-                                    <input class="form-control" name="price" value="{{ old('price') }}" type="number">
-                                    @error('price')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    <input class="form-control" name="Salary" value="{{ $Salaries->the_salary }}"
+                                        type="number">
+
+                                </div>
+                            </div>
+
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label>الخصومات</label>
+                                </div>
+                                <div class="col-md-10 mg-t-5 mg-md-t-0">
+                                    <input class="form-control" name="Discount" required value="{{ $Salaries->discounts }}"
+                                        type="number">
+                                </div>
+                            </div>
+
+                            <div class="row row-xs align-items-center mg-b-20">
+                                <div class="col-md-2">
+                                    <label>البدلات</label>
+                                </div>
+                                <div class="col-md-10 mg-t-5 mg-md-t-0">
+                                    <input class="form-control" name="Suit" value="{{ $Salaries->suits }}" required type="number">
                                 </div>
                             </div>
 
@@ -67,15 +84,16 @@
                                     <label>البيان</label>
                                 </div>
                                 <div class="col-md-10 mg-t-5 mg-md-t-0">
-                                    <textarea class="form-control" name="Disc" rows="3">{{ old('Disc') }}</textarea>
-                                    @error('Disc')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    <textarea class="form-control" name="Disc" rows="3">{{ $Salaries->disc }}</textarea>
+
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5 btn-block">حفظ البيانات</button>
+                            <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5 btn-block">تعديل
+                                البيانات</button>
                         </div>
+
+
                     </form>
                 </div>
             </div>

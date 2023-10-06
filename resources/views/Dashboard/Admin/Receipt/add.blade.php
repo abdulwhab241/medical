@@ -40,7 +40,7 @@
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
                                     <select name="patient_id" class="form-control select2" required>
                                         @foreach ($Patients as $Patient)
-                                            <option value="ds">إختر من القائمة</option>
+                                        <option value=""></option>
                                             <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
                                         @endforeach
                                     </select>

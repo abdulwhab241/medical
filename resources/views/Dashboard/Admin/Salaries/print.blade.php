@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    سند صرف
+    الرواتب
 @stop
 @section('css')
     <style>
@@ -16,8 +16,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">سند صرف</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ طباعه
-                    سند</span>
+                <h4 class="content-title mb-0 my-auto">الرواتب</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ طباعه
+                    الرواتب</span>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 <div class="card card-invoice">
                     <div class="card-body">
                         <div class="invoice-header">
-                            <h1 class="invoice-title">سند صرف</h1>
+                            <h1 class="invoice-title">الرواتب</h1>
                             <div class="billed-from">
                                 <h6>مركز رواد القلب </h6>
                                 <p>201 المهندسين<br>
@@ -41,30 +41,49 @@
                         </div><!-- invoice-header -->
                         <div class="row mg-t-20">
                             <div class="col-md">
-                                <label class="tx-gray-600">معلومات السند</label>
-                                <p class="invoice-info-row"><span>تاريخ السند</span>
-                                    <span>{{ $payment_account->date }}</span></p>
-                                <p class="invoice-info-row "><span>اسم المريض</span>
-                                    <span>{{ $payment_account->Patient->name }}</span></p>
+                                <label class="tx-gray-600">معلومات صرف الرواتب</label>
+                                <p class="invoice-info-row"><span>التاريخ </span>
+                                    <span>{{ date('y-m-d') }}</span>
+                                </p>
+
                             </div>
                         </div>
                         <div class="table-responsive mg-t-40">
-                            <table class="table table-invoice border text-md-nowrap mb-0" style="text-align: center;">
+                            <table class="table" border="2"
+                                style="text-align: center; font-size: 12px; font-weight: bolder; color: black;">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>غرض الصرف</th>
-                                        <th>المبلغ</th>
+                                        <th>اسم الموظف</th>
+                                        <th>الوظيفة</th>
+                                        <th>البدلات</th>
+                                        <th>الخصومات</th>
+                                        <th>الراتب</th>
+                                        <th>البيان</th>
+                                        <th>الإجمالي</th>
+                                        <th>تاريخ الصرف</th>
+                                        <th>المحاسب</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>{{ $payment_account->description }}</td>
-                                        <td>{{ number_format($payment_account->amount) }} ريال </td>
-                                    </tr>
+                                    @foreach ($Salaries as $Salary)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $Salary->User->name }}</td>
+                                            <td>{{ $Salary->the_job }}</td>
+                                            <td>{{ number_format($Salary->suits) }}</td>
+                                            <td>{{ number_format($Salary->discounts) }}</td>
+                                            <td>{{ number_format($Salary->the_salary) }}</td>
+                                            <td>{{ $Salary->disc }}</td>
+                                            <td>{{ number_format($Salary->total) }}</td>
+                                            <td>{{ $Salary->date }}</td>
+                                            <td>{{ $Salary->create_by }}</td>
+
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                         <hr class="mg-b-40">
                         <a href="#" class="btn btn-danger float-left mt-3 mr-2" id="print_Button"
