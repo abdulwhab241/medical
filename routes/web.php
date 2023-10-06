@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SalaryController;
+use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PaymentController;
@@ -119,6 +120,13 @@ Route::get('/', function () {
             Route::get('/Print_Salaries', [SalaryController::class, 'print'])->name('Print_Salary');
 
         //############################# end Salary route ######################################
+
+        //############################# Expense route ##########################################
+
+            Route::resource('Expense', ExpenseController::class);
+            Route::get('/Print_Expenses', [ExpenseController::class, 'print'])->name('Print_Expense');
+
+      //############################# end Expense route ######################################
         
 
 

@@ -117,7 +117,7 @@
                 <li><a class="slide-item" href="{{ route('Payment.index') }}">سندات الصرف</a></li>
                 {{-- <li><a class="slide-item" href="#">إلغاء فاتورة التأمين</a></li> --}}
                 <li><a class="slide-item" href="{{ route('Salary.index') }}"> الرواتب</a></li>
-                <li><a class="slide-item" href="#">المصروفات</a></li>
+                <li><a class="slide-item" href="{{ route('Expense.index') }}">المصروفات</a></li>
             </ul>
         </li>
         <li class="slide">
