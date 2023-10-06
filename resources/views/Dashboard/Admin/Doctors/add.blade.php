@@ -33,7 +33,7 @@
 @endsection
 @section('content')
 
-@include('Dashboard.messages_alert')
+{{-- @include('Dashboard.messages_alert') --}}
 
 <!-- row -->
 <div class="row">
@@ -52,6 +52,9 @@
                             </div>
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <input class="form-control" name="name" type="text" autofocus>
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                         </div>
 
@@ -63,6 +66,9 @@
                             </div>
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <input class="form-control" name="phone" type="number">
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                         </div>
 
@@ -73,7 +79,9 @@
                             </div>
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <textarea class="form-control" name="address" rows="2"></textarea>
-
+                                @error('address')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                         </div>
 
@@ -86,11 +94,14 @@
 
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
                                 <select name="section_id" class="form-control SlectBox">
-                                    <option value="" selected disabled>---إختر من القائمة---</option>
+                                    <option value="س" selected >---إختر من القائمة---</option>
                                     @foreach ($sections as $section)
                                         <option value="{{ $section->id }}">{{ $section->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('section_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
                         </div>
@@ -104,7 +115,7 @@
                             <div class="col-md-11 mg-t-5 mg-md-t-0">
 
                                 <select multiple="multiple" class="testselect2" name="day_id[]">
-                                    <option value="1" selected disabled>-- حدد المواعيد --</option>
+                                    <option value="1" selected >-- حدد المواعيد --</option>
                                     @foreach ($Days as $Day)
                                         <option value="{{ $Day->name }}">{{ $Day->name }}</option>
                                     @endforeach

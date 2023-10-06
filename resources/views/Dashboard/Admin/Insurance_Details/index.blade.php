@@ -12,7 +12,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto"> تفاصيل شركات التامين</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإجراءات</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ شركات التأمين</span>
             </div>
         </div>
     </div>

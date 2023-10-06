@@ -9,11 +9,11 @@ use App\Models\Insurance;
 use App\Models\FundAccount;
 use Illuminate\Http\Request;
 use App\Models\PatientAccount;
+use App\Models\InsuranceDetails;
 use App\Models\InsuranceInvoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\InsuranceInvoiceRequest;
-use App\Models\InsuranceDetails;
+use App\Http\Requests\Admin\InsuranceInvoiceRequest;
 
 class InsuranceInvoiceController extends Controller
 {
@@ -243,8 +243,8 @@ class InsuranceInvoiceController extends Controller
                     $total += $sub_total;
                     $patient_accounts->credit = $total; // مجموع المريض
                 }
-
-                $fund_accounts->create_by  = auth()->user()->name;
+                $patient_accounts->year =date('Y');
+                $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
     
     

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\InsuranceDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\InsuranceDetailRequest;
+use App\Http\Requests\Admin\InsuranceDetailRequest;
+
 
 class InsuranceDetailController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InvoiceRequest extends FormRequest
+class PaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,7 @@ class InvoiceRequest extends FormRequest
     {
         return [
             'Patient_id' => 'required|integer',
-            'Doctor_id' => 'required|integer',
-            'Service_id' => 'required|integer',
+            'Disc' => 'required',
             'price' => 'required',
         ];
     }
@@ -36,17 +35,12 @@ class InvoiceRequest extends FormRequest
                 'required' => 'أسـم المريض مطلوب الرجى إختيار أسم المريض ',
                 'integer' => 'أسـم المريض مطلوب الرجى إختيار أسم المريض '
             ],
-            'Doctor_id' => [
-                'required' => 'أسـم الطبيب مطلوب الرجى إختيار أسم الطبيب ',
-                'integer' => 'أسـم الطبيب مطلوب الرجى إختيار أسم الطبيب '
+            'Disc' => [
+                'required' => 'غرض الصرف مطلوب الرجى كتابة غرض الصرف '
             ],
-            'Service_id' => [
-                'required' => 'الإجراء مطلوب الرجى إختيار الإجراء الذي يريده المريض ',
-                'integer' => 'الإجراء مطلوب الرجى إختيار الإجراء الذي يريده المريض '
-            ],
+
             'price' => [
-                'required' => 'السعر مطلوب الرجى إختيار السعر  '
-                // 'integer' => 'السعر مطلوب الرجى إختيار السعر  '
+                'required' => 'السعر مطلوب الرجى كتابة السعر  '
             ],
 
         ];

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->decimal('amount',50,2)->nullable();
             $table->string('description');
+            $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();

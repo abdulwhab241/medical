@@ -113,8 +113,9 @@
                         d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-5 7c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zM4.59 11.59l-.59.58V4h11v7H5.17l-.58.59z" />
                 </svg><span class="side-menu__label">الحسابات</span><i class="angle fe fe-chevron-down"></i></a>
             <ul class="slide-menu">
-                <li><a class="slide-item" href="{{ route('Receipt.index') }}">سند قبض</a></li>
-                <li><a class="slide-item" href="#">سند صرف</a></li>
+                <li><a class="slide-item" href="{{ route('Receipt.index') }}">سندات القبض</a></li>
+                <li><a class="slide-item" href="{{ route('Payment.index') }}">سندات الصرف</a></li>
+                <li><a class="slide-item" href="#">إلغاء فاتورة التأمين</a></li>
                 <li><a class="slide-item" href="3"> الرواتب</a></li>
                 <li><a class="slide-item" href="#">المصروفات</a></li>
             </ul>

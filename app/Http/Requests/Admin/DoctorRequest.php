@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -39,7 +39,8 @@ class DoctorRequest extends FormRequest
                 'required' => 'العنوان مطلوب الرجى كتابة عنوان الطبيب الصحيح'
             ],
             'section_id' => [
-                'required' => 'القسم مطلوب الرجى اختيار اسم القسم '
+                'required' => 'القسم مطلوب الرجى اختيار اسم القسم ',
+                'integer' => 'القسم مطلوب الرجى اختيار اسم القسم '
             ],
             'phone' => [
                 'required' => 'رقم هاتف الطبيب مطلوب الرجى كتابة  رقم هاتف الطبيب '

@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('css')
-    <!--Internal    Notify -->
+    <!--Internal   Notify -->
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('title')
     تعديل فاتورة نقدية
@@ -36,7 +37,7 @@
 
                             <div class="col-md-4">
                                 <label>أسم المريض</label>
-                                <select name="Patient_id" class="form-control SlectBox">
+                                <select name="Patient_id" class="form-control select2">
                                     @foreach ($Patients as $Patient)
                                         <option value="{{ $Patient->id }}"
                                             {{ $Patient->id == $Invoices->patient_id ? 'selected' : '' }}>
@@ -49,20 +50,20 @@
 
                             <div class="col-md-4">
                                 <label>أسم الطبيب</label>
-                                <select name="Doctor_id" class="form-control SlectBox">
+                                <select name="Doctor_id" class="form-control select2">
                                     @foreach ($Doctors as $Doctor)
                                         <option value="{{ $Doctor->id }}"
                                             {{ $Doctor->id == $Invoices->user_doctor_id ? 'selected' : '' }}>
                                             {{ $Doctor->name }}</option>
                                     @endforeach
- 
+
                                 </select>
 
                             </div>
 
                             <div class="col-md-4">
                                 <label>الإجراء</label>
-                                <select name="Service_id" class="form-control SlectBox">
+                                <select name="Service_id" class="form-control select2">
                                     @foreach ($Services as $Service)
                                         <option value="{{ $Service->id }}"
                                             {{ $Service->id == $Invoices->service_id ? 'selected' : '' }}>
@@ -81,7 +82,7 @@
 
                             <div class="col-md-4">
                                 <label>المبلغ</label>
-                                <select name="price" class="form-control SlectBox">
+                                <select name="price" class="form-control select2">
                                     <option>{{ $Invoices->price }}</option>
                                 </select>
 
@@ -89,9 +90,9 @@
 
                             <div class="col-md-4">
                                 <label>التخفيض</label>
-                                <select name="Discount" class="form-control SlectBox">
+                                <select name="Discount" class="form-control select2">
                                     <option>{{ $Invoices->discount_value }}</option>
-                                    <option value="0"></option>
+                                    <option value="0">0%</option>
                                     <option value="5">5%</option>
                                     <option value="10">10%</option>
                                     <option value="15">15%</option>
@@ -119,4 +120,23 @@
     <!--Internal  Notify js -->
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
+
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!--Internal  jquery.maskedinput js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
+    <!--Internal  spectrum-colorpicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
+    <!-- Internal Select2.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/select2/js/select2.min.js') }}"></script>
+    <!--Internal Ion.rangeSlider.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+    <!--Internal  jquery-simple-datetimepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}">
+    </script>
+    <!-- Ionicons js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}">
+    </script>
+    <!-- Internal form-elements js -->
+    <script src="{{ URL::asset('/My/Dashboard/js/form-elements.js') }}"></script>
 @endsection

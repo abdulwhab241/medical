@@ -2,6 +2,8 @@
 @section('css')
     <!--Internal   Notify -->
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
 @endsection
 @section('title')
     إضافة فاتورة تأمين جديدة
@@ -32,7 +34,7 @@
 
                             <div class="col-md-3">
                                 <label>شركة التأمين</label>
-                                <select name="Company_id" class="form-control SlectBox">
+                                <select name="Company_id" class="form-control select2">
                                     <option value="s" selected>---إختر من القائمة---</option>
                                     @foreach ($Companies as $Company)
                                         <option value="{{ $Company->id }}">{{ $Company->name }}</option>
@@ -46,7 +48,7 @@
 
                             <div class="col-md-3">
                                 <label>أسم المريض</label>
-                                <select name="Patient_id" class="form-control SlectBox">
+                                <select name="Patient_id" class="form-control select2">
                                     <option value="s" selected>---إختر من القائمة---</option>
                                     @foreach ($Patients as $Patient)
                                         <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
@@ -59,7 +61,7 @@
 
                             <div class="col-md-3">
                                 <label>نوع المشترك</label>
-                                <select name="Employee" class="form-control SlectBox">
+                                <select name="Employee" class="form-control select2">
                                     {{-- <option  selected>---إختر من القائمة---</option> --}}
                                     <option value="الموظف">الموظف</option>
                                     <option value="الزوجة">الزوجة</option>
@@ -92,7 +94,7 @@
 
                             <div class="col-md-4">
                                 <label>أسم الطبيب</label>
-                                <select name="Doctor_id" class="form-control SlectBox">
+                                <select name="Doctor_id" class="form-control select2">
                                     <option value="s" selected>---إختر من القائمة---</option>
                                     @foreach ($Doctors as $Doctor)
                                         <option value="{{ $Doctor->id }}">{{ $Doctor->name }}</option>
@@ -105,7 +107,7 @@
 
                             <div class="col-md-4">
                                 <label>الإجراء</label>
-                                <select name="Service_id" class="form-control SlectBox">
+                                <select name="Service_id" class="form-control select2">
                                     <option value="s" selected>---إختر من القائمة---</option>
                                     @foreach ($Services as $Service)
                                         <option value="{{ $Service->id }}">{{ $Service->name }}</option>
@@ -118,7 +120,7 @@
 
                             <div class="col-md-4">
                                 <label>المبلغ</label>
-                                <select name="price" class="form-control SlectBox">
+                                <select name="price" class="form-control select2">
 
                                 </select>
                                 @error('price')
@@ -145,6 +147,26 @@
     <!-- row closed -->
 @endsection
 @section('js')
+    <!--Internal  Notify js -->
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
+
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!--Internal  jquery.maskedinput js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
+    <!--Internal  spectrum-colorpicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
+    <!-- Internal Select2.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/select2/js/select2.min.js') }}"></script>
+    <!--Internal Ion.rangeSlider.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+    <!--Internal  jquery-simple-datetimepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}">
+    </script>
+    <!-- Ionicons js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}">
+    </script>
+    <!-- Internal form-elements js -->
+    <script src="{{ URL::asset('/My/Dashboard/js/form-elements.js') }}"></script>
 @endsection

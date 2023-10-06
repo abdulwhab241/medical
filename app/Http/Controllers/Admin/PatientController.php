@@ -11,7 +11,7 @@ use App\Models\ReceiptAccount;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\PatientRequest;
+use App\Http\Requests\Admin\PatientRequest;
 
 class PatientController extends Controller
 {

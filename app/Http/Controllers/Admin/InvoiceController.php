@@ -12,7 +12,8 @@ use App\Models\PatientAccount;
 use App\Models\ReceiptAccount;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\InvoiceRequest;
+use App\Http\Requests\Admin\InvoiceRequest;
+
 
 class InvoiceController extends Controller
 {
@@ -135,6 +136,7 @@ class InvoiceController extends Controller
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
                 $patient_accounts->invoice_id = $Invoices->id;
                 $patient_accounts->credit = $All;
+                $patient_accounts->year =date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
     
@@ -210,6 +212,7 @@ class InvoiceController extends Controller
                 $patient_accounts = PatientAccount::where('invoice_id',strip_tags($request->id))->first();
                 $patient_accounts->date =date('y-m-d');
                 $patient_accounts->credit = $All;
+                $patient_accounts->year =date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
     

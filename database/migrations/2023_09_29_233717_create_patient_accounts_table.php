@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('Debit',50,2)->default(0);
             $table->decimal('credit',50,2)->default(0);
             $table->date('date');
-            // $table->integer('year');
+            $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -104,6 +105,13 @@ Route::get('/', function () {
             Route::resource('Receipt', ReceiptController::class);
 
         //############################# end Receipt route ######################################
+
+        //############################# Payment route ##########################################
+
+            Route::resource('Payment', PaymentController::class);
+
+        //############################# end Payment route ######################################
+        
 
 
     });

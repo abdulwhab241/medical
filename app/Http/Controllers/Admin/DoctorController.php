@@ -8,9 +8,9 @@ use App\Models\Section;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DoctorRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Admin\DoctorRequest;
 
 class DoctorController extends Controller
 {
