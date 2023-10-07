@@ -46,11 +46,11 @@
                     <div class="pd-30 pd-sm-40 bg-gray-200">
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     اسم الطبيب</label>
                             </div>
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 <input class="form-control" name="name" type="text" autofocus>
                                 @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -60,11 +60,11 @@
 
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     رقم الهاتف</label>
                             </div>
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 <input class="form-control" name="phone" type="number">
                                 @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -73,11 +73,11 @@
                         </div>
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     العنوان</label>
                             </div>
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 <textarea class="form-control" name="address" rows="2"></textarea>
                                 @error('address')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -87,12 +87,12 @@
 
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     القسم</label>
                             </div>
 
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 <select name="section_id" class="form-control SlectBox">
                                     @foreach ($sections as $section)
                                     <option value=""></option>
@@ -107,12 +107,12 @@
                         </div>
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     ايام الدوام</label>
                             </div>
 
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
 
                                 <select multiple="multiple" class="testselect2" name="day_id[]">
                                     <option value="1" selected >-- حدد المواعيد --</option>
@@ -126,11 +126,11 @@
                         </div>
 
                         <div class="row row-xs align-items-center mg-b-20">
-                            <div class="col-md-1">
-                                <label for="exampleInputEmail1">
+                            <div class="col-md-3">
+                                <label>
                                     صورة الطبيب</label>
                             </div>
-                            <div class="col-md-11 mg-t-5 mg-md-t-0">
+                            <div class="col-md-9 mg-t-5 mg-md-t-0">
                                 <input type="file" accept="image/*" name="photo" onchange="loadFile(event)">
                                 <img style="border-radius:50%" width="150px" height="150px" id="output" />
                             </div>

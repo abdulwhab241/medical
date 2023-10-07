@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SalaryController;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -157,6 +157,15 @@ Route::get('/', function () {
         Route::get('/Print_Medicines', [MedicineController::class, 'print'])->name('Print_Medicine');
 
     //############################# end Medicine route ######################################
+
+    //############################# Profile route ##########################################
+
+        Route::resource('Admin_Profile', AdminProfileController::class);
+
+        // Route::get('/Admin_Profile', [AdminProfileController::class, 'index'])->name('Admin_Profile');
+        // Route::post('information_admin', [AdminProfileController::class, 'update'])->name('information_admin');
+
+    //############################# end Profile route ######################################
 
 
     });

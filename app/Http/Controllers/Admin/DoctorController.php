@@ -133,7 +133,6 @@ class DoctorController extends Controller
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
-
     }
 
     public function destroy(Request $request)
