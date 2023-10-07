@@ -33,6 +33,10 @@
         @include('layouts.main-sidebar.laboratorie_employee-sidebar-main')
     @endif
 
+    {{-- @if (Auth::user()->job == 'الصيدلية')
+        @include('layouts.main-sidebar.laboratorie_employee-sidebar-main')
+    @endif --}}
+
 
     @if (auth('patient')->check())
         @include('layouts.main-sidebar.patient-sidebar-main')
@@ -40,3 +44,4 @@
 
 </aside>
 <!-- main-sidebar -->
+</div>
