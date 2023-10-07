@@ -34,6 +34,13 @@ return new class extends Migration
                         ///  شركات التأمين (مدين)
             $table->foreignId('company_id')->nullable()->references('id')->on('companies')->onDelete('cascade'); /// مدين
             
+                        ///  مشتريات الادوية (دائن)
+            $table->foreignId('medicine_id')->nullable()->references('id')->on('medicines')->onDelete('cascade'); /// دائن
+
+                        ///  مبيعات الادوية (مدين)
+            $table->foreignId('medicine_invoice_id')->nullable()->references('id')->on('medicine_invoices')->onDelete('cascade'); /// دائن
+
+
                         ///  فواتير التأمين (دائن)
             $table->foreignId('insurance_id')->nullable()->references('id')->on('insurance_invoices')->onDelete('cascade'); /// مدين
             

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\SalaryController;
 use App\Http\Controllers\Admin\ExpenseController;
@@ -11,10 +12,12 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\InsuranceController;
 use App\Http\Controllers\Admin\RayEmployeeController;
 use App\Http\Controllers\Admin\InsuranceDetailController;
 use App\Http\Controllers\Admin\InsuranceInvoiceController;
+use App\Http\Controllers\Admin\PharmacyEmployeeController;
 use App\Http\Controllers\Admin\LaboratoryEmployeeController;
 
 
@@ -141,7 +144,19 @@ Route::get('/', function () {
         Route::resource('Laboratory_Employee', LaboratoryEmployeeController::class);
 
     //############################# end Laboratory_Employee route ######################################
-        
+    
+    //############################# Pharmacy_Employee route ##########################################
+
+        Route::resource('Pharmacy_Employee', PharmacyEmployeeController::class);
+
+    //############################# end Pharmacy_Employee route ######################################
+
+    //############################# Medicine route ##########################################
+
+        Route::resource('Medicine', MedicineController::class);
+        Route::get('/Print_Medicines', [MedicineController::class, 'print'])->name('Print_Medicine');
+
+    //############################# end Medicine route ######################################
 
 
     });

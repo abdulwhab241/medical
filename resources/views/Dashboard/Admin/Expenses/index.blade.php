@@ -41,13 +41,13 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="{{ route('Expense.create') }}" class="btn btn-primary" role="button"
-                                aria-pressed="true">اضافة مصروف جديد</a>
+                            <a href="{{ route('Expense.create') }}" class="btn btn-primary" style="margin: 6px;"
+                                role="button" aria-pressed="true">اضافة مصروف جديد</a>
                         </div>
 
                         <div class="col-md-6">
 
-                            <a href="{{ route('Print_Expense') }}" class="btn btn-info" role="button"
+                            <a href="{{ route('Print_Expense') }}" class="btn btn-info" style="margin: 6px;" role="button"
                                 aria-pressed="true">طباعة المصروفات</a>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $Expense->name }}</td>
                                         <td>{{ number_format($Expense->price) }}</td>
-                
+
                                         <td>{{ $Expense->disc }}</td>
                                         <td>{{ $Expense->date }}</td>
                                         <td>{{ $Expense->create_by }}</td>

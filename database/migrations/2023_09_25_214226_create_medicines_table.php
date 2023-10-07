@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
-            $table->longText('name');
+
+            ///   مشتريات الادوية  ///
+
+            $table->longText('name');  
+            $table->longText('bar_code')->nullable();
+            $table->longText('supplier');  // المورد
+            $table->string('unit'); // باكت او علبة او قلم 
             $table->integer('quantity');
+            $table->decimal('buy_price', 50, 2);  // سعر الشراء
+            $table->decimal('sale_price', 50, 2);  // سعر البيع 
             $table->date('end_date');
-            $table->integer('status')->default(1);
+            $table->decimal('total', 50, 2);
             $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
