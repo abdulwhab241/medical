@@ -65,7 +65,12 @@ class MedicineController extends Controller
                 $total = 0;
                 $sub_total = strip_tags($request->Buy_Price) * strip_tags($request->Quantity);
                 $total = $sub_total;
-                // $All = $sub_total - strip_tags($request->Discount);
+
+                if(strip_tags($request->Sale_Price) <= strip_tags($request->Buy_Price))
+                {
+                    toastr()->info('لا يمكنك إضافة هذا الدواء لان سعر البيع اقل من سعر الشراء !! ');
+                    return redirect()->back();
+                }
 
                 // store Medicine
                 $Medicines = new Medicine();
@@ -115,7 +120,12 @@ class MedicineController extends Controller
                 $total = 0;
                 $sub_total = strip_tags($request->Buy_Price) * strip_tags($request->Quantity);
                 $total = $sub_total;
-                // $All = $sub_total - strip_tags($request->Discount);
+
+                if(strip_tags($request->Sale_Price) <= strip_tags($request->Buy_Price))
+                {
+                    toastr()->info('لا يمكنك إضافة هذا الدواء لان سعر البيع اقل من سعر الشراء !! ');
+                    return redirect()->back();
+                }
 
                 // update Medicine
                 $Medicines = Medicine::findOrFail(strip_tags($request->id));

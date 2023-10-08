@@ -5,16 +5,17 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('title')
-    إضافة تفاصيل لشركة التأمين
+    إضافة تشخيص للمريض
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">إضافة تفاصيل لشركة التأمين</h4><span
+                <h4 class="content-title mb-0 my-auto">إضافة تشخيص للمريض</h4><span
                     class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    شركات التأمين</span>
+                    <label style="color: cadetblue">{{  $Invoice->Patient->name }}</label>
+                    </span>
             </div>
         </div>
     </div>
@@ -27,16 +28,26 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('InsuranceDetails.store') }}" method="post" autocomplete="off">
+                    <form action="{{ route('Diagnostics.store') }}" method="post" autocomplete="off">
                         @csrf
+
+                        <input type="hidden" name="Invoice_id" value="{{$Invoice->id}}">
+                        <input type="hidden" name="patient_id" value="{{$Invoice->patient_id}}">
+                        <input type="hidden" name="doctor_id" value="{{$Invoice->doctor_id}}">
+        
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">التشخيص</label>
+                            <textarea class="form-control" name="diagnosis" rows="4">{{ old('diagnosis') }}</textarea>
+                        </div>
+
                         <div class="row">
 
-                            <div class="col-md-4">
-                                <label>أسم شركة التأمين</label>
-                                <select name="Insurance_id" class="form-control select2">
-                                    @foreach ($Insurances as $Insurance)
+                            <div class="col-md-6 col-xl-6">
+                                <label>أسم الدواء</label>
+                                <select name="Insurance_id" class="form-control select2" dir="ltr">
+                                    @foreach ($Medicines as $Medicine)
                                     <option value=""></option>
-                                        <option value="{{ $Insurance->id }}">{{ $Insurance->name }}</option>
+                                        <option value="{{ $Medicine->id }}">{{ $Medicine->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('Insurance_id')
@@ -44,9 +55,9 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label>رقم المشترك</label>
-                                <input type="text" name="Insurance_code" dir="ltr"
+                            <div class="col-md-3">
+                                <label>الجرعة</label>
+                                <input type="text" name="Insurance_code"
                                     value="{{ old('Insurance_code') }}"
                                     class="form-control @error('Insurance_code') is-invalid @enderror">
                                 @error('Insurance_code')
@@ -54,19 +65,13 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label>نوع المشترك</label>
-                                <select name="Name" class="form-control select2">
-                                    <option value="الموظف">الموظف</option>
-                                    <option value="الزوجة">الزوجة</option>
-                                    <option value="الابناء">الابناء</option>
-                                    <option value="الوالدين">الوالدين</option>
+                            <div class="col-md-3">
+                                <label>وقت الجرعة</label>
+                                <input type="text" name="Insurance_code"
+                                value="{{ old('Insurance_code') }}"
+                                class="form-control @error('Insurance_code') is-invalid @enderror">
 
-                                </select>
 
-                                @error('Name')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
 
                         </div>
@@ -77,25 +82,13 @@
                         <div class="row">
 
                             <div class="col-md-4">
-                                <label>نسبة تحمل المريض</label>
-                                <input type="number" name="Discount_percentage" value="{{ old('Discount_percentage') }}"
+                                <label>الفترة</label>
+                                <input type="text" name="Discount_percentage" value="{{ old('Discount_percentage') }}"
                                     class="form-control">
                             </div>
-
-                            <div class="col-md-4">
-                                <label>نسبة تحمل الشركة</label>
-                                <input type="number" name="Company_rate" value="{{ old('Company_rate') }}"
-                                    class="form-control @error('Company_rate') is-invalid @enderror">
-                                @error('Company_rate')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label>الملاحظات</label>
-                                <textarea rows="2" cols="4" class="form-control" name="Notes">{{ old('Notes') }}</textarea>
-                            </div>
                         </div>
+
+
 
                         <br>
 

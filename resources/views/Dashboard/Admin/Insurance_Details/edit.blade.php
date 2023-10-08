@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('css')
-      <!--Internal   Notify -->
-      <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
-      <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!--Internal   Notify -->
+    <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('title')
     تعديل تفاصيل شركة التأمين
@@ -48,7 +48,7 @@
 
                             <div class="col-md-4">
                                 <label>رقم المشترك</label>
-                                <input type="text" name="Insurance_code" dir="LTR"
+                                <input type="text" name="Insurance_code" dir="ltr"
                                     value="{{ $InsuranceDetails->insurance_code }}" class="form-control">
                             </div>
 

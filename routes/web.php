@@ -162,23 +162,12 @@ Route::get('/', function () {
 
         Route::resource('Admin_Profile', AdminProfileController::class);
 
-        // Route::get('/Admin_Profile', [AdminProfileController::class, 'index'])->name('Admin_Profile');
-        // Route::post('information_admin', [AdminProfileController::class, 'update'])->name('information_admin');
-
     //############################# end Profile route ######################################
 
 
     });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';

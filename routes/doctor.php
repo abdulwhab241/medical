@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Doctor\PatientController;
+use App\Http\Controllers\Doctor\DiagnosticController;
 
 
 
@@ -17,15 +19,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
 //################################ dashboard Doctor ##########################################
     Route::get('/doctor/dashboard', function () {
         return view('Dashboard.Dashboard_Doctors.dashboard');
     })->middleware(['auth'])->name('dashboard.doctor');
 //################################ end dashboard Doctor #####################################
 
+Route::middleware(['auth'])->group(function () {
 
 
+    //############################# Patient for Doctors route ###################################
 
+        Route::get('/patient_cashes', [PatientController::class, 'patient_cash'])->name('patient_cash');
+        Route::get('/patient_insurances', [PatientController::class, 'patient_insurance'])->name('patient_insurance');
+        Route::get('/patient_Diagnostics/{id}', [PatientController::class, 'edit'])->name('patient_edit');
+    
+    //############################# end Patient for Doctors route ###############################
+
+    //############################# Diagnostic Patients route ###################################
+
+        Route::resource('Diagnostics', DiagnosticController::class);
+
+    //############################# end Diagnostic Patients route ###############################
+
+
+});
 
 
 require __DIR__.'/auth.php';

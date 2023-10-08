@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                <select name="section_id" class="form-control SlectBox">
+                                <select name="section_id" class="form-control select2">
                                     @foreach ($sections as $section)
                                     <option value=""></option>
                                         <option value="{{ $section->id }}">{{ $section->name }}</option>
