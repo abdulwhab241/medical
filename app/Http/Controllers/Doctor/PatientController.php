@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\Models\Invoice;
+use App\Models\Service;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 use App\Models\InsuranceInvoice;
@@ -17,7 +18,6 @@ class PatientController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             $Invoices =  Invoice::where('user_doctor_id', auth()->user()->id)->where('invoice_date', date('y-m-d'))->get();
-            // $Medicines = Medicine::all();
             return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-cash',compact('Invoices'));
         }
         toastr()->error('لا يمكنك الدخول ');
@@ -28,10 +28,7 @@ class PatientController extends Controller
     {
         if(Auth::user()->job == 'دكتور')
         {
-            // if($invoice->user_doctor_id = auth()->user()->id)
-            // {
 
-            // }
             $Invoices =  InsuranceInvoice::where('user_doctor_id', auth()->user()->id)->where('date', date('y-m-d'))->get();
             return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-insurance',compact('Invoices'));
         }
@@ -45,6 +42,7 @@ class PatientController extends Controller
         {
             $Invoice = Invoice::findOrFail($id);
             $Medicines = Medicine::all();
+            // $Services = Service::all();
 
             return view('Dashboard.Dashboard_Doctors.Diagnostics.add',compact('Invoice','Medicines'));
         }

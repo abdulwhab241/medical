@@ -20,11 +20,11 @@
         <!--div-->
         <div class="col-xl-12">
             <div class="card">
-                {{-- <div class="card-header pb-0">
+                <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('Invoices.create') }}" class="btn btn-primary">اضافة مريض جديد</a>
+                        <a href="{{ route('Diagnostics.index') }}" class="btn btn-primary">عرض تشخيصات المرضى</a>
                     </div>
-                </div> --}}
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="example1" style="text-align: center;">

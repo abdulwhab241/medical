@@ -31,47 +31,51 @@
                     <form action="{{ route('Diagnostics.store') }}" method="post" autocomplete="off">
                         @csrf
 
-                        <input type="hidden" name="Invoice_id" value="{{$Invoice->id}}">
-                        <input type="hidden" name="patient_id" value="{{$Invoice->patient_id}}">
-                        <input type="hidden" name="doctor_id" value="{{$Invoice->doctor_id}}">
+                        <input type="hidden" name="id" value="{{$Invoice->id}}">
+                        <input type="hidden" name="Patient_id" value="{{$Invoice->patient_id}}">
         
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">التشخيص</label>
-                            <textarea class="form-control" name="diagnosis" rows="4">{{ old('diagnosis') }}</textarea>
+                            <textarea class="form-control" name="Diagnosis" rows="4">{{ old('Diagnosis') }}</textarea>
+                            @error('Diagnosis')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         </div>
 
                         <div class="row">
 
                             <div class="col-md-6 col-xl-6">
                                 <label>أسم الدواء</label>
-                                <select name="Insurance_id" class="form-control select2" dir="ltr">
+                                <select name="Medicine_id[]"  multiple="multiple" class="form-control select2" dir="ltr">
                                     @foreach ($Medicines as $Medicine)
                                     <option value=""></option>
                                         <option value="{{ $Medicine->id }}">{{ $Medicine->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('Insurance_id')
+                                @error('Medicine_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3">
                                 <label>الجرعة</label>
-                                <input type="text" name="Insurance_code"
-                                    value="{{ old('Insurance_code') }}"
-                                    class="form-control @error('Insurance_code') is-invalid @enderror">
-                                @error('Insurance_code')
+                                <input type="text" name="Dosage"
+                                    value="{{ old('Dosage') }}"
+                                    class="form-control @error('Dosage') is-invalid @enderror">
+                                @error('Dosage')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3">
                                 <label>وقت الجرعة</label>
-                                <input type="text" name="Insurance_code"
-                                value="{{ old('Insurance_code') }}"
-                                class="form-control @error('Insurance_code') is-invalid @enderror">
+                                <input type="text" name="Use"
+                                value="{{ old('Use') }}"
+                                class="form-control @error('Use') is-invalid @enderror">
 
-
+                                @error('Use')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
                         </div>
@@ -83,8 +87,11 @@
 
                             <div class="col-md-4">
                                 <label>الفترة</label>
-                                <input type="text" name="Discount_percentage" value="{{ old('Discount_percentage') }}"
+                                <input type="text" name="Period" value="{{ old('Period') }}"
                                     class="form-control">
+                                    @error('Period')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
