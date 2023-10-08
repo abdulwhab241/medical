@@ -25,7 +25,7 @@ class DoctorRequest extends FormRequest
             'address' => 'required',
             'name' => 'required',
             'section_id' => 'required|integer',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:9',
+            'phone' => 'required',
         ];
     }
 

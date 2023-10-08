@@ -5,7 +5,7 @@
                 @php $Users = \App\Models\User::findOrFail(auth()->user()->id); @endphp
 
                 @if ($Users->image)
-                    <img src="{{ URL::asset('/My/Dashboard/img/doctors/' . $Users->image->filename) }}"
+                    <img src="{{ URL::asset('/My/Dashboard/img/accountants/' . $Users->image->filename) }}"
                         class="avatar avatar-xl brround" alt="{{ $Users->name }}">
                 @else
                     <img class="avatar avatar-xl brround" src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}"

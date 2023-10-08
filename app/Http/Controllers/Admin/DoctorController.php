@@ -59,6 +59,7 @@ class DoctorController extends Controller
 
         if(Auth::user()->job == 'admin')
         {
+            // dd($request);
             try {
 
                 $doctors = new User();
@@ -70,7 +71,7 @@ class DoctorController extends Controller
                 $doctors->address = strip_tags($request->address);
                 $doctors->status = 1;
                 $doctors->date = date('Y-m-d');
-                $doctors->day = implode(' و ', $request->day_id);
+                $doctors->day = strip_tags($request->day_id);
                 $doctors->create_by = auth()->user()->name;
                 $doctors->save();
     
@@ -107,7 +108,12 @@ class DoctorController extends Controller
                 $doctor->address = strip_tags($request->address);
                 $doctor->status = 1;
                 $doctor->date = date('Y-m-d');
-                $doctor->day = implode(' و ', $request->day_id);
+
+
+                $doctor->day =  strip_tags($request->day_id);
+                
+
+                // $doctor->day = implode(' و ', $request->day_id);
                 $doctor->create_by = auth()->user()->name;
                 $doctor->save();
     
@@ -151,23 +157,6 @@ class DoctorController extends Controller
                 }
         
         
-              //---------------------------------------------------------------
-        
-            else{
-
-                // delete selector doctor
-                $delete_select_id = explode(",", $request->delete_select_id);
-                foreach ($delete_select_id as $ids_doctors){
-                    $doctor = User::findOrFail($ids_doctors);
-                    if($doctor->image){
-                        $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
-                    }
-                }
-
-                User::destroy($delete_select_id);
-                toastr()->error('تم حذف الاطباء بنجاح');
-                return redirect()->route('Doctors.index');
-            }
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();

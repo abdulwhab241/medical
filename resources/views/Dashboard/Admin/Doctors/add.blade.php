@@ -33,7 +33,7 @@
 @endsection
 @section('content')
 
-{{-- @include('Dashboard.messages_alert') --}}
+@include('Dashboard.messages_alert')
 
 <!-- row -->
 <div class="row">
@@ -113,13 +113,7 @@
                             </div>
 
                             <div class="col-md-9 mg-t-5 mg-md-t-0">
-
-                                <select multiple="multiple" class="testselect2" name="day_id[]">
-                                    <option value="1" selected >-- حدد المواعيد --</option>
-                                    @foreach ($Days as $Day)
-                                        <option value="{{ $Day->name }}">{{ $Day->name }}</option>
-                                    @endforeach
-                                </select>
+                                <textarea class="form-control" name="day_id" rows="2">{{ old('day_id') }}</textarea>
 
                             </div>
 
@@ -136,7 +130,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-main-primary pd-x-30 mg-r-5 mg-t-5">حفظ البيانات</button>
+                        <br><button type="submit" class="btn btn-main-primary  btn-block">حفظ البيانات</button>
                     </div>
                 </form>
             </div>
@@ -144,9 +138,9 @@
     </div>
 </div>
 <!-- /row -->
-</div>
+{{-- </div>
 <!-- Container closed -->
-</div>
+</div> --}}
 <!-- main-content closed -->
 @endsection
 @section('js')

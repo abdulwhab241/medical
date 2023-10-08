@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\DoctorController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
@@ -25,12 +26,20 @@ Route::middleware('guest')->group(function () {
 
 //################################## Route Admin ##############################################
 
-Route::post('/login/Admin', [AdminController::class, 'store']
-)->middleware('guest')->name('login.Admin');
+    Route::post('/login/Admin', [AdminController::class, 'store']
+    )->middleware('guest')->name('login.Admin');
 
-// Route::post('/logout/Admin', [AdminController::class, 'destroy'])->middleware('auth:Admin')->name('logout.Admin');
-Route::post('/logout/Admin', [AdminController::class, 'destroy'])
-->name('logout.admin');
+    Route::post('/logout/Admin', [AdminController::class, 'destroy'])
+    ->name('logout.admin');
+//#############################################################################################
+
+//################################## Route Doctor ##############################################
+
+    Route::post('/login/Doctor', [DoctorController::class, 'store']
+    )->middleware('guest')->name('login.Doctor');
+
+    Route::post('/logout/Doctor', [DoctorController::class, 'destroy'])
+    ->name('logout.Doctor');
 //#############################################################################################
 
 

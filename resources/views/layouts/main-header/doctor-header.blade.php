@@ -1,6 +1,4 @@
-<!-- main-header opened -->
-<div class="main-header sticky side-header nav nav-item">
-    <div class="container-fluid">
+
         <div class="main-header-left ">
             <div class="responsive-logo">
                 <a href="{{ url('/' . ($page = 'index')) }}"><img
@@ -24,43 +22,7 @@
             </div>
         </div>
         <div class="main-header-right">
-            {{-- <ul class="nav">
-                <li class="">
-                    <div class="dropdown  nav-itemd-none d-md-flex">
-                        <a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown"
-                            aria-expanded="false">
-                            @if (App::getLocale() == 'ar')
-                                <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('/My/Dashboard/img/flags/egypt_flag.jpg') }}"
-                                        alt="img"></span>
-                                <strong
-                                    class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
-                            @else
-                                <span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('/My/Dashboard/img/flags/us_flag.jpg') }}"
-                                        alt="img"></span>
-                                <strong
-                                    class="mr-2 ml-2 my-auto">{{ LaravelLocalization::getCurrentLocaleName() }}</strong>
-                            @endif
-                            <div class="my-auto">
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow" x-placement="bottom-end">
-                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
-                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    @if ($properties['native'] == 'English')
-                                        <i class="flag-icon flag-icon-us"></i>
-                                    @elseif($properties['native'] == 'العربية')
-                                        <i class="flag-icon flag-icon-eg"></i>
-                                    @endif
-                                    {{ $properties['native'] }}
-                                </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </li>
-            </ul> --}}
+
             <div class="nav nav-item  navbar-nav-right ml-auto">
                 <div class="nav-link" id="bs-example-navbar-collapse-1">
                     <form class="navbar-form" role="search">
@@ -116,7 +78,8 @@
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
                                 </div>
                             </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
+
+                            {{-- <a href="#" class="p-3 d-flex border-bottom">
                                 <div class="drop-img cover-image"
                                     data-image-src="{{ URL::asset('/My/Dashboard/img/faces/2.jpg') }}">
                                     <span class="avatar-status bg-teal"></span>
@@ -129,6 +92,7 @@
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 06 01:12 AM</p>
                                 </div>
                             </a>
+
                             <a href="#" class="p-3 d-flex border-bottom">
                                 <div class="drop-img cover-image"
                                     data-image-src="{{ URL::asset('/My/Dashboard/img/faces/9.jpg') }}">
@@ -142,6 +106,7 @@
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 25 10:35 AM</p>
                                 </div>
                             </a>
+
                             <a href="#" class="p-3 d-flex border-bottom">
                                 <div class="drop-img cover-image"
                                     data-image-src="{{ URL::asset('/My/Dashboard/img/faces/12.jpg') }}">
@@ -155,6 +120,7 @@
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 12 05:12 PM</p>
                                 </div>
                             </a>
+
                             <a href="#" class="p-3 d-flex border-bottom">
                                 <div class="drop-img cover-image"
                                     data-image-src="{{ URL::asset('/My/Dashboard/img/faces/5.jpg') }}">
@@ -167,7 +133,8 @@
                                     <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
                                     <p class="time mb-0 text-left float-right mr-2 mt-2">Jan 29 03:16 PM</p>
                                 </div>
-                            </a>
+                            </a> --}}
+
                         </div>
                         <div class="text-center dropdown-footer">
                             <a href="text-center">VIEW ALL</a>
@@ -242,22 +209,41 @@
                         </svg>
                     </a>
                 </div>
+
+                @php $Users = \App\Models\User::findOrFail(auth()->user()->id); @endphp
+
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                    <a class="profile-user d-flex" href=""><img alt=""
-                            src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}"></a>
+                    <a class="profile-user d-flex" href="">
+                        
+                        @if ($Users->image)
+                        <img src="{{ URL::asset('/My/Dashboard/img/doctors/' . $Users->image->filename) }}"
+                            alt="{{ $Users->name }}">
+                    @else
+                        <img src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" alt="">
+                    @endif
+                        </a>
                     <div class="dropdown-menu">
                         <div class="main-header-profile bg-primary p-3">
                             <div class="d-flex wd-100p">
-                                <div class="main-img-user"><img alt=""
-                                        src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class=""></div>
+                                <div class="main-img-user">
+                                    @if ($Users->image)
+                                    <img src="{{ URL::asset('/My/Dashboard/img/doctors/' . $Users->image->filename) }}"
+                                        class="" alt="{{ $Users->name }}">
+                                @else
+                                    <img src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class=""
+                                        alt="">
+                                @endif
+                                    <img alt=""
+                                        src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class="">
+                                    </div>
                                 <div class="mr-3 my-auto">
                                     <h6>{{ auth()->user()->name }}</h6><span>{{ auth()->user()->phone }}</span>
                                 </div>
                             </div>
                         </div>
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>الملف الشخصي</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a>
-                        {{-- @if (auth('web')->check()) --}}
+                        {{-- <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a> --}}
+
                         <form method="POST" action="{{ route('logout', 'web') }}">
                             @csrf
                             <a class="dropdown-item" href="#"
@@ -267,69 +253,15 @@
                         </form>
 
 
-                        {{-- @elseif(auth('admin')->check())
-                                <form method="POST" action="{{ route('logout.admin') }}">
-                                @elseif(auth('doctor')->check())
-                                    <form method="POST" action="{{ route('logout.doctor') }}">
-                                    @elseif(auth('ray_employee')->check())
-                                        <form method="POST" action="{{ route('logout.ray_employee') }}">
-                                        @elseif(auth('laboratorie_employee')->check())
-                                            <form method="POST" action="{{ route('logout.laboratorie_employee') }}"> --}}
-                        {{-- @else
-                                                <form method="POST" action="{{ route('logout.patient') }}">
-                        @csrf
-                        
-                                                    @endif --}}
-
-                        {{-- <button class="dropdown-item">
-                                <i class="bx bx-log-out"></i>تسجيل الخروج
-                            </button> --}}
 
                     </div>
                 </div>
-                {{-- <div class="dropdown main-header-message right-toggle">
-                    <a class="nav-link pr-0" data-toggle="sidebar-left" data-target=".sidebar-left">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-menu">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </a>
-                </div> --}}
+
             </div>
         </div>
-    </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
-<script src="{{ asset('/My/js/app.js') }}"></script>
 
-<script>
-    var notificationsWrapper = $('.dropdown-notifications');
-    var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-    var notificationsCount = parseInt(notificationsCountElem.data('count'));
-
-    var notifications = notificationsWrapper.find('h4.notification-label');
-    var new_message = notificationsWrapper.find('.new_message');
-    new_message.hide();
-
-    Echo.private('create-invoice.{{ auth()->user()->id }}').listen('.create-invoice', (data) => {
-        var newNotificationHtml = `
-       <h4 class="notification-label mb-1">` + data.message + data.patient + `</h4>
-       <div class="notification-subtext">` + data.created_at + `</div>`;
-        new_message.show();
-        notifications.html(newNotificationHtml);
-        notificationsCount += 1;
-        notificationsCountElem.attr('data-count', notificationsCount);
-        notificationsWrapper.find('.notif-count').text(notificationsCount);
-        notificationsWrapper.show();
-    });
-</script>
 
 
 

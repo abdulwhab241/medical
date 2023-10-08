@@ -26,11 +26,11 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'موظف الصيدلية',
+            'name' => 'الدكتور محمد الصيدلية',
             'job' => 'الصيدلية',
             'phone' => '123',
             'date' => '2023-09-27',
-            'address' => 'موظف الصيدلية',
+            'address' => 'الدكتور محمد الصيدلية',
             'password' => Hash::make('123'),
         ]);
 
@@ -55,20 +55,20 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'موظف المختبر',
+            'name' => 'الدكتور خالد المختبر',
             'job' => 'المختبر',
             'phone' => '123',
             'date' => '2023-09-27',
-            'address' => 'موظف المختبر',
+            'address' => 'الدكتور خالد المختبر',
             'password' => Hash::make('123'),
         ]);
 
         DB::table('users')->insert([
-            'name' => 'موظف الاشعة',
+            'name' => 'الدكتور ابراهيم الاشعة',
             'job' => 'الأشعة',
             'phone' => '123',
             'date' => '2023-09-27',
-            'address' => 'موظف الاشعة',
+            'address' => 'الدكتور ابراهيم الاشعة',
             'password' => Hash::make('123'),
         ]);
     }

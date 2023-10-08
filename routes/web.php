@@ -39,11 +39,11 @@ Route::get('/', function () {
 
     Route::get('/login', [HomeController::class, 'index'])->name('selection');
 
-//################################ dashboard User ##########################################
+//################################ dashboard Admin ##########################################
     Route::get('/admin/dashboard', function () {
         return view('Dashboard.Admin.dashboard');
     })->middleware(['auth'])->name('dashboard.admin');
-//################################ end dashboard User #####################################
+//################################ end dashboard Admin #####################################
 
 
 // //################################ dashboard admin ########################################

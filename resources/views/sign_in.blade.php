@@ -56,8 +56,8 @@
                                                     <option value="user">محاسب</option>
                                                     <option value="admin">Admin</option>
                                                     <option value="doctor"> دكتور</option>
-                                                    <option value="ray_employee">موظف اشعة</option>
-                                                    <option value="laboratorie_employee">موظف مختبر</option>
+                                                    <option value="ray_employee">دكتور الاشعة</option>
+                                                    <option value="laboratorie_employee">دكتور المختبر</option>
                                                 </select>
                                             </div>
 
@@ -79,8 +79,45 @@
                                                         class="btn btn-main-primary btn-block">دخول</button>
 
                                                 </form>
+                                            </div>
+
+                                            
+                                            <!-- form Doctor -->
+                                            <div class="panel" id="doctor">
+                                                <h2>دخول دكتور</h2>
+                                                <form method="POST" action="{{ route('login.Doctor') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>أسم الطبيب</label> <input class="form-control"
+                                                            placeholder="ادخل أسم الطبيب" type="text" name="name"
+                                                            :value="old('name')" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>كلمة المرور</label> <input class="form-control"
+                                                            placeholder="ادخل كلمة المرور" type="password"name="password"
+                                                            required autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">دخول</button>
+
+                                                </form>
+                                                {{-- <form method="POST" action="{{ route('login.Admin') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>أسم الطبيب</label> <input class="form-control"
+                                                            placeholder="ادخل اسم الطبيب" type="text" name="name"
+                                                            :value="old('name')" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>كلمة المرور</label> <input class="form-control"
+                                                            placeholder="ادخل كلمة المرور" type="password"name="password"
+                                                            required autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">دخول</button>
+
+                                                </form> --}}
 
                                             </div>
+
                                             {{-- <!-- form patient -->
                                             <div class="panel" id="patient">
                                                 <h2>دخول مريض</h2>

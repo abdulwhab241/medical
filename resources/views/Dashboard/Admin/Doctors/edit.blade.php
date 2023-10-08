@@ -33,7 +33,7 @@
 @endsection
 @section('content')
 
-@include('Dashboard.messages_alert')
+{{-- @include('Dashboard.messages_alert') --}}
 
 <!-- row -->
 <div class="row">
@@ -116,13 +116,8 @@
                             </div>
 
                             <div class="col-md-9 mg-t-5 mg-md-t-0">
-                                <select multiple="multiple" class="testselect2" name="day_id[]">
-                                    <option>{{ $doctor->day }}</option>
-                                    @foreach ($Days as $Day)
-                                        <option value="{{ $Day->name }}">{{ $Day->name }}</option>
-                                    @endforeach
+                                <textarea class="form-control" name="day_id" rows="1">{{ $doctor->day }}</textarea>
 
-                                </select>
                             </div>
 
                         </div>
