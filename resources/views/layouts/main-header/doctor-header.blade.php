@@ -233,8 +233,8 @@
                                     <img src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class=""
                                         alt="">
                                 @endif
-                                    <img alt=""
-                                        src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class="">
+
+                                
                                     </div>
                                 <div class="mr-3 my-auto">
                                     <h6>{{ auth()->user()->name }}</h6><span>{{ auth()->user()->phone }}</span>

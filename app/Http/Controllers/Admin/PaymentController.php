@@ -122,14 +122,14 @@ class PaymentController extends Controller
     {
         if(Auth::user()->job == 'admin')
         {
-            // $Checks = PatientAccount::where('patient_id',strip_tags($request->Patient_id))
-            // ->where('credit', strip_tags($request->price))->where('year', date('Y'))->pluck('credit');
+            $Checks = PatientAccount::where('patient_id',strip_tags($request->Patient_id))
+            ->where('credit', strip_tags($request->price))->where('year', date('Y'))->pluck('credit');
 
-            // if($Checks->count() == 0)
-            // {
-            //     toastr()->info('عذراً لا يمكنك تعديل سند الصرف لهذا المريض بسبب عدم وجود اي مبلغ مطابق لمبلغ المريض في حسابه !!');
-            //     return redirect()->back();
-            // }
+            if($Checks->count() == 0)
+            {
+                toastr()->info('عذراً لا يمكنك تعديل سند الصرف لهذا المريض بسبب عدم وجود اي مبلغ مطابق لمبلغ المريض في حسابه !!');
+                return redirect()->back();
+            }
 
                 // update Payments
             $Payments = PaymentAccount::findOrFail(strip_tags($request->id));

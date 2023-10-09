@@ -42,9 +42,8 @@ class PatientController extends Controller
         {
             $Invoice = Invoice::findOrFail($id);
             $Medicines = Medicine::all();
-            // $Services = Service::all();
 
-            return view('Dashboard.Dashboard_Doctors.Diagnostics.add',compact('Invoice','Medicines'));
+            return view('Dashboard.Dashboard_Doctors.Patient_Medicines.create',compact('Invoice','Medicines'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();

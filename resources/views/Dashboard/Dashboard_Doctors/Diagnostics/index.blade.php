@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    الاطباء
+    قائمة تشخيصات المرضى
 @stop
 @section('css')
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
@@ -12,9 +12,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الاطباء</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    قائمة الاطباء</span>
+                <h4 class="content-title mb-0 my-auto">قائمة تشخيصات المرضى</h4>
             </div>
         </div>
     </div>
@@ -27,36 +25,42 @@
         <!--div-->
         <div class="col-xl-12">
             <div class="card mg-b-20">
-    
+
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="table key-buttons text-md-nowrap" style="text-align:center;">
+                        <table class="table text-md-nowrap" id="example1" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>أسم المريض</th>
                                     <th>أسم الطبيب</th>
-                                    <th>التشخيص</th>
-                                    <th>الدواء</th>
                                     <th>تاريخ الزيارة</th>
+                                    <th>التشخيص</th>
+                                    <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($Diagnostics as $Diagnostic)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-
                                         <td>{{ $Diagnostic->Patient->name }}</td>
-
                                         <td>{{ $Diagnostic->Doctor->name }}</td>
+                                        <td>{{ $Diagnostic->date }}</td>
                                         <td>{{ $Diagnostic->diagnosis }}</td>
+
                                         <td>
-                                            {{ $Diagnostic->Medicine->name }}
+                                            <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
+                                            data-toggle="modal" href="#edit{{ $Diagnostic->id }}"><i
+                                                class="las la-pen"></i> تعديل </a>
+
+                                            {{-- <a class="modal-effect btn btn-sm btn-primary" data-effect="effect-scale"
+                                                data-toggle="modal"
+                                                href="{{ route('Diagnostics.edit', $Diagnostic->id) }}"><i class="fa fa-eye"
+                                                    aria-hidden="true"></i>&nbsp;&nbsp; عرض البيانات </a> --}}
                                         </td>
 
-                                        <td>{{ $Diagnostic->date }}</td>
-
                                     </tr>
+                                    @include('Dashboard.Dashboard_Doctors.Diagnostics.edit')
 
                                 @endforeach
                             </tbody>
@@ -78,33 +82,6 @@
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
 
-    <script>
-        $(function() {
-            jQuery("[name=select_all]").click(function(source) {
-                checkboxes = jQuery("[name=delete_select]");
-                for (var i in checkboxes) {
-                    checkboxes[i].checked = source.target.checked;
-                }
-            });
-        })
-    </script>
-
-
-    <script type="text/javascript">
-        $(function() {
-            $("#btn_delete_all").click(function() {
-                var selected = [];
-                $("#example input[name=delete_select]:checked").each(function() {
-                    selected.push(this.value);
-                });
-
-                if (selected.length > 0) {
-                    $('#delete_select').modal('show')
-                    $('input[id="delete_select_id"]').val(selected);
-                }
-            });
-        });
-    </script>
 
 
 

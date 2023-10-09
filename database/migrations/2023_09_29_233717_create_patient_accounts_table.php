@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('invoice_id')->nullable()->references('id')->on('invoices')->onDelete('cascade');
             $table->foreignId('insurance_invoice_id')->nullable()->references('id')->on('insurance_invoices')->onDelete('cascade');
             $table->foreignId('diagnostic_id')->nullable()->references('id')->on('diagnostics')->onDelete('cascade');
-            $table->foreignId('medicine_id')->nullable()->references('id')->on('medicines')->onDelete('cascade');
+            $table->foreignId('medicine_id')->nullable()->references('id')->on('medicine_invoices')->onDelete('cascade');
             $table->foreignId('user_doctor_id')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable()->references('id')->on('payment_accounts')->onDelete('cascade');
             $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');

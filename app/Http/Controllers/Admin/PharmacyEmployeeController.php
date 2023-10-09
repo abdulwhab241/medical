@@ -41,7 +41,7 @@ class PharmacyEmployeeController extends Controller
                 //Upload img
                 // $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\User');
     
-                toastr()->success('تم إضافة بيانات موظف الصيدلية بنجاح');
+                toastr()->success('تم إضافة بيانات دكتور الصيدلية بنجاح');
                 return redirect()->back();
     
             }
@@ -73,7 +73,7 @@ class PharmacyEmployeeController extends Controller
                 //Upload img
                 // $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\User');
     
-                toastr()->success('تم تعديل بيانات موظف الصيدلية بنجاح');
+                toastr()->success('تم تعديل بيانات دكتور الصيدلية بنجاح');
                 return redirect()->back();
     
             }
@@ -91,7 +91,7 @@ class PharmacyEmployeeController extends Controller
         {
             User ::destroy(strip_tags($request->id));
 
-            toastr()->error('تم حذف بيانات موظف الصيدلية بنجاح');
+            toastr()->error('تم حذف بيانات دكتور الصيدلية بنجاح');
             return redirect()->back();
         }
         toastr()->error('لا يمكنك الدخول ');

@@ -23,7 +23,7 @@ class DiagnosticRequest extends FormRequest
     {
         return [
             'Diagnosis' => 'required',
-            'Medicine_id' => 'required|integer',
+            'Medicine_id' => 'required',
             'Dosage' => 'required',
             'Use' => 'required',
             'Period' => 'required',
@@ -34,8 +34,8 @@ class DiagnosticRequest extends FormRequest
     {
         return [
             'Medicine_id' => [
-                'required' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء ',
-                'integer' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء '
+                'required' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء '
+                // 'integer' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء '
             ],
             'Diagnosis' => [
                 'required' => 'التشخيص مطلوب الرجى كتابة التشخيص بشكل صحيح '

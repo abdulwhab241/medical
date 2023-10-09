@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('medicine_invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('diagnostic_id')->references('id')->on('diagnostics')->onDelete('cascade');
-            $table->foreignId('medicine_id')->nullable()->references('id')->on('medicines')->onDelete('cascade');
+            // $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            // $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('patient_medicine_id')->references('id')->on('patient_medicines')->onDelete('cascade');
+            // $table->foreignId('medicine_id')->nullable()->references('id')->on('medicines')->onDelete('cascade');
             $table->decimal('price', 50, 2)->default(0);
             $table->integer('quantity')->default(1);
             $table->decimal('total', 50, 2)->default(0);

@@ -20,11 +20,7 @@
         <!--div-->
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
-                        <a href="{{ route('Diagnostics.index') }}" class="btn btn-primary">عرض تشخيصات المرضى</a>
-                    </div>
-                </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="example1" style="text-align: center;">
@@ -37,8 +33,6 @@
                                     <th>نوع التعامل</th>
                                     <th>إجمالي الفاتورة</th>
                                     <th>المحاسب</th>
-
-
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -62,13 +56,13 @@
                                                     type="button">العمليات<i class="fas fa-caret-down mr-1"></i></button>
 
                                                 <div class="dropdown-menu tx-13 text-center">
-                                                    <a class="dropdown-item" href="{{ route('patient_edit', $Invoice->id ) }}" ><i
-                                                        class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة
-                                                    تشخيص </a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#add_review{{ $Invoice->id }}"><i
+                                                        data-target="#add_diagnosis{{ $Invoice->id }}"><i
+                                                            class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة
+                                                        تشخيص </a>
+                                                    <a class="dropdown-item" href="{{ route('add_medicines', $Invoice->id) }}" ><i
                                                             class="text-warning far fa-file-alt"></i>&nbsp;&nbsp;اضافة
-                                                        مراجعة </a>
+                                                            دواء </a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#xray_conversion{{ $Invoice->id }}"><i
                                                             class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي
@@ -79,13 +73,17 @@
                                                         المختبر </a>
 
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#laboratorie_conversion{{ $Invoice->id }}"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;عرض تفاصيل
+                                                        data-target="#laboratorie_conversion{{ $Invoice->id }}"><i
+                                                            class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;عرض تفاصيل
                                                         المريض </a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    {{-- @include('Dashboard.Admin.Invoices.Deleted') --}}
+                                    @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_diagnosis')
+                                    {{-- @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_review')
+                                    @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion')
+                                    @include('Dashboard.Dashboard_Doctors.Patient_Doctors.Laboratorie_conversion') --}}
                                 @endforeach
                             </tbody>
                         </table>

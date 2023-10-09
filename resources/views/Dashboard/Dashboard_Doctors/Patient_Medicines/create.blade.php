@@ -5,17 +5,16 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('title')
-    إضافة تشخيص للمريض
+    إضافة دواء للمريض
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">إضافة تشخيص للمريض</h4><span
+                <h4 class="content-title mb-0 my-auto">إضافة دواء للمريض</h4><span
                     class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    <label style="color: cadetblue">{{  $Invoice->Patient->name }}</label>
-                    </span>
+                    <label style="color: cadetblue">{{  $Invoice->Patient->name }}</label></span>
             </div>
         </div>
     </div>
@@ -34,13 +33,7 @@
                         <input type="hidden" name="id" value="{{$Invoice->id}}">
                         <input type="hidden" name="Patient_id" value="{{$Invoice->patient_id}}">
         
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">التشخيص</label>
-                            <textarea class="form-control" name="Diagnosis" rows="4">{{ old('Diagnosis') }}</textarea>
-                            @error('Diagnosis')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        </div>
+
 
                         <div class="row">
 

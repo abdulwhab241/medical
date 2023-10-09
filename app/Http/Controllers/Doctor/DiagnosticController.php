@@ -17,48 +17,84 @@ class DiagnosticController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             $Diagnostics =  Diagnostic::all();
-            // $Medicines = Medicine::all();
             return view('Dashboard.Dashboard_Doctors.Diagnostics.index',compact('Diagnostics'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
     }
 
+
     public function store(Request $request)
     {
         if(Auth::user()->job == 'دكتور')
         {
-            dd($request);
             try{
-                // store Diagnostics
+
+                  // store Diagnostics
                 $Diagnostics = new Diagnostic();
-                $Diagnostics->invoice_id = strip_tags($request->id);
+                $Diagnostics->invoice_id = strip_tags($request->Invoice_id);
                 $Diagnostics->patient_id = strip_tags($request->Patient_id);
                 $Diagnostics->user_doctor_id = auth()->user()->id;
                 $Diagnostics->diagnosis = strip_tags($request->Diagnosis);
-                $Diagnostics->medicine_id = strip_tags($request->Medicine_id);
-                $Diagnostics->dosage = strip_tags($request->Dosage);
-                $Diagnostics->use =  strip_tags($request->Use);
-                $Diagnostics->period = strip_tags($request->Period);
                 $Diagnostics->date =date('y-m-d');
-                $Diagnostics->year = date('Y');
-                $Diagnostics->create_by  = auth()->user()->name;
+                $Diagnostics->year =date('Y');
+                $Diagnostics->create_by = auth()->user()->name;
                 $Diagnostics->save();
-    
-    
-                // store patient_accounts
+
+
+                 // store patient_accounts
                 $patient_accounts = new PatientAccount();
-                $patient_accounts->date =date('y-m-d');
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
-                $patient_accounts->invoice_id = strip_tags($request->id);
+                $patient_accounts->invoice_id = strip_tags($request->Invoice_id);
+                $patient_accounts->user_doctor_id = auth()->user()->id;
                 $patient_accounts->diagnostic_id = $Diagnostics->id;
+                $patient_accounts->date =date('y-m-d');
                 $patient_accounts->year =date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
-    
-    
                 toastr()->success('تم إضافة تشخيص المريض بنجاح');
-                return redirect()->route('patient_cash');
+                return redirect()->back();
+
+
+            }
+            
+            catch (\Exception $e) {
+    
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            }        }
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
+
+    public function update(Request $request)
+    {
+        if(Auth::user()->job == 'دكتور')
+        {
+            try{
+
+                // update Diagnostics
+                $Diagnostics = Diagnostic::findOrFail(strip_tags($request->id));
+                $Diagnostics->invoice_id = strip_tags($request->Invoice_id);
+                $Diagnostics->patient_id = strip_tags($request->Patient_id);
+                $Diagnostics->user_doctor_id = auth()->user()->id;
+                $Diagnostics->diagnosis = strip_tags($request->Diagnosis);
+                $Diagnostics->date =date('y-m-d');
+                $Diagnostics->year =date('Y');
+                $Diagnostics->create_by = auth()->user()->name;
+                $Diagnostics->save();
+
+
+                // update patient_accounts
+                $patient_accounts = PatientAccount::where('diagnostic_id',strip_tags($request->id))->first();
+                $patient_accounts->patient_id = strip_tags($request->Patient_id);
+                $patient_accounts->invoice_id = strip_tags($request->Invoice_id);
+                $patient_accounts->user_doctor_id = auth()->user()->id;
+                $patient_accounts->date =date('y-m-d');
+                $patient_accounts->year =date('Y');
+                $patient_accounts->create_by  = auth()->user()->name;
+                $patient_accounts->save();
+                toastr()->success('تم تعديل تشخيص المريض بنجاح');
+                return redirect()->back();
     
 
             }
@@ -67,6 +103,20 @@ class DiagnosticController extends Controller
     
                 return redirect()->back()->withErrors(['error' => $e->getMessage()]);
             }        }
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
+
+    public function destroy(Request $request)
+    {
+        if(Auth::user()->job == 'دكتور')
+        {
+            PatientAccount::where('diagnostic_id', strip_tags($request->id))->delete();
+            Diagnostic::destroy(strip_tags($request->id));
+
+            toastr()->error('تم حذف تشخيص المريض بنجاح');
+            return redirect()->back();
+        }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
     }

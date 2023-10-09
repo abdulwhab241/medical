@@ -41,7 +41,7 @@ class RayEmployeeController extends Controller
                 //Upload img
                 // $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\User');
     
-                toastr()->success('تم إضافة بيانات موظف الأشعة بنجاح');
+                toastr()->success('تم إضافة بيانات دكتور الأشعة بنجاح');
                 return redirect()->back();
     
             }
@@ -73,7 +73,7 @@ class RayEmployeeController extends Controller
                 //Upload img
                 // $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\User');
     
-                toastr()->success('تم تعديل بيانات موظف الأشعة بنجاح');
+                toastr()->success('تم تعديل بيانات دكتور الأشعة بنجاح');
                 return redirect()->back();
     
             }
@@ -91,7 +91,7 @@ class RayEmployeeController extends Controller
         {
             User ::destroy(strip_tags($request->id));
 
-            toastr()->error('تم حذف بيانات موظف الأشعة بنجاح');
+            toastr()->error('تم حذف بيانات دكتور الأشعة بنجاح');
             return redirect()->back();
         }
         toastr()->error('لا يمكنك الدخول ');
