@@ -5,16 +5,16 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('title')
-    تعديل فاتورة نقدية
+    تعديل دواء المريض
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto"> تعديل فاتورة نقدية
+                <h4 class="content-title mb-0 my-auto"> تعديل دواء المريض
                 </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    الفواتير</span>
+                    <label style="color: cadetblue">{{  $PatientMedicine->Patient->name }}</label></span>
             </div>
         </div>
     </div>
@@ -27,52 +27,42 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{ route('CashInvoices.update', 'test') }}" method="post">
+                    <form action="{{ route('Patient_Medicines.update', 'test') }}" method="post">
                         @method('PUT')
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $Invoices->id }}">
+                        <input type="hidden" name="id" value="{{ $PatientMedicine->id }}">
+                        <input type="hidden" name="Patient_id" value="{{ $PatientMedicine->patient_id }}">
 
                         <div class="row">
 
-                            <div class="col-md-4">
-                                <label>أسم المريض</label>
-                                <select name="Patient_id" class="form-control select2">
-                                    @foreach ($Patients as $Patient)
-                                        <option value="{{ $Patient->id }}"
-                                            {{ $Patient->id == $Invoices->patient_id ? 'selected' : '' }}>
-                                            {{ $Patient->name }}</option>
+                            <div class="col-md-6 col-xl-6">
+                                <label>أسم الدواء</label>
+                                <select name="Medicine_id" class="form-control select2"
+                                    dir="ltr">
+                                    @foreach ($Medicines as $Medicine)
+                                    <option value="{{ $Medicine->id }}"
+                                        {{ $Medicine->id == $PatientMedicine->medicine_id ? 'selected' : '' }}>
+                                        {{ $Medicine->name }}</option>
                                     @endforeach
-
                                 </select>
 
                             </div>
 
-                            <div class="col-md-4">
-                                <label>أسم الطبيب</label>
-                                <select name="Doctor_id" class="form-control select2">
-                                    @foreach ($Doctors as $Doctor)
-                                        <option value="{{ $Doctor->id }}"
-                                            {{ $Doctor->id == $Invoices->user_doctor_id ? 'selected' : '' }}>
-                                            {{ $Doctor->name }}</option>
-                                    @endforeach
-
-                                </select>
+                            <div class="col-md-3">
+                                <label>الجرعة</label>
+                                <input type="text" name="Dosage" value="{{ $PatientMedicine->dosage }}"
+                                    class="form-control">
 
                             </div>
 
-                            <div class="col-md-4">
-                                <label>الإجراء</label>
-                                <select name="Service_id" class="form-control select2">
-                                    @foreach ($Services as $Service)
-                                        <option value="{{ $Service->id }}"
-                                            {{ $Service->id == $Invoices->service_id ? 'selected' : '' }}>
-                                            {{ $Service->name }}</option>
-                                    @endforeach
-
-                                </select>
+                            <div class="col-md-3">
+                                <label>وقت الجرعة</label>
+                                <input type="text" name="Use" value="{{ $PatientMedicine->use }}"
+                                    class="form-control">
 
                             </div>
+
 
                         </div>
 
@@ -81,24 +71,8 @@
                         <div class="row">
 
                             <div class="col-md-4">
-                                <label>المبلغ</label>
-                                <select name="price" class="form-control select2">
-                                    <option>{{ $Invoices->price }}</option>
-                                </select>
-
-                            </div>
-
-                            <div class="col-md-4">
-                                <label>التخفيض</label>
-                                <select name="Discount" class="form-control select2">
-                                    <option>{{ $Invoices->discount_value }}</option>
-                                    <option value="0">0%</option>
-                                    <option value="5">5%</option>
-                                    <option value="10">10%</option>
-                                    <option value="15">15%</option>
-                                    <option value="20">20%</option>
-
-                                </select>
+                                <label>الفترة</label>
+                                <input type="text" name="Period" value="{{ $PatientMedicine->period }}" class="form-control">
                             </div>
 
                         </div>

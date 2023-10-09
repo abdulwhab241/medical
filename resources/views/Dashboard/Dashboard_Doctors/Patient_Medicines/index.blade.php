@@ -4,15 +4,14 @@
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 @section('title')
-    الفواتير النقدية
+    ادوية المرضى
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الفواتير النقدية</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    الفواتير</span>
+                <h4 class="content-title mb-0 my-auto">ادوية المرضى</h4>
             </div>
         </div>
     </div>
@@ -25,55 +24,43 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <a href="{{ route('CashInvoices.create') }}" class="btn btn-primary">إضافة فاتورة جديدة</a>
-                </div>
+                {{-- <div class="card-header">
+                    <a href="{{ route('CashPatientMedicines.create') }}" class="btn btn-primary">إضافة فاتورة جديدة</a>
+                </div> --}}
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap text-center" id="example1" style="text-algin: center;">
                             <thead>
                                 <tr class="table-secondary">
-                                    {{-- <th>#</th> --}}
-                                    <th>رقم الفاتورة</th>
+                                    <th>#</th>
                                     <th>أسم المريض</th>
-                                    <th>أسم الإجراء</th>
                                     <th>أسم الطبيب </th>
-                                    <th>تاريخ الزيارة</th>
-                                    <th>نوع التعامل</th>
-                                    <th>المبلغ</th>
-                                    <th>التخفيض</th>
-                                    <th>الإجمالي</th>
-                                    <th>المحاسب</th>
+                                    <th>التاريخ</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Invoices as $Invoice)
+                                @foreach ($PatientMedicines as $PatientMedicine)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        {{-- <td>{{ $Invoice->id }}</td> --}}
-                                        <td>{{ $Invoice->Patient->name }}</td>
-                                        <td>{{ $Invoice->Service->name }}</td>
-                                        <td>{{ $Invoice->Doctor->name }}</td>
-                                        <td>{{ $Invoice->created_at }}</td>
+                                        <td>{{ $PatientMedicine->Patient->name }}</td>
+                                        <td>{{ $PatientMedicine->Doctor->name }}</td>
+                                        <td>{{ $PatientMedicine->date }}</td>
+
                                         <td>
-                                            {{ $Invoice->status == 1 ? 'نقدي' : 'اجل' }}
-                                        </td>
-                                        <td>{{ number_format($Invoice->price) }} </td>
-                                        <td>{{ $Invoice->discount_value }} </td>
-                                        <td>{{ number_format($Invoice->total) }} </td>
-                                        <td>{{ $Invoice->create_by }}</td>
-                                        <td>
-                                            <a href="{{ route('CashInvoices.edit', $Invoice->id) }}" style="margin: 3px;"
-                                                class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ route('CashInvoices.show', $Invoice->id) }}" style="margin: 3px;"
+                                            <a href="{{ route('Patient_Medicines.edit', $PatientMedicine->id) }}" style="margin: 3px;"
+                                                class="btn btn-sm btn-success"><i class="fas fa-edit"></i> تعديل </a>
+                                            {{-- <a href="{{ route('Patient_Medicines.show', $PatientMedicine->id) }}" style="margin: 3px;"
                                                 class="btn btn-sm btn-primary"><i class="fas fa-print"></i></a>
                                             <button class="btn btn-sm btn-danger" data-toggle="modal" style="margin: 3px;"
-                                                data-target="#Deleted{{ $Invoice->id }}"><i class="fas fa-trash"></i>
-                                            </button>
+                                                data-target="#Deleted{{ $PatientMedicine->id }}"><i class="fas fa-trash"></i>
+                                            </button> --}}
+                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
+                                            data-toggle="modal" href="#delete{{ $PatientMedicine->id }}"><i
+                                                class="las la-trash"></i> حذف </a>
 
                                         </td>
-                                        @include('Dashboard.Admin.Cash_Invoice.Deleted')
+                                        @include('Dashboard.Dashboard_Doctors.Patient_Medicines.delete')
                                     </tr>
                                 @endforeach
                             </tbody>

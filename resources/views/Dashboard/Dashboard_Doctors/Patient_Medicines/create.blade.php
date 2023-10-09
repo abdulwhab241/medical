@@ -12,9 +12,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">إضافة دواء للمريض</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    <label style="color: cadetblue">{{  $Invoice->Patient->name }}</label></span>
+                <h4 class="content-title mb-0 my-auto">إضافة دواء للمريض</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    <label style="color: cadetblue">{{ $Invoice->Patient->name }}</label></span>
             </div>
         </div>
     </div>
@@ -27,21 +26,19 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('Diagnostics.store') }}" method="post" autocomplete="off">
+                    <form action="{{ route('Patient_Medicines.store') }}" method="post" autocomplete="off">
                         @csrf
 
-                        <input type="hidden" name="id" value="{{$Invoice->id}}">
-                        <input type="hidden" name="Patient_id" value="{{$Invoice->patient_id}}">
-        
-
+                        <input type="hidden" name="Patient_id" value="{{ $Invoice->patient_id }}">
 
                         <div class="row">
 
                             <div class="col-md-6 col-xl-6">
                                 <label>أسم الدواء</label>
-                                <select name="Medicine_id[]"  multiple="multiple" class="form-control select2" dir="ltr">
+                                <select name="Medicine_id" class="form-control select2"
+                                    dir="ltr">
                                     @foreach ($Medicines as $Medicine)
-                                    <option value=""></option>
+                                        <option value=""></option>
                                         <option value="{{ $Medicine->id }}">{{ $Medicine->name }}</option>
                                     @endforeach
                                 </select>
@@ -52,8 +49,7 @@
 
                             <div class="col-md-3">
                                 <label>الجرعة</label>
-                                <input type="text" name="Dosage"
-                                    value="{{ old('Dosage') }}"
+                                <input type="text" name="Dosage" value="{{ old('Dosage') }}"
                                     class="form-control @error('Dosage') is-invalid @enderror">
                                 @error('Dosage')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -62,13 +58,12 @@
 
                             <div class="col-md-3">
                                 <label>وقت الجرعة</label>
-                                <input type="text" name="Use"
-                                value="{{ old('Use') }}"
-                                class="form-control @error('Use') is-invalid @enderror">
+                                <input type="text" name="Use" value="{{ old('Use') }}"
+                                    class="form-control @error('Use') is-invalid @enderror">
 
                                 @error('Use')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>
@@ -80,9 +75,8 @@
 
                             <div class="col-md-4">
                                 <label>الفترة</label>
-                                <input type="text" name="Period" value="{{ old('Period') }}"
-                                    class="form-control">
-                                    @error('Period')
+                                <input type="text" name="Period" value="{{ old('Period') }}" class="form-control">
+                                @error('Period')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

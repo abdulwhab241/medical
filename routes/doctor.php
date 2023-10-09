@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Doctor\PatientController;
 use App\Http\Controllers\Doctor\DiagnosticController;
+use App\Http\Controllers\Doctor\PatientMedicineController;
 
 
 
@@ -42,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('Diagnostics', DiagnosticController::class);
 
     //############################# end Diagnostic Patients route ###############################
+
+    //############################# Patient Medicines route ###################################
+
+        Route::resource('Patient_Medicines', PatientMedicineController::class);
+
+    //############################# end Patient Medicines route ###############################
 
 
 });

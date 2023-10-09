@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\PatientAccount;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Doctor\DiagnosticRequest;
 
 class DiagnosticController extends Controller
 {

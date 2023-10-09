@@ -22,7 +22,6 @@ class DiagnosticRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Diagnosis' => 'required',
             'Medicine_id' => 'required',
             'Dosage' => 'required',
             'Use' => 'required',
@@ -36,9 +35,6 @@ class DiagnosticRequest extends FormRequest
             'Medicine_id' => [
                 'required' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء '
                 // 'integer' => 'أسم الدواء مطلوب الرجى إختيار أسم الدواء '
-            ],
-            'Diagnosis' => [
-                'required' => 'التشخيص مطلوب الرجى كتابة التشخيص بشكل صحيح '
             ],
             'Dosage' => [
                 'required' => 'الجرعة مطلوبة الرجى كتابة الجرعة بشكل صحيح  '
