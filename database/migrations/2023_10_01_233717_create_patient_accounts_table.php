@@ -20,7 +20,15 @@ return new class extends Migration
             $table->foreignId('medicine_id')->nullable()->references('id')->on('medicine_invoices')->onDelete('cascade');
             $table->foreignId('user_doctor_id')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable()->references('id')->on('payment_accounts')->onDelete('cascade');
-            $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
+            $table->foreignId('ray_id')->nullable()->references('id')->on('patient_rays')->onDelete('cascade');
+            $table->foreignId('laboratory_id')->nullable()->references('id')->on('patient_laboratories')->onDelete('cascade');
+            
+                        ///  فواتير الأشعة (دائن)
+            $table->foreignId('ray_invoice_id')->nullable()->references('id')->on('ray_invoices')->onDelete('cascade'); /// دائن
+
+                        ///  فواتير المختبرات (دائن)
+            $table->foreignId('laboratory_invoice_id')->nullable()->references('id')->on('laboratory_invoices')->onDelete('cascade'); /// دائن
+            
             $table->decimal('Debit',50,2)->default(0);
             $table->decimal('credit',50,2)->default(0);
             $table->date('date');

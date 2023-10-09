@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rays', function (Blueprint $table) {
+        Schema::create('laboratory_invoices', function (Blueprint $table) {
             $table->id();
-            $table->longText('description');
-            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
-            $table->longText('description_employee')->nullable();
+            $table->foreignId('laboratory_id')->references('id')->on('patient_laboratories')->onDelete('cascade');
+            $table->decimal('price', 50, 2)->default(0);
+            $table->integer('discount')->default(0);
+            $table->decimal('total', 50, 2)->default(0);
             $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rays');
+        Schema::dropIfExists('laboratory_invoices');
     }
 };

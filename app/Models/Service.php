@@ -10,5 +10,10 @@ class Service extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public $fillable= ['name','price','description','status'];
+    public $fillable= ['name','price','description','status', 'user_doctor_id'];
+
+    public function Doctor()
+    {
+        return $this->belongsTo(User::class,'user_doctor_id');
+    }
 }

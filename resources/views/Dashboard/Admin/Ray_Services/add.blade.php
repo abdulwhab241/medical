@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">إضافة إجراء جديدة</h5>
+                <h5 class="modal-title" id="exampleModalLabel">إضافة أشعة جديدة</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,21 +11,14 @@
             <form action="{{ route('Service.store') }}" method="post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
-                    <label for="name">أسم الإجراء</label>
+                    <label for="name">أسم الأشعة</label>
                     <input type="text" name="name" id="name" class="form-control" required><br>
 
-                    <label for="price">سعر الإجراء</label>
+                    <label for="price">سعر الأشعة</label>
                     <input type="number" name="price" id="price" class="form-control" required><br>
 
-                    <label for="description">وصف الإجراء</label>
+                    <label for="description">وصف الأشعة</label>
                     <textarea class="form-control" name="description" id="description" rows="2"></textarea>
-
-                    <label for="description">أسم الطبيب</label>
-                    <select name="Doctor_id" class="form-control SlectBox" required>
-                        @foreach ($Doctors as $Doctor)
-                            <option value="{{ $Doctor->id }}">{{ $Doctor->name }}</option>
-                        @endforeach
-                    </select>
 
                 </div>
 

@@ -40,10 +40,16 @@ return new class extends Migration
                         ///  مبيعات الادوية (مدين)
             $table->foreignId('medicine_invoice_id')->nullable()->references('id')->on('medicine_invoices')->onDelete('cascade'); /// دائن
 
-
                         ///  فواتير التأمين (دائن)
             $table->foreignId('insurance_id')->nullable()->references('id')->on('insurance_invoices')->onDelete('cascade'); /// مدين
-            
+
+                        ///  فواتير الأشعة (مدين)
+            $table->foreignId('ray_id')->nullable()->references('id')->on('ray_invoices')->onDelete('cascade'); /// مدين
+
+                        ///  فواتير المختبرات (مدين)
+            $table->foreignId('laboratory_id')->nullable()->references('id')->on('laboratory_invoices')->onDelete('cascade'); /// مدين
+
+
             $table->decimal('Debit',50,2)->default(0); /// مدين
             $table->decimal('credit',50,2)->default(0); /// دائن
             $table->longText('disc')->nullable();

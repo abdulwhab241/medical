@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->decimal('price','11','2');
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);
+            $table->date('date');
             $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();

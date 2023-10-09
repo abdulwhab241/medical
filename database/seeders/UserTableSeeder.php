@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'محاسب',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('15'),
         ]);
 
         DB::table('users')->insert([
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'الدكتور محمد الصيدلية',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('14'),
         ]);
 
         DB::table('users')->insert([
@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
             'date' => '2023-09-27',
             'phone' => '123',
             'address' => ' الدكتور احمد الحداد',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('11'),
         ]);
 
         DB::table('users')->insert([
@@ -60,7 +60,7 @@ class UserTableSeeder extends Seeder
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'الدكتور خالد المختبر',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12'),
         ]);
 
         DB::table('users')->insert([
@@ -69,7 +69,7 @@ class UserTableSeeder extends Seeder
             'phone' => '123',
             'date' => '2023-09-27',
             'address' => 'الدكتور ابراهيم الاشعة',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('13'),
         ]);
     }
 }

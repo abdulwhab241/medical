@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/patient_cashes', [PatientController::class, 'patient_cash'])->name('patient_cash');
         Route::get('/patient_insurances', [PatientController::class, 'patient_insurance'])->name('patient_insurance');
         Route::get('/patient_Medicines/{id}', [PatientController::class, 'edit'])->name('add_medicines');
+        Route::get('/all_patients', [PatientController::class, 'all'])->name('all_patients');
+        Route::get('/details_patient/{id}', [PatientController::class, 'show_patient'])->name('details_patient');
+
     
     //############################# end Patient for Doctors route ###############################
 

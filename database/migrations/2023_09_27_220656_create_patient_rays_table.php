@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rays', function (Blueprint $table) {
+        Schema::create('patient_rays', function (Blueprint $table) {
             $table->id();
-            $table->longText('description');
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreignId('user_doctor_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
+            $table->foreignId('ray_id')->nullable()->references('id')->on('ray_services')->onDelete('cascade');
+            $table->longText('description')->nullable();
             $table->longText('description_employee')->nullable();
             $table->date('date');
             $table->integer('year');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rays');
+        Schema::dropIfExists('patient_rays');
     }
 };

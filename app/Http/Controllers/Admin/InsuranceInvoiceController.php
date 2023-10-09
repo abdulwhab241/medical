@@ -140,6 +140,7 @@ class InsuranceInvoiceController extends Controller
                 // store patient_accounts
                 $patient_accounts = new PatientAccount();
                 $patient_accounts->date =date('y-m-d');
+                $patient_accounts->service_id = strip_tags($request->Service_id);
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
                 $patient_accounts->insurance_invoice_id = $InsuranceInvoice->id;
 
@@ -151,7 +152,7 @@ class InsuranceInvoiceController extends Controller
                     $patient_accounts->credit = $total; // مجموع المريض
                 }
 
-                $fund_accounts->create_by  = auth()->user()->name;
+                $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
     
     
@@ -235,6 +236,7 @@ class InsuranceInvoiceController extends Controller
                 $patient_accounts = PatientAccount::where('insurance_invoice_id',strip_tags($request->id))->first();
                 $patient_accounts->date =date('y-m-d');
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
+                $patient_accounts->service_id = strip_tags($request->Service_id);
 
                 foreach($Patient_discount as $discount)
                 {

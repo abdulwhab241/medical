@@ -22,38 +22,12 @@ class ServiceTableSeeder extends Seeder
             'name' => 'استشارات طبية',
             'price' => 3000,
             'status' => 1,
+            'date' => '2023-09-27',
+            'user_doctor_id' => 4,
             'year' => 2023,
         ]);
 
-        DB::table('Services')->insert([
-            'name' => 'كشافة صدر',
-            'price' => 5000,
-            'status' => 1,
-            'year' => 2023,
-        ]);
-
-        DB::table('Services')->insert([
-            'name' => 'ايكو',
-            'price' => 12000,
-            'status' => 1,
-            'year' => 2023,
-        ]);
-
-        DB::table('Services')->insert([
-            'name' => 'فحص الكرياتين',
-            'price' => 1200,
-            'status' => 1,
-            'year' => 2023,
-        ]);
-
-        DB::table('Services')->insert([
-            'name' => 'فحص دم عام',
-            'price' => 2000,
-            'status' => 1,
-            'year' => 2023,
-        ]);
     }
 
     
- 
 }

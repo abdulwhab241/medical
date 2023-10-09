@@ -8,6 +8,7 @@ use App\Models\Medicine;
 use Illuminate\Http\Request;
 use App\Models\InsuranceInvoice;
 use App\Http\Controllers\Controller;
+use App\Models\PatientAccount;
 use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
@@ -44,6 +45,31 @@ class PatientController extends Controller
             $Medicines = Medicine::all();
 
             return view('Dashboard.Dashboard_Doctors.Patient_Medicines.create',compact('Invoice','Medicines'));
+        }
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
+
+    
+    public function all()
+    {
+        if(Auth::user()->job == 'دكتور')
+        {
+            $Patients = PatientAccount::distinct()->where('user_doctor_id', auth()->user()->id)->get(['patient_id']);
+
+            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.all_patients',compact('Patients'));
+        }
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
+
+    public function show_patient($id)
+    {
+        if(Auth::user()->job == 'دكتور')
+        {
+            $Patients = PatientAccount::distinct()->where('user_doctor_id', auth()->user()->id)->get(['patient_id']);
+
+            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.show_patient',compact('Patients'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();

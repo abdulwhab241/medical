@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('date');
             $table->longText('day')->nullable();
             $table->boolean('status')->default(1);
+            $table->tinyInteger('case')->default(0);
             $table->string('create_by')->nullable();
             $table->softDeletes();
             $table->rememberToken();

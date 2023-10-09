@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
@@ -14,7 +15,8 @@ class ServiceController extends Controller
         if(Auth::user()->job == 'admin')
         {
             $services = Service::all();
-            return view('Dashboard.Admin.Services.index',compact('services'));
+            $Doctors = User::where('job', 'دكتور')->get();
+            return view('Dashboard.Admin.Services.index',compact('services','Doctors'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
@@ -28,6 +30,7 @@ class ServiceController extends Controller
             try {
                 $StoreService = new Service();
                 $StoreService->name = strip_tags($request->name);
+                $StoreService->user_doctor_id = strip_tags($request->Doctor_id);
                 $StoreService->price = strip_tags($request->price);
                 $StoreService->description = strip_tags($request->description);
                 $StoreService->status = 1;
@@ -56,6 +59,7 @@ class ServiceController extends Controller
 
                 $UpdateService = Service::findOrFail(strip_tags($request->id));
                 $UpdateService->name = strip_tags($request->name);
+                $UpdateService->user_doctor_id = strip_tags($request->Doctor_id);
                 $UpdateService->price = strip_tags($request->price);
                 $UpdateService->description = strip_tags($request->description);
                 $UpdateService->status = strip_tags($request->status);

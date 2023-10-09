@@ -135,6 +135,7 @@ class InvoiceController extends Controller
                 $patient_accounts->date =date('y-m-d');
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
                 $patient_accounts->invoice_id = $Invoices->id;
+                $patient_accounts->service_id = strip_tags($request->Service_id);
                 $patient_accounts->credit = $All;
                 $patient_accounts->year =date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
@@ -210,6 +211,7 @@ class InvoiceController extends Controller
     
                 // Update patient_accounts
                 $patient_accounts = PatientAccount::where('invoice_id',strip_tags($request->id))->first();
+                $patient_accounts->service_id = strip_tags($request->Service_id);
                 $patient_accounts->date =date('y-m-d');
                 $patient_accounts->credit = $All;
                 $patient_accounts->year =date('Y');
