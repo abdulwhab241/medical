@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Doctor;
 use App\Models\Invoice;
 use App\Models\Service;
 use App\Models\Medicine;
+use App\Models\PatientRay;
+use App\Models\RayService;
 use Illuminate\Http\Request;
+use App\Models\PatientAccount;
 use App\Models\InsuranceInvoice;
 use App\Http\Controllers\Controller;
-use App\Models\PatientAccount;
 use Illuminate\Support\Facades\Auth;
 
 class PatientController extends Controller
@@ -19,7 +21,8 @@ class PatientController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             $Invoices =  Invoice::where('user_doctor_id', auth()->user()->id)->where('invoice_date', date('y-m-d'))->get();
-            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-cash',compact('Invoices'));
+            $Rays = RayService::all();
+            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-cash',compact('Invoices','Rays'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();

@@ -35,6 +35,10 @@
                                     <th>#</th>
                                     <th>أسم المريض</th>
                                     <th>أسم الطبيب </th>
+                                    <th> أسم الدواء </th>
+                                    <th> الجرعة </th>
+                                    <th> وقت الجرعة </th>
+                                    <th> الفترة </th>
                                     <th>التاريخ</th>
                                     <th>العمليات</th>
                                 </tr>
@@ -45,6 +49,10 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $PatientMedicine->Patient->name }}</td>
                                         <td>{{ $PatientMedicine->Doctor->name }}</td>
+                                        <td>{{ $PatientMedicine->Medicine->name }}</td>
+                                        <td>{{ $PatientMedicine->dosage }}</td>
+                                        <td>{{ $PatientMedicine->use }}</td>
+                                        <td>{{ $PatientMedicine->period }}</td>
                                         <td>{{ $PatientMedicine->date }}</td>
 
                                         <td>

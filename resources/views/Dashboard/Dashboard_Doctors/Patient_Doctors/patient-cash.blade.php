@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     <link href="{{ URL::asset('/My/Dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('/My/Dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -60,9 +61,10 @@
                                                         data-target="#add_diagnosis{{ $Invoice->id }}"><i
                                                             class="text-primary fa fa-stethoscope"></i>&nbsp;&nbsp;اضافة
                                                         تشخيص </a>
-                                                    <a class="dropdown-item" href="{{ route('add_medicines', $Invoice->id) }}" ><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('add_medicines', $Invoice->id) }}"><i
                                                             class="text-warning far fa-file-alt"></i>&nbsp;&nbsp;اضافة
-                                                            دواء </a>
+                                                        دواء </a>
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#xray_conversion{{ $Invoice->id }}"><i
                                                             class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي
@@ -81,6 +83,7 @@
                                         </td>
                                     </tr>
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_diagnosis')
+                                    @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion')
                                     {{-- @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_review')
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion')
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.Laboratorie_conversion') --}}
@@ -103,4 +106,23 @@
     <!--Internal  Notify js -->
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ URL::asset('/My/Dashboard/plugins/notify/js/notifit-custom.js') }}"></script>
+
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!--Internal  jquery.maskedinput js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
+    <!--Internal  spectrum-colorpicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
+    <!-- Internal Select2.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/select2/js/select2.min.js') }}"></script>
+    <!--Internal Ion.rangeSlider.min js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+    <!--Internal  jquery-simple-datetimepicker js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}">
+    </script>
+    <!-- Ionicons js -->
+    <script src="{{ URL::asset('/My/Dashboard/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}">
+    </script>
+    <!-- Internal form-elements js -->
+    <script src="{{ URL::asset('/My/Dashboard/js/form-elements.js') }}"></script>
 @endsection

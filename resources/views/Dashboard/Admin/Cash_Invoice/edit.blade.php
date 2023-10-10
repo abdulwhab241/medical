@@ -35,7 +35,7 @@
 
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>أسم المريض</label>
                                 <select name="Patient_id" class="form-control select2">
                                     @foreach ($Patients as $Patient)
@@ -48,7 +48,7 @@
 
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>أسم الطبيب</label>
                                 <select name="Doctor_id" class="form-control select2">
                                     @foreach ($Doctors as $Doctor)
@@ -61,26 +61,7 @@
 
                             </div>
 
-                            <div class="col-md-4">
-                                <label>الإجراء</label>
-                                <select name="Service_id" class="form-control select2">
-                                    @foreach ($Services as $Service)
-                                        <option value="{{ $Service->id }}"
-                                            {{ $Service->id == $Invoices->service_id ? 'selected' : '' }}>
-                                            {{ $Service->name }}</option>
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <br>
-
-                        <div class="row">
-
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>المبلغ</label>
                                 <select name="price" class="form-control select2">
                                     <option>{{ $Invoices->price }}</option>
@@ -88,7 +69,7 @@
 
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>التخفيض</label>
                                 <select name="Discount" class="form-control select2">
                                     <option>{{ $Invoices->discount_value }}</option>
@@ -101,7 +82,10 @@
                                 </select>
                             </div>
 
+
                         </div>
+
+
                         <br>
 
 

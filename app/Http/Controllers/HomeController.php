@@ -13,9 +13,15 @@ class HomeController extends Controller
         return view('sign_in');
     }
 
+    // public function Get_doctors($id){
+
+    //     $list_price = Service::where("user_doctor_id", $id)->pluck("price", "id");
+    //     return $list_price;
+    // }
+
     public function Get_Prices($id){
 
-        $list_price = Service::where("id", $id)->pluck("price", "id");
+        $list_price = Service::where("user_doctor_id", $id)->pluck("price", "id");
         return $list_price;
     }
 

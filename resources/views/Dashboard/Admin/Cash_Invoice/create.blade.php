@@ -31,7 +31,7 @@
                         @csrf
                         <div class="row">
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>أسم المريض</label>
                                 <select name="Patient_id" class="form-control select2">
                                     @foreach ($Patients as $Patient)
@@ -44,7 +44,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>أسم الطبيب</label>
                                 <select name="Doctor_id" class="form-control select2">
                                     @foreach ($Doctors as $Doctor)
@@ -57,26 +57,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label>الإجراء</label>
-                                <select name="Service_id" class="form-control select2">
-                                    @foreach ($Services as $Service)
-                                    <option value=""></option>
-                                        <option value="{{ $Service->id }}">{{ $Service->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('Service_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                        <br>
-
-                        <div class="row">
-
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>المبلغ</label>
                                 <select name="price" class="form-control select2">
 
@@ -87,7 +68,7 @@
 
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>التخفيض</label>
                                 <select name="Discount" class="form-control select2">
                                     <option value="0">0%</option>
@@ -99,8 +80,12 @@
                                 </select>
                             </div>
 
+
+
                         </div>
+
                         <br>
+
 
 
                         <div class="modal-footer">

@@ -34,9 +34,8 @@ class InvoiceController extends Controller
         {
             $Doctors = User::where('job', 'دكتور')->get();
             $Patients = Patient::all();
-            $Services = Service::all();
     
-            return view('Dashboard.Admin.Cash_Invoice.create',compact('Doctors','Services','Patients'));
+            return view('Dashboard.Admin.Cash_Invoice.create',compact('Doctors','Patients'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
@@ -50,9 +49,8 @@ class InvoiceController extends Controller
             $Invoices = Invoice::findOrFail($id);
             $Doctors = User::where('job', 'دكتور')->get();
             $Patients = Patient::all();
-            $Services = Service::all();
 
-            return view('Dashboard.Admin.Cash_Invoice.edit', compact('Invoices','Doctors','Patients','Services'));    
+            return view('Dashboard.Admin.Cash_Invoice.edit', compact('Invoices','Doctors','Patients'));    
         }
 
         toastr()->error('لا يمكنك الدخول ');
@@ -79,6 +77,7 @@ class InvoiceController extends Controller
 
         if(Auth::user()->job == 'admin')
         {
+
             try{
                 $total = 0;
                 $sub_total =  strip_tags($request->price)  * strip_tags($request->Discount) / 100;
@@ -87,13 +86,17 @@ class InvoiceController extends Controller
     
     
                 $Disc = Service::where('id',strip_tags($request->Service_id))->pluck('name');
+                $Service_id = Service::where('user_doctor_id',strip_tags($request->Doctor_id))->pluck('id');
     
                 // store Invoices
                 $Invoices = new Invoice();
                 $Invoices->invoice_date =date('y-m-d');
                 $Invoices->patient_id = strip_tags($request->Patient_id);
                 $Invoices->user_doctor_id = strip_tags($request->Doctor_id);
-                $Invoices->service_id = strip_tags($request->Service_id);
+                foreach ($Service_id as $Service){
+        
+                    $Invoices->service_id =   $Service;
+                }
                 $Invoices->price = strip_tags($request->price);
                 $Invoices->discount_value = strip_tags($request->Discount);
                 $Invoices->total =  $All;
@@ -107,7 +110,10 @@ class InvoiceController extends Controller
                 $receipt_accounts->date =date('y-m-d');
                 $receipt_accounts->patient_id = strip_tags($request->Patient_id);
                 $receipt_accounts->user_doctor_id = strip_tags($request->Doctor_id);
-                $receipt_accounts->service_id = strip_tags($request->Service_id);
+                foreach ($Service_id as $Service){
+        
+                    $receipt_accounts->service_id =   $Service;
+                }
                 $receipt_accounts->amount = $All;
                 $receipt_accounts->year = date('Y');
                 $receipt_accounts->create_by  = auth()->user()->name;
@@ -135,7 +141,6 @@ class InvoiceController extends Controller
                 $patient_accounts->date =date('y-m-d');
                 $patient_accounts->patient_id = strip_tags($request->Patient_id);
                 $patient_accounts->invoice_id = $Invoices->id;
-                $patient_accounts->service_id = strip_tags($request->Service_id);
                 $patient_accounts->credit = $All;
                 $patient_accounts->year =date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
@@ -168,12 +173,17 @@ class InvoiceController extends Controller
                 $All =  strip_tags($request->price)  - $sub_total;
     
                 $Disc = Service::where('id',strip_tags($request->Service_id))->pluck('name');
+
+                $Service_id = Service::where('user_doctor_id',strip_tags($request->Doctor_id))->pluck('id');
     
                 // Update Invoices
                 $Invoices = Invoice::findOrFail(strip_tags($request->id));
                 $Invoices->invoice_date =date('y-m-d');
                 $Invoices->user_doctor_id = strip_tags($request->Doctor_id);
-                $Invoices->service_id = strip_tags($request->Service_id);
+                foreach ($Service_id as $Service){
+        
+                    $Invoices->service_id =   $Service;
+                }
                 $Invoices->price = strip_tags($request->price);
                 $Invoices->discount_value = strip_tags($request->Discount);
                 $Invoices->total =  $All;
@@ -186,7 +196,10 @@ class InvoiceController extends Controller
                 $receipt_accounts = ReceiptAccount::findOrFail(strip_tags($request->id));
                 $receipt_accounts->date =date('y-m-d');
                 $receipt_accounts->user_doctor_id = strip_tags($request->Doctor_id);
-                $receipt_accounts->service_id = strip_tags($request->Service_id);
+                foreach ($Service_id as $Service){
+        
+                    $receipt_accounts->service_id =   $Service;
+                }
                 $receipt_accounts->amount = $All;
 
                 $receipt_accounts->year = date('Y');
@@ -195,7 +208,6 @@ class InvoiceController extends Controller
     
                 // Update fund_accounts
                 $fund_accounts = FundAccount::where('receipt_id',$receipt_accounts->id)->first();
-                // $fund_accounts->receipt_id = $receipt_accounts->id;
                 $fund_accounts->Debit = $All;
 
                 foreach($Disc as $D)
@@ -211,10 +223,9 @@ class InvoiceController extends Controller
     
                 // Update patient_accounts
                 $patient_accounts = PatientAccount::where('invoice_id',strip_tags($request->id))->first();
-                $patient_accounts->service_id = strip_tags($request->Service_id);
-                $patient_accounts->date =date('y-m-d');
                 $patient_accounts->credit = $All;
-                $patient_accounts->year =date('Y');
+                $patient_accounts->date =date('y-m-d'); 
+                $patient_accounts->year = date('Y');
                 $patient_accounts->create_by  = auth()->user()->name;
                 $patient_accounts->save();
     

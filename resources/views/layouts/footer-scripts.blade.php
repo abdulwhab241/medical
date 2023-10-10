@@ -42,11 +42,11 @@
     <!-- Get Prices for Services -->
     <script>
         $(document).ready(function () {
-            $('select[name="Service_id"]').on('change', function () {
-                var Service_id = $(this).val();
-                if (Service_id) {
+            $('select[name="Doctor_id"]').on('change', function () {
+                var Doctor_id = $(this).val();
+                if (Doctor_id) {
                     $.ajax({
-                        url: "{{ URL::to('Get_prices') }}/" + Service_id,
+                        url: "{{ URL::to('Get_prices') }}/" + Doctor_id,
                         type: "GET",
                         dataType: "json",
                         success: function (data) {

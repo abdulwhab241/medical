@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Doctor;
 
 use App\Models\Medicine;
 use Illuminate\Http\Request;
+use App\Models\PatientAccount;
 use App\Models\PatientMedicine;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +72,15 @@ class PatientMedicineController extends Controller
                 $PatientMedicines->save();
 
 
+                $patient_accounts = new PatientAccount();
+                $patient_accounts->patient_id = strip_tags($request->Patient_id);
+                $patient_accounts->medicine_id = $PatientMedicines->id;
+                $patient_accounts->date =date('y-m-d');
+                $patient_accounts->year =date('Y');
+                $patient_accounts->create_by = auth()->user()->name;
+                $patient_accounts->save();
+
+
                 toastr()->success('تم إضافة دواء المريض بنجاح');
                 return redirect()->back();
 
@@ -103,6 +113,14 @@ class PatientMedicineController extends Controller
                 $PatientMedicines->create_by = auth()->user()->name;
                 $PatientMedicines->save();
 
+
+                $patient_accounts = PatientAccount::where('medicine_id',strip_tags($request->id))->first();
+                $patient_accounts->patient_id = strip_tags($request->Patient_id);
+                $patient_accounts->date =date('y-m-d');
+                $patient_accounts->year =date('Y');
+                $patient_accounts->create_by = auth()->user()->name;
+                $patient_accounts->save();
+
                 toastr()->success('تم تعديل دواء المريض بنجاح');
                 return redirect()->route('Patient_Medicines.index');
 
@@ -122,6 +140,7 @@ class PatientMedicineController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             PatientMedicine::destroy(strip_tags($request->id));
+            PatientAccount ::where('medicine_id', strip_tags($request->id))->delete();
 
             toastr()->error('تم حذف دواء المريض بنجاح');
             return redirect()->back();
