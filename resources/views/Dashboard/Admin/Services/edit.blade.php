@@ -15,13 +15,13 @@
                 @csrf
                 <div class="modal-body">
                     <label for="name">أسم الإجراء</label>
-                    <input type="text" name="name" id="name" value="{{ $service->name }}"
+                    <input type="text" name="name" id="name" required value="{{ $service->name }}"
                         class="form-control">
 
                     <input type="hidden" name="id" value="{{ $service->id }}" class="form-control"><br>
 
                     <label for="price">سعر الإجراء</label>
-                    <input type="number" name="price" id="price" value="{{ $service->price }}"
+                    <input type="number" name="price" id="price" required value="{{ $service->price }}"
                         class="form-control"><br>
 
                     <label for="description">وصف الإجراء</label>
@@ -30,10 +30,10 @@
                     <label for="description">أسم الطبيب</label>
                     <select name="Doctor_id" class="form-control SlectBox" required>
                         @foreach ($Doctors as $Doctor)
-                        <option value="{{ $Doctor->id }}"
-                            {{ $service->user_doctor_id == $Doctor->id ? 'selected' : '' }}>
-                            {{ $Doctor->name }}</option>
-                    @endforeach
+                            <option value="{{ $Doctor->id }}"
+                                {{ $service->user_doctor_id == $Doctor->id ? 'selected' : '' }}>
+                                {{ $Doctor->name }}</option>
+                        @endforeach
                     </select><br>
 
                     <div class="form-group">

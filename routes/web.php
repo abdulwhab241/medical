@@ -8,16 +8,19 @@ use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\ReceiptController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\MedicineController;
 use App\Http\Controllers\Admin\InsuranceController;
+use App\Http\Controllers\Admin\RayServiceController;
 use App\Http\Controllers\Admin\RayEmployeeController;
+use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\SurgeryServiceController;
 use App\Http\Controllers\Admin\InsuranceDetailController;
 use App\Http\Controllers\Admin\InsuranceInvoiceController;
 use App\Http\Controllers\Admin\PharmacyEmployeeController;
+use App\Http\Controllers\Admin\LaboratoryServiceController;
 use App\Http\Controllers\Admin\LaboratoryEmployeeController;
 
 
@@ -81,6 +84,24 @@ Route::get('/', function () {
 
         //############################# end Services route ######################################
 
+        //############################# Ray Services route ##########################################
+
+            Route::resource('Ray_Services', RayServiceController::class);
+
+        //############################# end Ray Services route ######################################
+
+        //############################# Laboratory Services route ##########################################
+
+            Route::resource('Laboratory_Services', LaboratoryServiceController::class);
+
+        //############################# end Laboratory Services route ######################################
+
+        //############################# Surgery Services route ##########################################
+
+            Route::resource('Surgery_Services', SurgeryServiceController::class);
+
+        //############################# end Surgery Services route ######################################
+                
         //############################# Insurances route ########################################
 
             Route::resource('insurance', InsuranceController::class);
@@ -106,7 +127,6 @@ Route::get('/', function () {
 
         //############################# end Insurance_Invoice route ######################################
 
-                
         //############################# Receipt route ##########################################
 
             Route::resource('Receipt', ReceiptController::class);

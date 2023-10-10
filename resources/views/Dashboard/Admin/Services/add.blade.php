@@ -12,10 +12,10 @@
                 @csrf
                 <div class="modal-body">
                     <label for="name">أسم الإجراء</label>
-                    <input type="text" name="name" id="name" class="form-control" required><br>
+                    <input type="text" name="name" id="name" required class="form-control" required><br>
 
                     <label for="price">سعر الإجراء</label>
-                    <input type="number" name="price" id="price" class="form-control" required><br>
+                    <input type="number" name="price" id="price" required class="form-control" required><br>
 
                     <label for="description">وصف الإجراء</label>
                     <textarea class="form-control" name="description" id="description" rows="2"></textarea>

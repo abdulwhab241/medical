@@ -3,21 +3,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">إضافة أشعة جديدة</h5>
+                <h5 class="modal-title" id="exampleModalLabel">إضافة فحص جديدة</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('Ray_Services.store') }}" method="post" autocomplete="off">
+            <form action="{{ route('Laboratory_Services.store') }}" method="post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
-                    <label for="name">أسم الأشعة</label>
+                    <label for="name">أسم الفحص</label>
                     <input type="text" name="name" id="name" class="form-control" required><br>
 
-                    <label for="price">سعر الأشعة</label>
+                    <label for="price">سعر الفحص</label>
                     <input type="number" name="price" id="price" class="form-control" required><br>
 
-                    <label for="description">وصف الأشعة</label>
+                    <label for="description">وصف الفحص</label>
                     <textarea class="form-control" name="description" id="description" rows="2"></textarea>
 
                 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    تفاصيل الأشعة
+    تفاصيل الفحوصات
 @stop
 @section('css')
     <!--Internal   Notify -->
@@ -11,7 +11,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">تفاصيل الأشعة</h4>
+                <h4 class="content-title mb-0 my-auto">تفاصيل الفحوصات</h4>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                            إضافة أشعة جديدة
+                            إضافة فحص جديد
                         </button>
                     </div>
                 </div>
@@ -37,41 +37,42 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th> أسم الأشعة</th>
-                                    <th> سعر الأشعة</th>
-                                    <th> حالة الأشعة</th>
-                                    <th> وصف الأشعة</th>
+                                    <th> أسم الفحص</th>
+                                    <th> سعر الفحص</th>
+                                    <th> حالة الفحص</th>
+                                    <th> وصف الفحص</th>
                                     <th>تم إنشائه بواسطة</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Rays as $Ray)
+                                @foreach ($LaboratoryServices as $LaboratoryService)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $Ray->name }}</td>
-                                        <td>{{ number_format($Ray->price) }} ريال </td>
+                                        <td>{{ $LaboratoryService->name }}</td>
+                                        <td>{{ number_format($LaboratoryService->price) }} ريال </td>
                                         <td>
-                                            <div class="dot-label bg-{{ $Ray->status == 1 ? 'success' : 'danger' }} ml-1">
+                                            <div
+                                                class="dot-label bg-{{ $LaboratoryService->status == 1 ? 'success' : 'danger' }} ml-1">
                                             </div>
-                                            {{ $Ray->status == 1 ? 'متوفر' : 'غير متوفر' }}
+                                            {{ $LaboratoryService->status == 1 ? 'متوفر' : 'غير متوفر' }}
                                         </td>
-                                        <td> {{ Str::limit($Ray->description, 50) }}</td>
+                                        <td> {{ Str::limit($LaboratoryService->description, 50) }}</td>
                                         <td>
-                                            {{ $Ray->create_by }}
+                                            {{ $LaboratoryService->create_by }}
                                         </td>
                                         <td>
                                             <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                data-toggle="modal" href="#edit{{ $Ray->id }}"><i
+                                                data-toggle="modal" href="#edit{{ $LaboratoryService->id }}"><i
                                                     class="las la-pen"></i></a>
                                             <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                data-toggle="modal" href="#delete{{ $Ray->id }}"><i
+                                                data-toggle="modal" href="#delete{{ $LaboratoryService->id }}"><i
                                                     class="las la-trash"></i></a>
                                         </td>
                                     </tr>
 
-                                    @include('Dashboard.Admin.Ray_Services.edit')
-                                    @include('Dashboard.Admin.Ray_Services.delete')
+                                    @include('Dashboard.Admin.Laboratory_Services.edit')
+                                    @include('Dashboard.Admin.Laboratory_Services.delete')
                                 @endforeach
                             </tbody>
                         </table>
@@ -81,7 +82,7 @@
         </div>
         <!--/div-->
 
-        @include('Dashboard.Admin.Ray_Services.add')
+        @include('Dashboard.Admin.Laboratory_Services.add')
         <!-- /row -->
 
     </div>

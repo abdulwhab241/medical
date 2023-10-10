@@ -34,6 +34,7 @@ class ServiceController extends Controller
                 $StoreService->price = strip_tags($request->price);
                 $StoreService->description = strip_tags($request->description);
                 $StoreService->status = 1;
+                $StoreService->date = date('y-m-d');
                 $StoreService->year = date('Y');
                 $StoreService->create_by  = auth()->user()->name;
                 $StoreService->save();
@@ -63,6 +64,7 @@ class ServiceController extends Controller
                 $UpdateService->price = strip_tags($request->price);
                 $UpdateService->description = strip_tags($request->description);
                 $UpdateService->status = strip_tags($request->status);
+                $UpdateService->date = date('y-m-d');
                 $UpdateService->year = date('Y');
                 $UpdateService->create_by  = auth()->user()->name;
                 $UpdateService->save();
