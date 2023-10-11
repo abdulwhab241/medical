@@ -44,6 +44,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/doctor.php'));
 
             Route::middleware('web')
+                ->group(base_path('routes/ray.php'));
+
+            Route::middleware('web')
                 ->group(base_path('routes/patient.php'));
         });
     }

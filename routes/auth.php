@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RayController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\DoctorController;
 use App\Http\Controllers\Auth\PasswordController;
@@ -14,13 +15,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
 Route::middleware('guest')->group(function () {
-    // Route::get('register', [RegisteredUserController::class, 'create'])
-    //             ->name('register');
 
-    // Route::post('register', [RegisteredUserController::class, 'store']);
-
-    // Route::get('login', [AuthenticatedSessionController::class, 'create'])
-    //             ->name('login');
     Route::get('/', [AuthenticatedSessionController::class, 'show'])
     ->name('selection');
 
@@ -31,6 +26,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/logout/Admin', [AdminController::class, 'destroy'])
     ->name('logout.admin');
+
 //#############################################################################################
 
 //################################## Route Doctor ##############################################
@@ -40,6 +36,17 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/logout/Doctor', [DoctorController::class, 'destroy'])
     ->name('logout.Doctor');
+
+//#############################################################################################
+
+//################################## Route Ray ##############################################
+
+    Route::post('/login/Ray', [RayController::class, 'store']
+    )->middleware('guest')->name('login.Ray');
+
+    Route::post('/logout/Ray', [RayController::class, 'destroy'])
+    ->name('logout.Ray');
+
 //#############################################################################################
 
 

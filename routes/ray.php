@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Doctor\PatientController;
-use App\Http\Controllers\Doctor\DiagnosticController;
-use App\Http\Controllers\Doctor\PatientRayController;
-use App\Http\Controllers\Doctor\PatientMedicineController;
+use App\Http\Controllers\Ray\PatientController;
+use App\Http\Controllers\Ray\DiagnosticController;
+use App\Http\Controllers\Ray\PatientRayController;
+use App\Http\Controllers\Ray\PatientMedicineController;
 
 
 
@@ -22,16 +22,16 @@ use App\Http\Controllers\Doctor\PatientMedicineController;
 
 
 
-//################################ dashboard Doctor ##########################################
-    Route::get('/doctor/dashboard', function () {
-        return view('Dashboard.Dashboard_Doctors.dashboard');
-    })->middleware(['auth'])->name('dashboard.doctor');
-//################################ end dashboard Doctor #####################################
+//################################ dashboard Ray ##########################################
+    Route::get('/ray/dashboard', function () {
+        return view('Dashboard.Dashboard_Rays.dashboard');
+    })->middleware(['auth'])->name('dashboard.Ray');
+//################################ end dashboard Ray #####################################
 
 Route::middleware(['auth'])->group(function () {
 
 
-    //############################# Patient for Doctors route ###################################
+    //############################# Patient for Rays route ###################################
 
         Route::get('/patient_cashes', [PatientController::class, 'patient_cash'])->name('patient_cash');
         Route::get('/patient_insurances', [PatientController::class, 'patient_insurance'])->name('patient_insurance');
@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/details_patient/{id}', [PatientController::class, 'show_patient'])->name('details_patient');
         Route::get('/patient_Xray/{id}', [PatientController::class, 'edit_xray'])->name('add_Xray');
     
-    //############################# end Patient for Doctors route ###############################
+    //############################# end Patient for Rays route ###############################
 
     //############################# Diagnostic Patients route ###################################
 

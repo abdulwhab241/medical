@@ -15,7 +15,7 @@ class DiagnosticController extends Controller
     {
         if(Auth::user()->job == 'دكتور')
         {
-            $Diagnostics =  Diagnostic::all();
+            $Diagnostics =  Diagnostic::where('user_doctor_id', auth()->user()->id)->get();
             return view('Dashboard.Dashboard_Doctors.Diagnostics.index',compact('Diagnostics'));
         }
         toastr()->error('لا يمكنك الدخول ');
@@ -71,6 +71,12 @@ class DiagnosticController extends Controller
         {
             try{
 
+                $Diagnostic = Diagnostic::findOrFail(strip_tags($request->id));
+                if($Diagnostic->user_doctor_id !=auth()->user()->id){
+                    toastr()->info('لا يمكنك التعديل ');
+                    return redirect()->back();
+                }
+
                 // update Diagnostics
                 $Diagnostics = Diagnostic::findOrFail(strip_tags($request->id));
                 $Diagnostics->invoice_id = strip_tags($request->Invoice_id);
@@ -110,6 +116,12 @@ class DiagnosticController extends Controller
     {
         if(Auth::user()->job == 'دكتور')
         {
+            $Diagnostic = Diagnostic::findOrFail(strip_tags($request->id));
+            if($Diagnostic->user_doctor_id !=auth()->user()->id){
+                toastr()->info('لا يمكنك الحذف ');
+                return redirect()->back();
+            }
+
             PatientAccount::where('diagnostic_id', strip_tags($request->id))->delete();
             Diagnostic::destroy(strip_tags($request->id));
 

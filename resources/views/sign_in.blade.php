@@ -61,14 +61,14 @@
                                                 </select>
                                             </div>
 
-                                            <!-- form admin -->
+                                            <!-- for admin -->
                                             <div class="panel" id="admin">
                                                 <h2>دخول ادمن</h2>
                                                 <form method="POST" action="{{ route('login.Admin') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>الاسم</label> <input class="form-control"
-                                                            placeholder="ادخل الاسم" type="text" name="name"
+                                                        <label>أسم الأدمن</label> <input class="form-control"
+                                                            placeholder="ادخل أسم الأدمن" type="text" name="name"
                                                             :value="old('name')" required autofocus>
                                                     </div>
                                                     <div class="form-group">
@@ -81,8 +81,8 @@
                                                 </form>
                                             </div>
 
-                                            
-                                            <!-- form Doctor -->
+
+                                            <!-- for Doctor -->
                                             <div class="panel" id="doctor">
                                                 <h2>دخول دكتور</h2>
                                                 <form method="POST" action="{{ route('login.Doctor') }}">
@@ -100,11 +100,17 @@
                                                         class="btn btn-main-primary btn-block">دخول</button>
 
                                                 </form>
-                                                {{-- <form method="POST" action="{{ route('login.Admin') }}">
+
+                                            </div>
+
+                                            <!-- for Doctor -->
+                                            <div class="panel" id="ray_employee">
+                                                <h2>دخول دكتور الاشعة</h2>
+                                                <form method="POST" action="{{ route('login.Ray') }}">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>أسم الطبيب</label> <input class="form-control"
-                                                            placeholder="ادخل اسم الطبيب" type="text" name="name"
+                                                            placeholder="ادخل أسم الطبيب" type="text" name="name"
                                                             :value="old('name')" required autofocus>
                                                     </div>
                                                     <div class="form-group">
@@ -114,7 +120,7 @@
                                                     </div><button type="submit"
                                                         class="btn btn-main-primary btn-block">دخول</button>
 
-                                                </form> --}}
+                                                </form>
 
                                             </div>
 

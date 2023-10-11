@@ -65,10 +65,14 @@
                                                         href="{{ route('add_medicines', $Invoice->id) }}"><i
                                                             class="text-warning far fa-file-alt"></i>&nbsp;&nbsp;اضافة
                                                         دواء </a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal"
-                                                        data-target="#xray_conversion{{ $Invoice->id }}"><i
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('add_Xray', $Invoice->id) }}"><i
                                                             class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي
                                                         الاشعة </a>
+                                                    {{-- <a class="dropdown-item" href="#" data-toggle="modal"
+                                                        data-target="#xray_conversion{{ $Invoice->id }}"><i
+                                                            class="text-primary fas fa-x-ray"></i>&nbsp;&nbsp;تحويل الي
+                                                        الاشعة </a> --}}
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#laboratorie_conversion{{ $Invoice->id }}"><i
                                                             class="text-warning fas fa-syringe"></i>&nbsp;&nbsp;تحويل الي
@@ -83,7 +87,7 @@
                                         </td>
                                     </tr>
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_diagnosis')
-                                    @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion')
+                                    {{-- @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion') --}}
                                     {{-- @include('Dashboard.Dashboard_Doctors.Patient_Doctors.add_review')
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.xray_conversion')
                                     @include('Dashboard.Dashboard_Doctors.Patient_Doctors.Laboratorie_conversion') --}}

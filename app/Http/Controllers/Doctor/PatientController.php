@@ -21,8 +21,8 @@ class PatientController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             $Invoices =  Invoice::where('user_doctor_id', auth()->user()->id)->where('invoice_date', date('y-m-d'))->get();
-            $Rays = RayService::all();
-            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-cash',compact('Invoices','Rays'));
+    
+            return view('Dashboard.Dashboard_Doctors.Patient_Doctors.patient-cash',compact('Invoices'));
         }
         toastr()->error('لا يمكنك الدخول ');
         return redirect()->back();
@@ -53,6 +53,18 @@ class PatientController extends Controller
         return redirect()->back();
     }
 
+    public function edit_xray($id)
+    {
+        if(Auth::user()->job == 'دكتور')
+        {
+            $Invoice = Invoice::findOrFail($id);
+            $Rays = RayService::all();
+
+            return view('Dashboard.Dashboard_Doctors.Patient_Xray.create',compact('Invoice','Rays'));
+        }
+        toastr()->error('لا يمكنك الدخول ');
+        return redirect()->back();
+    }
     
     public function all()
     {
@@ -71,7 +83,8 @@ class PatientController extends Controller
         if(Auth::user()->job == 'دكتور')
         {
             $Patients = PatientAccount::distinct()->where('user_doctor_id', auth()->user()->id)->get(['patient_id']);
-
+            
+            
             return view('Dashboard.Dashboard_Doctors.Patient_Doctors.show_patient',compact('Patients'));
         }
         toastr()->error('لا يمكنك الدخول ');

@@ -25,7 +25,7 @@
 
 
     @if (Auth::user()->job == 'الأشعة')
-        @include('layouts.main-sidebar.ray_employee-sidebar-main')
+        @include('layouts.main-sidebar.ray-sidebar-main')
     @endif
 
 

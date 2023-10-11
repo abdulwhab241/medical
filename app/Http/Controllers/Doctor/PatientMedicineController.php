@@ -44,6 +44,7 @@ class PatientMedicineController extends Controller
             $Medicines = Medicine::all();
 
             if($PatientMedicine->user_doctor_id !=auth()->user()->id){
+                toastr()->info('لا يمكنك التعديل ');
                 return redirect()->back();
             }
 
@@ -139,6 +140,7 @@ class PatientMedicineController extends Controller
     {
         if(Auth::user()->job == 'دكتور')
         {
+
             PatientMedicine::destroy(strip_tags($request->id));
             PatientAccount ::where('medicine_id', strip_tags($request->id))->delete();
 

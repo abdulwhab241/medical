@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ray_invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ray_id')->references('id')->on('patient_medicines')->onDelete('cascade');
+            $table->foreignId('ray_id')->references('id')->on('patient_rays')->onDelete('cascade');
             $table->decimal('price', 50, 2)->default(0);
             $table->integer('discount')->default(0);
             $table->decimal('total', 50, 2)->default(0);

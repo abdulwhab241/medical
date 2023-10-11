@@ -216,7 +216,7 @@
                     <a class="profile-user d-flex" href="">
                         
                         @if ($Users->image)
-                        <img src="{{ URL::asset('/My/Dashboard/img/doctors/' . $Users->image->filename) }}"
+                        <img src="{{ URL::asset('/My/Dashboard/img/rays/' . $Users->image->filename) }}"
                             alt="{{ $Users->name }}">
                     @else
                         <img src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" alt="">
@@ -227,7 +227,7 @@
                             <div class="d-flex wd-100p">
                                 <div class="main-img-user">
                                     @if ($Users->image)
-                                    <img src="{{ URL::asset('/My/Dashboard/img/doctors/' . $Users->image->filename) }}"
+                                    <img src="{{ URL::asset('/My/Dashboard/img/rays/' . $Users->image->filename) }}"
                                         class="" alt="{{ $Users->name }}">
                                 @else
                                     <img src="{{ URL::asset('/My/Dashboard/img/faces/6.jpg') }}" class=""
@@ -242,6 +242,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>الملف الشخصي</a>
+                        {{-- <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a> --}}
 
                         <form method="POST" action="{{ route('logout', 'web') }}">
                             @csrf
